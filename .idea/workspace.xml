@@ -2,9 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6ad4323d-ff26-4cc8-b644-bc0a8821e93e" name="默认更改列表" comment="">
+      <change afterPath="$PROJECT_DIR$/TANCMS/proxies.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TANCMS/middlewares.py" beforeDir="false" afterPath="$PROJECT_DIR$/TANCMS/middlewares.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TANCMS/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/TANCMS/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TANCMS/spiders/gzh.py" beforeDir="false" afterPath="$PROJECT_DIR$/TANCMS/spiders/gzh.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -23,18 +24,16 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/TANCMS/spiders/gzh.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="218">
-              <caret line="15" column="108" selection-start-line="15" selection-start-column="108" selection-end-line="15" selection-end-column="108" />
+            <state relative-caret-position="360">
+              <caret line="111" column="32" selection-start-line="111" selection-start-column="32" selection-end-line="111" selection-end-column="32" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
-                <element signature="e#1503#1938#0" />
                 <element signature="e#1986#2711#0" />
                 <element signature="e#2788#3730#0" />
                 <element signature="e#3788#4597#0" />
-                <element signature="e#4648#5445#0" />
                 <element signature="e#5483#5650#0" />
                 <element signature="e#5715#7102#0" />
                 <element signature="e#6995#7104#0" />
@@ -60,15 +59,6 @@
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/TANCMS/libs/ES.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="6" column="11" selection-start-line="6" selection-start-column="11" selection-end-line="6" selection-end-column="11" />
             </state>
           </provider>
         </entry>
@@ -106,11 +96,26 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/TANCMS/settings.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="354">
-              <caret line="104" lean-forward="true" selection-start-line="104" selection-end-line="104" />
+            <state relative-caret-position="221">
+              <caret line="139" column="3" lean-forward="true" selection-start-line="139" selection-start-column="3" selection-end-line="139" selection-end-column="3" />
+              <folding>
+                <element signature="e#606#7675#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/TANCMS/proxies.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="331">
+              <caret line="98" column="27" selection-start-line="98" selection-start-column="27" selection-end-line="98" selection-end-column="27" />
+              <folding>
+                <element signature="e#25#40#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -118,10 +123,13 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/TANCMS/middlewares.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="19" column="37" lean-forward="true" selection-start-line="19" selection-start-column="37" selection-end-line="19" selection-end-column="37" />
+            <state relative-caret-position="242">
+              <caret line="139" lean-forward="true" selection-start-line="139" selection-end-line="139" />
               <folding>
                 <element signature="e#145#171#0" expanded="true" />
+                <element signature="e#372#2012#0" />
+                <element signature="e#2053#3696#0" />
+                <element signature="e#4117#5083#0" />
               </folding>
             </state>
           </provider>
@@ -143,9 +151,11 @@
       <find>response.xpath('//div[@id=&quot;js_content&quot;]').extract_first()</find>
       <find>print</find>
       <find>ip</find>
-      <find>DOWNLOADER_MIDDLEWARES</find>
       <find>findall</find>
       <find>for</find>
+      <find>uigs_para</find>
+      <find>SPIDER_MIDDLEWARES</find>
+      <find>DOWNLOADER_MIDDLEWARES</find>
       <find>RandomProxyMiddleware</find>
     </findStrings>
   </component>
@@ -162,16 +172,17 @@
         <option value="$PROJECT_DIR$/TANCMS/spiders/article.py" />
         <option value="$PROJECT_DIR$/TANCMS/pipelines.py" />
         <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/TANCMS/spiders/gzh.py" />
+        <option value="$PROJECT_DIR$/TANCMS/proxies.py" />
         <option value="$PROJECT_DIR$/TANCMS/middlewares.py" />
         <option value="$PROJECT_DIR$/TANCMS/settings.py" />
-        <option value="$PROJECT_DIR$/TANCMS/spiders/gzh.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="763" />
+    <option name="x" value="734" />
     <option name="y" value="23" />
-    <option name="width" value="1157" />
+    <option name="width" value="1186" />
     <option name="height" value="974" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -233,7 +244,29 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.test">
+  <component name="RunManager" selected="Python.proxies">
+    <configuration name="proxies" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="TANCMS" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/TANCMS" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/TANCMS/proxies.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="test" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="TANCMS" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -280,6 +313,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.proxies" />
         <item itemvalue="Python.test" />
         <item itemvalue="Python.wx" />
       </list>
@@ -296,18 +330,18 @@
       <option name="presentableId" value="Default" />
       <updated>1595315011812</updated>
       <workItem from="1595315012897" duration="11482000" />
-      <workItem from="1595379939111" duration="24644000" />
+      <workItem from="1595379939111" duration="26535000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="36126000" />
+    <option name="totallyTimeSpent" value="38017000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="299" y="23" width="1621" height="974" extended-state="0" />
+    <frame x="734" y="23" width="1186" height="974" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.13362888" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18444055" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -321,7 +355,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info anchor="bottom" id="Terminal" order="11" visible="true" weight="0.3117914" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="11" visible="true" weight="0.53854877" />
       <window_info anchor="bottom" id="Python Console" order="12" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -333,7 +367,19 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/TANCMS/settings.py</url>
+          <line>19</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/TANCMS$proxies.coverage" NAME="proxies Coverage Results" MODIFIED="1595415688604" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/TANCMS" />
     <SUITE FILE_PATH="coverage/TANCMS$test.coverage" NAME="test Coverage Results" MODIFIED="1595389413738" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/TANCMS/spiders" />
     <SUITE FILE_PATH="coverage/TANCMS$wx.coverage" NAME="wx Coverage Results" MODIFIED="1595325408371" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/TANCMS/spiders" />
   </component>
@@ -397,13 +443,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/TANCMS/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="354">
-          <caret line="104" lean-forward="true" selection-start-line="104" selection-end-line="104" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/TANCMS/spiders/test.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="251">
@@ -414,30 +453,51 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/TANCMS/middlewares.py">
+    <entry file="file://$PROJECT_DIR$/TANCMS/spiders/gzh.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="19" column="37" lean-forward="true" selection-start-line="19" selection-start-column="37" selection-end-line="19" selection-end-column="37" />
+        <state relative-caret-position="360">
+          <caret line="111" column="32" selection-start-line="111" selection-start-column="32" selection-end-line="111" selection-end-column="32" />
           <folding>
-            <element signature="e#145#171#0" expanded="true" />
+            <element signature="e#0#13#0" expanded="true" />
+            <element signature="e#1986#2711#0" />
+            <element signature="e#2788#3730#0" />
+            <element signature="e#3788#4597#0" />
+            <element signature="e#5483#5650#0" />
+            <element signature="e#5715#7102#0" />
+            <element signature="e#6995#7104#0" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/TANCMS/spiders/gzh.py">
+    <entry file="file://$PROJECT_DIR$/TANCMS/proxies.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="218">
-          <caret line="15" column="108" selection-start-line="15" selection-start-column="108" selection-end-line="15" selection-end-column="108" />
+        <state relative-caret-position="331">
+          <caret line="98" column="27" selection-start-line="98" selection-start-column="27" selection-end-line="98" selection-end-column="27" />
           <folding>
-            <element signature="e#0#13#0" expanded="true" />
-            <element signature="e#1503#1938#0" />
-            <element signature="e#1986#2711#0" />
-            <element signature="e#2788#3730#0" />
-            <element signature="e#3788#4597#0" />
-            <element signature="e#4648#5445#0" />
-            <element signature="e#5483#5650#0" />
-            <element signature="e#5715#7102#0" />
-            <element signature="e#6995#7104#0" />
+            <element signature="e#25#40#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TANCMS/middlewares.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="242">
+          <caret line="139" lean-forward="true" selection-start-line="139" selection-end-line="139" />
+          <folding>
+            <element signature="e#145#171#0" expanded="true" />
+            <element signature="e#372#2012#0" />
+            <element signature="e#2053#3696#0" />
+            <element signature="e#4117#5083#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TANCMS/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="139" column="3" lean-forward="true" selection-start-line="139" selection-start-column="3" selection-end-line="139" selection-end-column="3" />
+          <folding>
+            <element signature="e#606#7675#0" />
           </folding>
         </state>
       </provider>

@@ -5,7 +5,11 @@
 
 from scrapy import signals
 import random
-
+import json
+import requests
+import logging
+import base64
+from TANCMS.settings import IPPOOL
 
 
 class TancmsSpiderMiddleware:
@@ -121,3 +125,15 @@ class UserAgentMiddleware(object):
 
     def process_request(self, request, spider):
         request.headers['User-Agent'] = random.choice(self.user_agent_list)
+
+
+class MyproxiesSpiderMiddleware(object):
+
+    def __init__(self, ip=''):
+        self.ip = ip
+
+    def process_request(self, request, spider):
+        thisip = random.choice(IPPOOL)
+        print("this is ip:" + thisip["ipaddr"])
+        request.meta["proxy"] = "http://" + thisip["ipaddr"]
+
