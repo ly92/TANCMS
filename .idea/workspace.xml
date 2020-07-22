@@ -2,13 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6ad4323d-ff26-4cc8-b644-bc0a8821e93e" name="默认更改列表" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TANCMS/libs/ES.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TANCMS/pipelines.py" beforeDir="false" afterPath="$PROJECT_DIR$/TANCMS/pipelines.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TANCMS/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/TANCMS/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TANCMS/spiders/article.py" beforeDir="false" afterPath="$PROJECT_DIR$/TANCMS/spiders/article.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TANCMS/spiders/gzh.py" beforeDir="false" afterPath="$PROJECT_DIR$/TANCMS/spiders/gzh.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -27,11 +22,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/TANCMS/spiders/gzh.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="179">
-              <caret line="19" column="18" selection-start-line="19" selection-start-column="18" selection-end-line="19" selection-end-column="18" />
+            <state relative-caret-position="194">
+              <caret line="20" column="35" lean-forward="true" selection-start-line="20" selection-start-column="35" selection-end-line="20" selection-end-column="35" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
                 <element signature="e#1503#1938#0" />
@@ -43,6 +38,15 @@
                 <element signature="e#5715#7102#0" />
                 <element signature="e#6995#7104#0" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="45">
+              <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
             </state>
           </provider>
         </entry>
@@ -81,15 +85,6 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/pyenv/TANCMS/lib/python3.7/site-packages/elasticsearch/client/__init__.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="332" column="65" lean-forward="true" selection-start-line="332" selection-start-column="65" selection-end-line="332" selection-end-column="65" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/scrapy.cfg">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="165">
@@ -113,8 +108,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/TANCMS/settings.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="223">
-              <caret line="88" column="43" lean-forward="true" selection-start-line="88" selection-start-column="43" selection-end-line="88" selection-end-column="43" />
+            <state relative-caret-position="328">
+              <caret line="95" column="2" lean-forward="true" selection-start-line="95" selection-start-column="2" selection-end-line="95" selection-end-column="2" />
             </state>
           </provider>
         </entry>
@@ -146,8 +141,8 @@
       <find>get_uigs_para</find>
       <find>response.xpath('//div[@id=&quot;js_content&quot;]').extract_first()</find>
       <find>print</find>
-      <find>findall</find>
       <find>for</find>
+      <find>findall</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -165,6 +160,7 @@
         <option value="$PROJECT_DIR$/TANCMS/spiders/article.py" />
         <option value="$PROJECT_DIR$/TANCMS/pipelines.py" />
         <option value="$PROJECT_DIR$/TANCMS/spiders/gzh.py" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -296,12 +292,12 @@
       <option name="presentableId" value="Default" />
       <updated>1595315011812</updated>
       <workItem from="1595315012897" duration="11482000" />
-      <workItem from="1595379939111" duration="22330000" />
+      <workItem from="1595379939111" duration="22674000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="33812000" />
+    <option name="totallyTimeSpent" value="34156000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="790" y="23" width="1130" height="974" extended-state="0" />
@@ -400,13 +396,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/TANCMS/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="223">
-          <caret line="88" column="43" lean-forward="true" selection-start-line="88" selection-start-column="43" selection-end-line="88" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/TANCMS/spiders/test.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="215">
@@ -419,8 +408,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/TANCMS/spiders/gzh.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="179">
-          <caret line="19" column="18" selection-start-line="19" selection-start-column="18" selection-end-line="19" selection-end-column="18" />
+        <state relative-caret-position="194">
+          <caret line="20" column="35" lean-forward="true" selection-start-line="20" selection-start-column="35" selection-end-line="20" selection-end-column="35" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
             <element signature="e#1503#1938#0" />
@@ -432,6 +421,20 @@
             <element signature="e#5715#7102#0" />
             <element signature="e#6995#7104#0" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TANCMS/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="328">
+          <caret line="95" column="2" lean-forward="true" selection-start-line="95" selection-start-column="2" selection-end-line="95" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
         </state>
       </provider>
     </entry>
