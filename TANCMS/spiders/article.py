@@ -24,6 +24,7 @@ class ArticleSpider(scrapy.Spider):
 
     def getTime(self, response):
         ct = re.findall('var ct = (.*?);', response.text, re.S)[0]
+        ct = ct.replace('"', '')
         return ct
 
     def parse(self, response):

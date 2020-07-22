@@ -10,6 +10,37 @@ class GzhSpider(scrapy.Spider):
     name = 'gzh'
     allowed_domains = ['weixin.sogou.com', 'mp.weixin.qq.com']
     start_urls = ['https://weixin.sogou.com/weixin?query=核酸检查&_sug_type_=&s_from=input&_sug_=n&type=2&page=1&ie=utf8']
+    template_url = 'https://weixin.sogou.com/weixin?query={}&_sug_type_=&s_from=input&_sug_=n&type=2&page={}&ie=utf8'
+    word = '核酸检查'
+
+
+    def parse(self, response):
+
+        params = self.getCookisParams(response)
+
+        ul = response.xpath('/html/body/div[2]/div[1]/div[3]/ul/li')
+        for li in ul:
+            url = 'https://weixin.sogou.com' + li.xpath('./div[2]/h3/a/@href').extract_first()
+            articleUrl = self.getArticleUrl(params, url, response.url)
+            print('pppppppppp')
+            # yield scrapy.Request(url=articleUrl, callback=self.detailParse)
+
+        for page in range(2, 11):
+            print('12312313123123-----')
+            yield scrapy.Request(url=self.template_url.format(self.word, page), callback=self.parse)
+
+
+    def detailParse(self, response):
+        item = GzhItem()
+        item['title'] = response.xpath('//h2[@id="activity-name"]/text()').extract_first().strip()
+        item['url'] = response.url
+        item['content'] = response.xpath('//div[@id="js_content"]').extract_first()
+        item['author'] = response.xpath('//*[@id="js_name"]/text()').extract_first().strip()
+        item['time'] = self.getTime(response)
+        yield item
+        pass
+
+
 
     def getUigsParams(self, response):
         uigs_para = re.findall('var uigs_para = (.*?);', response.text, re.S)[0]
@@ -20,9 +51,6 @@ class GzhSpider(scrapy.Spider):
         uigs_para['right'] = 'right0_0'
         uigs_para['exp_id'] = exp_id[:-1]
         return uigs_para
-
-
-
 
     def getSUID(self, cookie_params):
         url = "https://www.sogou.com/sug/css/m3.min.v.7.css"
@@ -134,29 +162,9 @@ class GzhSpider(scrapy.Spider):
             article_url += i
         return article_url
 
-    def parse(self, response):
-
-        params = self.getCookisParams(response)
-
-        ul = response.xpath('/html/body/div[2]/div[1]/div[3]/ul/li')
-        for li in ul:
-            url = 'https://weixin.sogou.com' + li.xpath('./div[2]/h3/a/@href').extract_first()
-            articleUrl = self.getArticleUrl(params, url, response.url)
-            print(articleUrl)
-            yield scrapy.Request(url=articleUrl, callback=self.detailParse)
-
-    def detailParse(self, response):
-        print('---------------111111111111----------------')
-        item = GzhItem()
-        item['title'] = response.xpath('//*[@id="activity-name"]').extract_first()
-        item['url'] = response.url
-        item['author'] = response.xpath('//*[@id="js_name"]').extract_first()
-        item['time'] = response.xpath('//*[@id="publish_time"]').extract_first()
-
-        print(item)
-
-
-
-
+    def getTime(self, response):
+        ct = re.findall('var ct = (.*?);', response.text, re.S)[0]
+        ct = ct.replace('"', '')
+        return ct
 
 
