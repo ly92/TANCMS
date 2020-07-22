@@ -85,9 +85,11 @@ ROBOTSTXT_OBEY = False
 
 # Enable or disable downloader middlewares
 # See https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
-#DOWNLOADER_MIDDLEWARES = {
-#    'TANCMS.middlewares.TancmsDownloaderMiddleware': 543,
-#}
+DOWNLOADER_MIDDLEWARES = {
+   'TANCMS.middlewares.TancmsDownloaderMiddleware': 543,
+   #  'scrapy.contrib.downloadermiddleware.httpproxy.HttpProxyMiddleware': 543,
+   #  'TANCMS.middlewares.RandomProxyMiddleware': 749  # 修改下载优先级数字
+}
 
 # Enable or disable extensions
 # See https://docs.scrapy.org/en/latest/topics/extensions.html

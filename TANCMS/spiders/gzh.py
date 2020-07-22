@@ -9,7 +9,11 @@ from TANCMS.items import GzhItem
 class GzhSpider(scrapy.Spider):
     name = 'gzh'
     allowed_domains = ['weixin.sogou.com', 'mp.weixin.qq.com']
-    start_urls = ['https://weixin.sogou.com/weixin?query=核酸检查&_sug_type_=&s_from=input&_sug_=n&type=2&page=1&ie=utf8']
+    start_urls = ['https://weixin.sogou.com/weixin?query=核酸检查&_sug_type_=&s_from=input&_sug_=n&type=2&page=1&ie=utf8',
+                  'https://weixin.sogou.com/weixin?query=核酸检查&_sug_type_=&s_from=input&_sug_=n&type=2&page=2&ie=utf8',
+                  'https://weixin.sogou.com/weixin?query=核酸检查&_sug_type_=&s_from=input&_sug_=n&type=2&page=3&ie=utf8',
+                  'https://weixin.sogou.com/weixin?query=核酸检查&_sug_type_=&s_from=input&_sug_=n&type=2&page=4&ie=utf8',
+                  'https://weixin.sogou.com/weixin?query=核酸检查&_sug_type_=&s_from=input&_sug_=n&type=2&page=5&ie=utf8']
     template_url = 'https://weixin.sogou.com/weixin?query={}&_sug_type_=&s_from=input&_sug_=n&type=2&page={}&ie=utf8'
     word = '核酸检查'
 
@@ -22,12 +26,11 @@ class GzhSpider(scrapy.Spider):
         for li in ul:
             url = 'https://weixin.sogou.com' + li.xpath('./div[2]/h3/a/@href').extract_first()
             articleUrl = self.getArticleUrl(params, url, response.url)
-            print('pppppppppp')
-            # yield scrapy.Request(url=articleUrl, callback=self.detailParse)
+            yield scrapy.Request(url=articleUrl, callback=self.detailParse)
 
-        for page in range(2, 11):
-            print('12312313123123-----')
-            yield scrapy.Request(url=self.template_url.format(self.word, page), callback=self.parse)
+        # for page in range(2, 11):
+        #     print('12312313123123-----')
+        #     yield scrapy.Request(url=self.template_url.format(self.word, page), callback=self.parse)
 
 
     def detailParse(self, response):

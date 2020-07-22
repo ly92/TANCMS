@@ -6,8 +6,6 @@
 from scrapy import signals
 import random
 
-# useful for handling different item types with a single interface
-from itemadapter import is_item, ItemAdapter
 
 
 class TancmsSpiderMiddleware:
@@ -105,7 +103,6 @@ class TancmsDownloaderMiddleware:
 
 
 
-
 class UserAgentMiddleware(object):
     def __init__(self):
         self.user_agent_list = [
@@ -124,4 +121,3 @@ class UserAgentMiddleware(object):
 
     def process_request(self, request, spider):
         request.headers['User-Agent'] = random.choice(self.user_agent_list)
-
