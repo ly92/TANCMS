@@ -16,7 +16,7 @@ def weibo(word, page):
                 'url': item['url'],
                 'author': item['user']['name'],
                 'source': '微博',
-                'title': item['title'],
+                'title': item['title'][0:30],
                 'content': item['title'],
                 'htmlContent': '',
                 'creationTime': int(time.time()),
@@ -28,7 +28,6 @@ def weibo(word, page):
             # {'_index': 'temp_document', '_type': '_doc', '_id': 'EC74enMBiOj1K8cbkNND', '_version': 1,
             #  'result': 'created', '_shards': {'total': 2, 'successful': 2, 'failed': 0}, '_seq_no': 342,
             #  '_primary_term': 1}
-
             print('--------------------')
 
 def isExit(url):
