@@ -13,7 +13,15 @@ class GzhSpider(scrapy.Spider):
                   'https://weixin.sogou.com/weixin?query=核酸检查&_sug_type_=&s_from=input&_sug_=n&type=2&page=2&ie=utf8',
                   'https://weixin.sogou.com/weixin?query=核酸检查&_sug_type_=&s_from=input&_sug_=n&type=2&page=3&ie=utf8',
                   'https://weixin.sogou.com/weixin?query=核酸检查&_sug_type_=&s_from=input&_sug_=n&type=2&page=4&ie=utf8',
-                  'https://weixin.sogou.com/weixin?query=核酸检查&_sug_type_=&s_from=input&_sug_=n&type=2&page=5&ie=utf8']
+                  'https://weixin.sogou.com/weixin?query=核酸检查&_sug_type_=&s_from=input&_sug_=n&type=2&page=5&ie=utf8',
+                  'https://weixin.sogou.com/weixin?query=核酸检查&_sug_type_=&s_from=input&_sug_=n&type=2&page=6&ie=utf8',
+                  'https://weixin.sogou.com/weixin?query=核酸检查&_sug_type_=&s_from=input&_sug_=n&type=2&page=7&ie=utf8',
+                  'https://weixin.sogou.com/weixin?query=核酸检查&_sug_type_=&s_from=input&_sug_=n&type=2&page=8&ie=utf8',
+                  'https://weixin.sogou.com/weixin?query=核酸检查&_sug_type_=&s_from=input&_sug_=n&type=2&page=9&ie=utf8',
+                  'https://weixin.sogou.com/weixin?query=核酸检查&_sug_type_=&s_from=input&_sug_=n&type=2&page=10&ie=utf8'
+                  ]
+
+
     template_url = 'https://weixin.sogou.com/weixin?query={}&_sug_type_=&s_from=input&_sug_=n&type=2&page={}&ie=utf8'
     word = '核酸检查'
 
@@ -41,11 +49,11 @@ class GzhSpider(scrapy.Spider):
             if text_line:
                 span_text = text_line.xpath('.//text()').extract_first()
                 if span_text:
-                    content = content + "\n" + span_text.strip()
+                    content = content + span_text.strip()
         item = GzhItem()
         item['title'] = response.xpath('//h2[@id="activity-name"]/text()').extract_first().strip()
         item['url'] = response.url
-        item['htmlContent'] = htmlContent
+        item['htmlContent'] = htmlContent.extract_first()
         item['content'] = content
         item['author'] = response.xpath('//*[@id="js_name"]/text()').extract_first().strip()
         item['time'] = self.getTime(response)

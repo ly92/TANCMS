@@ -6,29 +6,45 @@
 
 # useful for handling different item types with a single interface
 from itemadapter import ItemAdapter
-from TANCMS.libs.ES import index
+from TANCMS.libs.ES import index, query
 import time
 
 
 class TancmsPipeline:
     def process_item(self, item, spider):
-        body = {
-            'programId': 1,
-            'url': item['url'],
-            'author': item['author'],
-            'source': '微信公众号',
-            'title': item['title'],
-            'content': item['content'],
-            'htmlContent': item['htmlContent'],
-            'creationTime': int(item['time']),
-            'addTime': int(time.time())
-        }
-        result = index('temp_document', body)
-        print('--------------------')
-        print(result)
-        # {'_index': 'temp_document', '_type': '_doc', '_id': 'CCrHdXMBiOj1K8cb4WpR', '_version': 1, 'result': 'created',
-        #  '_shards': {'total': 2, 'successful': 2, 'failed': 0}, '_seq_no': 0, '_primary_term': 1}
+        if self.isExit(item['title']) == False:
+            body = {
+                'programId': 1,
+                'url': item['url'],
+                'author': item['author'],
+                'source': '微信公众号',
+                'title': item['title'],
+                'content': item['content'],
+                'htmlContent': item['htmlContent'],
+                'creationTime': int(item['time']),
+                'addTime': int(time.time())
+            }
+            result = index('temp_document', body)
+            print('--------------------')
+            print(result)
+            # {'_index': 'temp_document', '_type': '_doc', '_id': 'CCrHdXMBiOj1K8cb4WpR', '_version': 1, 'result': 'created',
+            #  '_shards': {'total': 2, 'successful': 2, 'failed': 0}, '_seq_no': 0, '_primary_term': 1}
 
-        print('--------------------')
+            print('--------------------')
 
         return item
+
+    def isExit(self, title):
+        body = {
+            "_source": "hits",
+            "query": {
+                "match_phrase": {
+                    "title": title
+                }
+            }
+        }
+        result = query('temp_document', body)
+        if result['hits']['total']['value'] > 0:
+            return True
+        else:
+            return False

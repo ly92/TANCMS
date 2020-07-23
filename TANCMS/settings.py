@@ -84,14 +84,14 @@ USER_AGENT_LIST = [
     "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36",
 ]
 
-IPPOOL=[
-{"ipaddr":"61.129.70.131:8080"},
-{"ipaddr":"61.152.81.193:9100"},
-{"ipaddr":"120.204.85.29:3128"},
-{"ipaddr":"219.228.126.86:8123"},
-{"ipaddr":"61.152.81.193:9100"},
-{"ipaddr":"218.82.33.225:53853"},
-{"ipaddr":"223.167.190.17:42789"}
+IP_POOL = [
+    {"ipaddr":"61.129.70.131:8080"},
+    {"ipaddr":"61.152.81.193:9100"},
+    {"ipaddr":"120.204.85.29:3128"},
+    {"ipaddr":"219.228.126.86:8123"},
+    {"ipaddr":"61.152.81.193:9100"},
+    {"ipaddr":"218.82.33.225:53853"},
+    {"ipaddr":"223.167.190.17:42789"}
 ]
 
 # 随机生成user agent
@@ -135,8 +135,8 @@ PROXY_POOL_ENABLED = True
 # See https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 # DOWNLOADER_MIDDLEWARES = {
 #    # 'TANCMS.middlewares.TancmsDownloaderMiddleware': 543,
-#     'TANCMS.middlewares.MyproxiesSpiderMiddleware': 700,
-#     'scrapy.contrib.downloadermiddleware.httpproxy.HttpProxyMiddleware': None,
+#    #  'TANCMS.middlewares.MyproxiesSpiderMiddleware': 700,
+#     'TANCMS.middlewares.QingTingProxy': 700
 # }
 
 # Enable or disable extensions
