@@ -6,7 +6,7 @@
 
 # useful for handling different item types with a single interface
 from itemadapter import ItemAdapter
-from TANCMS.libs.ES import index, query
+from TANCMS.libs.ES import es_index, es_query
 import time
 
 
@@ -24,7 +24,7 @@ class TancmsPipeline:
                 'creationTime': int(item['time']),
                 'addTime': int(time.time())
             }
-            result = index('temp_document', body)
+            result = es_index('temp_document', body)
             print('--------------------')
             print(result)
             # {'_index': 'temp_document', '_type': '_doc', '_id': 'CCrHdXMBiOj1K8cb4WpR', '_version': 1, 'result': 'created',
@@ -36,14 +36,14 @@ class TancmsPipeline:
 
     def isExit(self, title):
         body = {
-            "_source": "hits",
+            "_source": "title",
             "query": {
                 "match_phrase": {
                     "title": title
                 }
             }
         }
-        result = query('temp_document', body)
+        result = es_query('temp_document', body)
         if result['hits']['total']['value'] > 0:
             return True
         else:
