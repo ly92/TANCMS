@@ -19,6 +19,7 @@ class TancmsPipeline:
             'source': '微信公众号',
             'title': item['title'],
             'content': item['content'],
+            'htmlContent': item['htmlContent'],
             'creationTime': int(item['time']),
             'addTime': int(time.time())
         }

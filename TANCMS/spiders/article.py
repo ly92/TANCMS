@@ -19,8 +19,7 @@ class ArticleSpider(scrapy.Spider):
 # 'https://mp.weixin.qq.com/s?src=11&timestamp=1595380912&ver=2475&signature=rlCTjgNvE-Lkk5luRE7UZGI95WxARwp1h4K3CaT8GZdYjPsH3xxdPDCc1Ev585bieYfxRYB9tZFQUVy-tlxkyBVX1PA6Kca2aPSPT*9zgUheBJrPENbc7QYbBC8kJ*8h&new=1'
 #     ]
     start_urls = [
-        'https://mp.weixin.qq.com/s?src=11&timestamp=1595403610&ver=2475&signature=ctJwiv-2*TQmdkKbTrbSC8Z-h30WsjuW2QyjheDw3qc-A4PCBBD2TSpCK56RjLlBLOpnMOW7IVB*zMyd1pVjRbLYafsbklFIoGPIBAMIoQiEkYHLz6YcV20SJVaL4BPs&new=1'
-    ]
+'https://mp.weixin.qq.com/s?src=11&timestamp=1595471613&ver=2477&signature=B8SmKrlQPKoriiEZG8tTvIgZO1l8dAF**revwMkWsRBGwL7NYwy92M2OVtlL6efWKRtrMPzXp-wFHkTNUIGvlHTEQKB*nhSoALDJ*ejd1bbHkPi0Lp-HqU0skhDhUvF7&new=1'    ]
 
     def getTime(self, response):
         ct = re.findall('var ct = (.*?);', response.text, re.S)[0]
@@ -28,6 +27,19 @@ class ArticleSpider(scrapy.Spider):
         return ct
 
     def parse(self, response):
+        content = response.xpath('//div[@id="js_content"]')
+        text_lines = content.xpath('.//span')
+
+        results = ''
+
+        for i, text_line in enumerate(text_lines):
+            if text_line:
+                span_text = text_line.xpath('.//text()').extract_first()
+                if span_text:
+                    results = results + "\n" + span_text.strip()
+        print(results)
+
+        return
 
         item = GzhItem()
         item['title'] = response.xpath('//h2[@id="activity-name"]/text()').extract_first().strip()
@@ -35,5 +47,5 @@ class ArticleSpider(scrapy.Spider):
         item['content'] = response.xpath('//div[@id="js_content"]').extract_first()
         item['author'] = response.xpath('//*[@id="js_name"]/text()').extract_first().strip()
         item['time'] = self.getTime(response)
-        yield item
+        print(item)
         pass

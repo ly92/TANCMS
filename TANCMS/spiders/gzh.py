@@ -34,10 +34,19 @@ class GzhSpider(scrapy.Spider):
 
 
     def detailParse(self, response):
+        htmlContent = response.xpath('//div[@id="js_content"]')
+        text_lines = htmlContent.xpath('.//span')
+        content = ''
+        for i, text_line in enumerate(text_lines):
+            if text_line:
+                span_text = text_line.xpath('.//text()').extract_first()
+                if span_text:
+                    content = content + "\n" + span_text.strip()
         item = GzhItem()
         item['title'] = response.xpath('//h2[@id="activity-name"]/text()').extract_first().strip()
         item['url'] = response.url
-        item['content'] = response.xpath('//div[@id="js_content"]').extract_first()
+        item['htmlContent'] = htmlContent
+        item['content'] = content
         item['author'] = response.xpath('//*[@id="js_name"]/text()').extract_first().strip()
         item['time'] = self.getTime(response)
         yield item

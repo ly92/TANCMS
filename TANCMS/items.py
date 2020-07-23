@@ -11,4 +11,5 @@ class GzhItem(scrapy.Item):
     time = scrapy.Field()
     url = scrapy.Field()
     content = scrapy.Field()
+    htmlContent = scrapy.Field()
 
