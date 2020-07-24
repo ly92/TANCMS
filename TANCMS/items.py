@@ -5,11 +5,12 @@
 
 import scrapy
 
-class GzhItem(scrapy.Item):
+class ArticleItem(scrapy.Item):
     title = scrapy.Field()
     author = scrapy.Field()
     time = scrapy.Field()
     url = scrapy.Field()
     content = scrapy.Field()
     htmlContent = scrapy.Field()
+    source = scrapy.Field()
 

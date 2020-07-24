@@ -4,7 +4,7 @@ import re
 import random
 import json
 from TANCMS.settings import USER_AGENT
-from TANCMS.items import GzhItem
+from TANCMS.items import ArticleItem
 
 class GzhSpider(scrapy.Spider):
     name = 'gzh'
@@ -50,13 +50,14 @@ class GzhSpider(scrapy.Spider):
                 span_text = text_line.xpath('.//text()').extract_first()
                 if span_text:
                     content = content + span_text.strip()
-        item = GzhItem()
+        item = ArticleItem()
         item['title'] = response.xpath('//h2[@id="activity-name"]/text()').extract_first().strip()
         item['url'] = response.url
         item['htmlContent'] = htmlContent.extract_first()
         item['content'] = content
         item['author'] = response.xpath('//*[@id="js_name"]/text()').extract_first().strip()
         item['time'] = self.getTime(response)
+        item['source'] = '微信公众号'
         yield item
         pass
 

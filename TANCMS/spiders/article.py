@@ -1,7 +1,7 @@
 import scrapy
 import re
 
-from TANCMS.items import GzhItem
+from TANCMS.items import ArticleItem
 
 class ArticleSpider(scrapy.Spider):
     name = "article"
