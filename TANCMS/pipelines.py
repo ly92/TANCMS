@@ -16,7 +16,7 @@ class TancmsPipeline:
         if item['source'] == '微信公众号':
             if isExitByTitle(item['title']):
                 should_add = False
-        if item['source'] == '新浪新闻' or item['source'] == '微博':
+        if item['source'] == '新浪新闻' or item['source'] == '微博' or item['source'] == '今日头条':
             if isExitByUrl(item['url']):
                 should_add = False
         if should_add:
@@ -32,11 +32,11 @@ class TancmsPipeline:
                 'addTime': int(time.time())
             }
             result = es_index('temp_document', body)
-            print('--------------------')
+            print('---------result-----------')
             print(result)
             # {'_index': 'temp_document', '_type': '_doc', '_id': 'CCrHdXMBiOj1K8cb4WpR', '_version': 1, 'result': 'created',
             #  '_shards': {'total': 2, 'successful': 2, 'failed': 0}, '_seq_no': 0, '_primary_term': 1}
-            print('--------------------')
+            print('--------result------------')
 
         return item
 

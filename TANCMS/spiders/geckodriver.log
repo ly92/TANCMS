@@ -1,0 +1,307 @@
+1595932210549	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "-marionette" "-headless" "-foreground" "-no-remote" "-profile" "/var/folders/8v/1t_sjgm13f9g1y7f2rgz315m0000gn/T/rust_mozprofile9DkpCh"
+*** You are running in headless mode.
+1595932212014	Marionette	INFO	Listening on port 60192
+1595932212026	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: https://sf1-ttcdn-tos.pstatp.com/obj/rc-web-sdk/acrawler.js line 1 > Function line 3 > eval, line 1: WebGL warning: <Create>: Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://sf1-ttcdn-tos.pstatp.com/obj/rc-web-sdk/acrawler.js line 1 > Function line 3 > eval, line 1: Failed to create WebGL context: WebGL creation failed: 
+* Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://sf1-ttcdn-tos.pstatp.com/obj/rc-web-sdk/acrawler.js line 1 > Function line 3 > eval, line 1: WebGL warning: <Create>: Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://sf1-ttcdn-tos.pstatp.com/obj/rc-web-sdk/acrawler.js line 1 > Function line 3 > eval, line 1: Failed to create WebGL context: WebGL creation failed: 
+* Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://sf1-ttcdn-tos.pstatp.com/obj/rc-web-sdk/acrawler.js line 1 > Function line 3 > eval, line 1: WebGL warning: <Create>: Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://sf1-ttcdn-tos.pstatp.com/obj/rc-web-sdk/acrawler.js line 1 > Function line 3 > eval, line 1: Failed to create WebGL context: WebGL creation failed: 
+* Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://sf1-ttcdn-tos.pstatp.com/obj/rc-web-sdk/acrawler.js line 1 > Function line 3 > eval, line 1: WebGL warning: <Create>: Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://sf1-ttcdn-tos.pstatp.com/obj/rc-web-sdk/acrawler.js line 1 > Function line 3 > eval, line 1: Failed to create WebGL context: WebGL creation failed: 
+* Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://sf1-ttcdn-tos.pstatp.com/obj/rc-web-sdk/acrawler.js line 1 > Function line 3 > eval, line 1: WebGL warning: <Create>: Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://sf1-ttcdn-tos.pstatp.com/obj/rc-web-sdk/acrawler.js line 1 > Function line 3 > eval, line 1: Failed to create WebGL context: WebGL creation failed: 
+* Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://sf1-ttcdn-tos.pstatp.com/obj/rc-web-sdk/acrawler.js line 1 > Function line 3 > eval, line 1: WebGL warning: <Create>: Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://sf1-ttcdn-tos.pstatp.com/obj/rc-web-sdk/acrawler.js line 1 > Function line 3 > eval, line 1: Failed to create WebGL context: WebGL creation failed: 
+* Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://sf1-ttcdn-tos.pstatp.com/obj/rc-web-sdk/acrawler.js line 1 > Function line 3 > eval, line 1: WebGL warning: <Create>: Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://sf1-ttcdn-tos.pstatp.com/obj/rc-web-sdk/acrawler.js line 1 > Function line 3 > eval, line 1: Failed to create WebGL context: WebGL creation failed: 
+* Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript error: https://sf1-ttcdn-tos.pstatp.com/obj/rc-web-sdk/acrawler.js line 1 > Function line 3 > eval, line 1: TypeError: S[A] is null
+JavaScript warning: https://sf1-ttcdn-tos.pstatp.com/obj/rc-web-sdk/acrawler.js line 1 > Function line 3 > eval, line 1: WebGL warning: <Create>: Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://sf1-ttcdn-tos.pstatp.com/obj/rc-web-sdk/acrawler.js line 1 > Function line 3 > eval, line 1: Failed to create WebGL context: WebGL creation failed: 
+* Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://sf1-ttcdn-tos.pstatp.com/obj/rc-web-sdk/acrawler.js line 1 > Function line 3 > eval, line 1: WebGL warning: <Create>: Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://sf1-ttcdn-tos.pstatp.com/obj/rc-web-sdk/acrawler.js line 1 > Function line 3 > eval, line 1: Failed to create WebGL context: WebGL creation failed: 
+* Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://sf1-ttcdn-tos.pstatp.com/obj/rc-web-sdk/acrawler.js line 1 > Function line 3 > eval, line 1: WebGL warning: <Create>: Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://sf1-ttcdn-tos.pstatp.com/obj/rc-web-sdk/acrawler.js line 1 > Function line 3 > eval, line 1: Failed to create WebGL context: WebGL creation failed: 
+* Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://sf1-ttcdn-tos.pstatp.com/obj/rc-web-sdk/acrawler.js line 1 > Function line 3 > eval, line 1: WebGL warning: <Create>: Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://sf1-ttcdn-tos.pstatp.com/obj/rc-web-sdk/acrawler.js line 1 > Function line 3 > eval, line 1: Failed to create WebGL context: WebGL creation failed: 
+* Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://sf1-ttcdn-tos.pstatp.com/obj/rc-web-sdk/acrawler.js line 1 > Function line 3 > eval, line 1: WebGL warning: <Create>: Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://sf1-ttcdn-tos.pstatp.com/obj/rc-web-sdk/acrawler.js line 1 > Function line 3 > eval, line 1: Failed to create WebGL context: WebGL creation failed: 
+* Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://sf1-ttcdn-tos.pstatp.com/obj/rc-web-sdk/acrawler.js line 1 > Function line 3 > eval, line 1: WebGL warning: <Create>: Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://sf1-ttcdn-tos.pstatp.com/obj/rc-web-sdk/acrawler.js line 1 > Function line 3 > eval, line 1: Failed to create WebGL context: WebGL creation failed: 
+* Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript error: , line 0: NotAllowedError: The play method is not allowed by the user agent or the platform in the current context, possibly because the user denied permission.
+JavaScript error: resource://gre/actors/PictureInPictureChild.jsm, line 114: InvalidStateError: An attempt was made to use an object that is not, or is no longer, usable
+JavaScript warning: https://sf1-ttcdn-tos.pstatp.com/obj/rc-web-sdk/acrawler.js line 1 > Function line 3 > eval, line 1: WebGL warning: <Create>: Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://sf1-ttcdn-tos.pstatp.com/obj/rc-web-sdk/acrawler.js line 1 > Function line 3 > eval, line 1: Failed to create WebGL context: WebGL creation failed: 
+* Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript error: resource://gre/actors/PictureInPictureChild.jsm, line 114: InvalidStateError: An attempt was made to use an object that is not, or is no longer, usable
+JavaScript warning: https://sf1-ttcdn-tos.pstatp.com/obj/rc-web-sdk/acrawler.js line 1 > Function line 3 > eval, line 1: WebGL warning: <Create>: Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://sf1-ttcdn-tos.pstatp.com/obj/rc-web-sdk/acrawler.js line 1 > Function line 3 > eval, line 1: Failed to create WebGL context: WebGL creation failed: 
+* Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://sf1-ttcdn-tos.pstatp.com/obj/rc-web-sdk/acrawler.js line 1 > Function line 3 > eval, line 1: WebGL warning: <Create>: Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://sf1-ttcdn-tos.pstatp.com/obj/rc-web-sdk/acrawler.js line 1 > Function line 3 > eval, line 1: Failed to create WebGL context: WebGL creation failed: 
+* Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://sf1-ttcdn-tos.pstatp.com/obj/rc-web-sdk/acrawler.js line 1 > Function line 3 > eval, line 1: WebGL warning: <Create>: Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://sf1-ttcdn-tos.pstatp.com/obj/rc-web-sdk/acrawler.js line 1 > Function line 3 > eval, line 1: Failed to create WebGL context: WebGL creation failed: 
+* Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://sf1-ttcdn-tos.pstatp.com/obj/rc-web-sdk/acrawler.js line 1 > Function line 3 > eval, line 1: WebGL warning: <Create>: Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://sf1-ttcdn-tos.pstatp.com/obj/rc-web-sdk/acrawler.js line 1 > Function line 3 > eval, line 1: Failed to create WebGL context: WebGL creation failed: 
+* Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript error: , line 0: NotAllowedError: The play method is not allowed by the user agent or the platform in the current context, possibly because the user denied permission.
+JavaScript error: resource://gre/actors/PictureInPictureChild.jsm, line 114: InvalidStateError: An attempt was made to use an object that is not, or is no longer, usable
+JavaScript error: resource://gre/actors/PictureInPictureChild.jsm, line 114: InvalidStateError: An attempt was made to use an object that is not, or is no longer, usable
+JavaScript warning: https://sf1-ttcdn-tos.pstatp.com/obj/rc-web-sdk/acrawler.js line 1 > Function line 3 > eval, line 1: WebGL warning: <Create>: Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://sf1-ttcdn-tos.pstatp.com/obj/rc-web-sdk/acrawler.js line 1 > Function line 3 > eval, line 1: Failed to create WebGL context: WebGL creation failed: 
+* Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://sf1-ttcdn-tos.pstatp.com/obj/rc-web-sdk/acrawler.js line 1 > Function line 3 > eval, line 1: WebGL warning: <Create>: Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://sf1-ttcdn-tos.pstatp.com/obj/rc-web-sdk/acrawler.js line 1 > Function line 3 > eval, line 1: Failed to create WebGL context: WebGL creation failed: 
+* Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://sf1-ttcdn-tos.pstatp.com/obj/rc-web-sdk/acrawler.js line 1 > Function line 3 > eval, line 1: WebGL warning: <Create>: Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://sf1-ttcdn-tos.pstatp.com/obj/rc-web-sdk/acrawler.js line 1 > Function line 3 > eval, line 1: Failed to create WebGL context: WebGL creation failed: 
+* Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://sf1-ttcdn-tos.pstatp.com/obj/rc-web-sdk/acrawler.js line 1 > Function line 3 > eval, line 1: WebGL warning: <Create>: Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://sf1-ttcdn-tos.pstatp.com/obj/rc-web-sdk/acrawler.js line 1 > Function line 3 > eval, line 1: Failed to create WebGL context: WebGL creation failed: 
+* Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://sf1-ttcdn-tos.pstatp.com/obj/rc-web-sdk/acrawler.js line 1 > Function line 3 > eval, line 1: WebGL warning: <Create>: Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://sf1-ttcdn-tos.pstatp.com/obj/rc-web-sdk/acrawler.js line 1 > Function line 3 > eval, line 1: Failed to create WebGL context: WebGL creation failed: 
+* Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://sf1-ttcdn-tos.pstatp.com/obj/rc-web-sdk/acrawler.js line 1 > Function line 3 > eval, line 1: WebGL warning: <Create>: Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://sf1-ttcdn-tos.pstatp.com/obj/rc-web-sdk/acrawler.js line 1 > Function line 3 > eval, line 1: Failed to create WebGL context: WebGL creation failed: 
+* Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://sf1-ttcdn-tos.pstatp.com/obj/rc-web-sdk/acrawler.js line 1 > Function line 3 > eval, line 1: WebGL warning: <Create>: Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://sf1-ttcdn-tos.pstatp.com/obj/rc-web-sdk/acrawler.js line 1 > Function line 3 > eval, line 1: Failed to create WebGL context: WebGL creation failed: 
+* Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://sf1-ttcdn-tos.pstatp.com/obj/rc-web-sdk/acrawler.js line 1 > Function line 3 > eval, line 1: WebGL warning: <Create>: Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://sf1-ttcdn-tos.pstatp.com/obj/rc-web-sdk/acrawler.js line 1 > Function line 3 > eval, line 1: Failed to create WebGL context: WebGL creation failed: 
+* Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://sf1-ttcdn-tos.pstatp.com/obj/rc-web-sdk/acrawler.js line 1 > Function line 3 > eval, line 1: WebGL warning: <Create>: Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://sf1-ttcdn-tos.pstatp.com/obj/rc-web-sdk/acrawler.js line 1 > Function line 3 > eval, line 1: Failed to create WebGL context: WebGL creation failed: 
+* Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://sf1-ttcdn-tos.pstatp.com/obj/rc-web-sdk/acrawler.js line 1 > Function line 3 > eval, line 1: WebGL warning: <Create>: Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://sf1-ttcdn-tos.pstatp.com/obj/rc-web-sdk/acrawler.js line 1 > Function line 3 > eval, line 1: Failed to create WebGL context: WebGL creation failed: 
+* Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://sf1-ttcdn-tos.pstatp.com/obj/rc-web-sdk/acrawler.js line 1 > Function line 3 > eval, line 1: WebGL warning: <Create>: Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://sf1-ttcdn-tos.pstatp.com/obj/rc-web-sdk/acrawler.js line 1 > Function line 3 > eval, line 1: Failed to create WebGL context: WebGL creation failed: 
+* Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://sf1-ttcdn-tos.pstatp.com/obj/rc-web-sdk/acrawler.js line 1 > Function line 3 > eval, line 1: WebGL warning: <Create>: Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://sf1-ttcdn-tos.pstatp.com/obj/rc-web-sdk/acrawler.js line 1 > Function line 3 > eval, line 1: Failed to create WebGL context: WebGL creation failed: 
+* Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript error: , line 0: NotAllowedError: The play method is not allowed by the user agent or the platform in the current context, possibly because the user denied permission.
+JavaScript error: resource://gre/actors/PictureInPictureChild.jsm, line 114: InvalidStateError: An attempt was made to use an object that is not, or is no longer, usable
+JavaScript warning: https://sf1-ttcdn-tos.pstatp.com/obj/rc-web-sdk/acrawler.js line 1 > Function line 3 > eval, line 1: WebGL warning: <Create>: Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://sf1-ttcdn-tos.pstatp.com/obj/rc-web-sdk/acrawler.js line 1 > Function line 3 > eval, line 1: Failed to create WebGL context: WebGL creation failed: 
+* Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript error: resource://gre/actors/PictureInPictureChild.jsm, line 114: InvalidStateError: An attempt was made to use an object that is not, or is no longer, usable
+JavaScript warning: https://sf1-ttcdn-tos.pstatp.com/obj/rc-web-sdk/acrawler.js line 1 > Function line 3 > eval, line 1: WebGL warning: <Create>: Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://sf1-ttcdn-tos.pstatp.com/obj/rc-web-sdk/acrawler.js line 1 > Function line 3 > eval, line 1: Failed to create WebGL context: WebGL creation failed: 
+* Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://sf1-ttcdn-tos.pstatp.com/obj/rc-web-sdk/acrawler.js line 1 > Function line 3 > eval, line 1: WebGL warning: <Create>: Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://sf1-ttcdn-tos.pstatp.com/obj/rc-web-sdk/acrawler.js line 1 > Function line 3 > eval, line 1: Failed to create WebGL context: WebGL creation failed: 
+* Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://sf1-ttcdn-tos.pstatp.com/obj/rc-web-sdk/acrawler.js line 1 > Function line 3 > eval, line 1: WebGL warning: <Create>: Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://sf1-ttcdn-tos.pstatp.com/obj/rc-web-sdk/acrawler.js line 1 > Function line 3 > eval, line 1: Failed to create WebGL context: WebGL creation failed: 
+* Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://sf1-ttcdn-tos.pstatp.com/obj/rc-web-sdk/acrawler.js line 1 > Function line 3 > eval, line 1: WebGL warning: <Create>: Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://sf1-ttcdn-tos.pstatp.com/obj/rc-web-sdk/acrawler.js line 1 > Function line 3 > eval, line 1: Failed to create WebGL context: WebGL creation failed: 
+* Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://sf1-ttcdn-tos.pstatp.com/obj/rc-web-sdk/acrawler.js line 1 > Function line 3 > eval, line 1: WebGL warning: <Create>: Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://sf1-ttcdn-tos.pstatp.com/obj/rc-web-sdk/acrawler.js line 1 > Function line 3 > eval, line 1: Failed to create WebGL context: WebGL creation failed: 
+* Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://sf1-ttcdn-tos.pstatp.com/obj/rc-web-sdk/acrawler.js line 1 > Function line 3 > eval, line 1: WebGL warning: <Create>: Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://sf1-ttcdn-tos.pstatp.com/obj/rc-web-sdk/acrawler.js line 1 > Function line 3 > eval, line 1: Failed to create WebGL context: WebGL creation failed: 
+* Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://sf1-ttcdn-tos.pstatp.com/obj/rc-web-sdk/acrawler.js line 1 > Function line 3 > eval, line 1: WebGL warning: <Create>: Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://sf1-ttcdn-tos.pstatp.com/obj/rc-web-sdk/acrawler.js line 1 > Function line 3 > eval, line 1: Failed to create WebGL context: WebGL creation failed: 
+* Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript error: , line 0: NotAllowedError: The play method is not allowed by the user agent or the platform in the current context, possibly because the user denied permission.
+JavaScript error: resource://gre/actors/PictureInPictureChild.jsm, line 114: InvalidStateError: An attempt was made to use an object that is not, or is no longer, usable
+JavaScript warning: https://sf1-ttcdn-tos.pstatp.com/obj/rc-web-sdk/acrawler.js line 1 > Function line 3 > eval, line 1: WebGL warning: <Create>: Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://sf1-ttcdn-tos.pstatp.com/obj/rc-web-sdk/acrawler.js line 1 > Function line 3 > eval, line 1: Failed to create WebGL context: WebGL creation failed: 
+* Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript error: resource://gre/actors/PictureInPictureChild.jsm, line 114: InvalidStateError: An attempt was made to use an object that is not, or is no longer, usable
+JavaScript warning: https://sf1-ttcdn-tos.pstatp.com/obj/rc-web-sdk/acrawler.js line 1 > Function line 3 > eval, line 1: WebGL warning: <Create>: Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://sf1-ttcdn-tos.pstatp.com/obj/rc-web-sdk/acrawler.js line 1 > Function line 3 > eval, line 1: Failed to create WebGL context: WebGL creation failed: 
+* Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://sf1-ttcdn-tos.pstatp.com/obj/rc-web-sdk/acrawler.js line 1 > Function line 3 > eval, line 1: WebGL warning: <Create>: Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://sf1-ttcdn-tos.pstatp.com/obj/rc-web-sdk/acrawler.js line 1 > Function line 3 > eval, line 1: Failed to create WebGL context: WebGL creation failed: 
+* Can't use WebGL in headless mode (https://bugzil.la/1375585).
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+1595932549175	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "-marionette" "-headless" "-foreground" "-no-remote" "-profile" "/var/folders/8v/1t_sjgm13f9g1y7f2rgz315m0000gn/T/rust_mozprofile4t9ExZ"
+*** You are running in headless mode.
+1595932550506	Marionette	INFO	Listening on port 60517
+1595932550603	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: https://sf1-ttcdn-tos.pstatp.com/obj/rc-web-sdk/acrawler.js line 1 > Function line 3 > eval, line 1: WebGL warning: <Create>: Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://sf1-ttcdn-tos.pstatp.com/obj/rc-web-sdk/acrawler.js line 1 > Function line 3 > eval, line 1: Failed to create WebGL context: WebGL creation failed: 
+* Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://sf1-ttcdn-tos.pstatp.com/obj/rc-web-sdk/acrawler.js line 1 > Function line 3 > eval, line 1: WebGL warning: <Create>: Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://sf1-ttcdn-tos.pstatp.com/obj/rc-web-sdk/acrawler.js line 1 > Function line 3 > eval, line 1: Failed to create WebGL context: WebGL creation failed: 
+* Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://sf1-ttcdn-tos.pstatp.com/obj/rc-web-sdk/acrawler.js line 1 > Function line 3 > eval, line 1: WebGL warning: <Create>: Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://sf1-ttcdn-tos.pstatp.com/obj/rc-web-sdk/acrawler.js line 1 > Function line 3 > eval, line 1: Failed to create WebGL context: WebGL creation failed: 
+* Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript error: https://sf1-ttcdn-tos.pstatp.com/obj/rc-web-sdk/acrawler.js line 1 > Function line 3 > eval, line 1: TypeError: S[A] is null
+JavaScript warning: https://sf1-ttcdn-tos.pstatp.com/obj/rc-web-sdk/acrawler.js line 1 > Function line 3 > eval, line 1: WebGL warning: <Create>: Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://sf1-ttcdn-tos.pstatp.com/obj/rc-web-sdk/acrawler.js line 1 > Function line 3 > eval, line 1: Failed to create WebGL context: WebGL creation failed: 
+* Can't use WebGL in headless mode (https://bugzil.la/1375585).
+Exiting due to channel error.
+Exiting due to channel error.
+[GFX1-]: Receive IPC close with reason=AbnormalShutdown
+Exiting due to channel error.
+1595932782877	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "-marionette" "-headless" "-foreground" "-no-remote" "-profile" "/var/folders/8v/1t_sjgm13f9g1y7f2rgz315m0000gn/T/rust_mozprofileIcB5n2"
+*** You are running in headless mode.
+1595932784190	Marionette	INFO	Listening on port 60911
+1595932784207	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: https://sf1-ttcdn-tos.pstatp.com/obj/rc-web-sdk/acrawler.js line 1 > Function line 3 > eval, line 1: WebGL warning: <Create>: Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://sf1-ttcdn-tos.pstatp.com/obj/rc-web-sdk/acrawler.js line 1 > Function line 3 > eval, line 1: Failed to create WebGL context: WebGL creation failed: 
+* Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://sf1-ttcdn-tos.pstatp.com/obj/rc-web-sdk/acrawler.js line 1 > Function line 3 > eval, line 1: WebGL warning: <Create>: Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://sf1-ttcdn-tos.pstatp.com/obj/rc-web-sdk/acrawler.js line 1 > Function line 3 > eval, line 1: Failed to create WebGL context: WebGL creation failed: 
+* Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://sf1-ttcdn-tos.pstatp.com/obj/rc-web-sdk/acrawler.js line 1 > Function line 3 > eval, line 1: WebGL warning: <Create>: Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://sf1-ttcdn-tos.pstatp.com/obj/rc-web-sdk/acrawler.js line 1 > Function line 3 > eval, line 1: Failed to create WebGL context: WebGL creation failed: 
+* Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript error: https://sf1-ttcdn-tos.pstatp.com/obj/rc-web-sdk/acrawler.js line 1 > Function line 3 > eval, line 1: TypeError: S[A] is null
+JavaScript warning: https://sf1-ttcdn-tos.pstatp.com/obj/rc-web-sdk/acrawler.js line 1 > Function line 3 > eval, line 1: WebGL warning: <Create>: Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://sf1-ttcdn-tos.pstatp.com/obj/rc-web-sdk/acrawler.js line 1 > Function line 3 > eval, line 1: Failed to create WebGL context: WebGL creation failed: 
+* Can't use WebGL in headless mode (https://bugzil.la/1375585).
+Exiting due to channel error.
+[GFX1-]: Receive IPC close with reason=AbnormalShutdown
+Exiting due to channel error.
+Exiting due to channel error.
+1595932797389	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "-marionette" "-headless" "-foreground" "-no-remote" "-profile" "/var/folders/8v/1t_sjgm13f9g1y7f2rgz315m0000gn/T/rust_mozprofilekExuBY"
+*** You are running in headless mode.
+1595932798700	Marionette	INFO	Listening on port 61243
+1595932798713	Marionette	WARN	TLS certificate errors will be ignored for this session
+Exiting due to channel error.
+[GFX1-]: Receive IPC close with reason=AbnormalShutdown
+[GFX1-]: Receive IPC close with reason=AbnormalShutdown
+Exiting due to channel error.
+Exiting due to channel error.
+1595932815067	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "-marionette" "-headless" "-foreground" "-no-remote" "-profile" "/var/folders/8v/1t_sjgm13f9g1y7f2rgz315m0000gn/T/rust_mozprofilegzYxSg"
+*** You are running in headless mode.
+1595932816429	Marionette	INFO	Listening on port 61287
+1595932816503	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: https://sf1-ttcdn-tos.pstatp.com/obj/rc-web-sdk/acrawler.js line 1 > Function line 3 > eval, line 1: WebGL warning: <Create>: Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://sf1-ttcdn-tos.pstatp.com/obj/rc-web-sdk/acrawler.js line 1 > Function line 3 > eval, line 1: Failed to create WebGL context: WebGL creation failed: 
+* Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://sf1-ttcdn-tos.pstatp.com/obj/rc-web-sdk/acrawler.js line 1 > Function line 3 > eval, line 1: WebGL warning: <Create>: Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://sf1-ttcdn-tos.pstatp.com/obj/rc-web-sdk/acrawler.js line 1 > Function line 3 > eval, line 1: Failed to create WebGL context: WebGL creation failed: 
+* Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://sf1-ttcdn-tos.pstatp.com/obj/rc-web-sdk/acrawler.js line 1 > Function line 3 > eval, line 1: WebGL warning: <Create>: Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://sf1-ttcdn-tos.pstatp.com/obj/rc-web-sdk/acrawler.js line 1 > Function line 3 > eval, line 1: Failed to create WebGL context: WebGL creation failed: 
+* Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript error: https://sf1-ttcdn-tos.pstatp.com/obj/rc-web-sdk/acrawler.js line 1 > Function line 3 > eval, line 1: TypeError: S[A] is null
+JavaScript warning: https://sf1-ttcdn-tos.pstatp.com/obj/rc-web-sdk/acrawler.js line 1 > Function line 3 > eval, line 1: WebGL warning: <Create>: Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://sf1-ttcdn-tos.pstatp.com/obj/rc-web-sdk/acrawler.js line 1 > Function line 3 > eval, line 1: Failed to create WebGL context: WebGL creation failed: 
+* Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://sf1-ttcdn-tos.pstatp.com/obj/rc-web-sdk/acrawler.js line 1 > Function line 3 > eval, line 1: WebGL warning: <Create>: Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://sf1-ttcdn-tos.pstatp.com/obj/rc-web-sdk/acrawler.js line 1 > Function line 3 > eval, line 1: Failed to create WebGL context: WebGL creation failed: 
+* Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://sf1-ttcdn-tos.pstatp.com/obj/rc-web-sdk/acrawler.js line 1 > Function line 3 > eval, line 1: WebGL warning: <Create>: Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://sf1-ttcdn-tos.pstatp.com/obj/rc-web-sdk/acrawler.js line 1 > Function line 3 > eval, line 1: Failed to create WebGL context: WebGL creation failed: 
+* Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://sf1-ttcdn-tos.pstatp.com/obj/rc-web-sdk/acrawler.js line 1 > Function line 3 > eval, line 1: WebGL warning: <Create>: Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://sf1-ttcdn-tos.pstatp.com/obj/rc-web-sdk/acrawler.js line 1 > Function line 3 > eval, line 1: Failed to create WebGL context: WebGL creation failed: 
+* Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://sf1-ttcdn-tos.pstatp.com/obj/rc-web-sdk/acrawler.js line 1 > Function line 3 > eval, line 1: WebGL warning: <Create>: Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://sf1-ttcdn-tos.pstatp.com/obj/rc-web-sdk/acrawler.js line 1 > Function line 3 > eval, line 1: Failed to create WebGL context: WebGL creation failed: 
+* Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://sf1-ttcdn-tos.pstatp.com/obj/rc-web-sdk/acrawler.js line 1 > Function line 3 > eval, line 1: WebGL warning: <Create>: Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://sf1-ttcdn-tos.pstatp.com/obj/rc-web-sdk/acrawler.js line 1 > Function line 3 > eval, line 1: Failed to create WebGL context: WebGL creation failed: 
+* Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://sf1-ttcdn-tos.pstatp.com/obj/rc-web-sdk/acrawler.js line 1 > Function line 3 > eval, line 1: WebGL warning: <Create>: Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://sf1-ttcdn-tos.pstatp.com/obj/rc-web-sdk/acrawler.js line 1 > Function line 3 > eval, line 1: Failed to create WebGL context: WebGL creation failed: 
+* Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://sf1-ttcdn-tos.pstatp.com/obj/rc-web-sdk/acrawler.js line 1 > Function line 3 > eval, line 1: WebGL warning: <Create>: Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://sf1-ttcdn-tos.pstatp.com/obj/rc-web-sdk/acrawler.js line 1 > Function line 3 > eval, line 1: Failed to create WebGL context: WebGL creation failed: 
+* Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://sf1-ttcdn-tos.pstatp.com/obj/rc-web-sdk/acrawler.js line 1 > Function line 3 > eval, line 1: WebGL warning: <Create>: Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://sf1-ttcdn-tos.pstatp.com/obj/rc-web-sdk/acrawler.js line 1 > Function line 3 > eval, line 1: Failed to create WebGL context: WebGL creation failed: 
+* Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://sf1-ttcdn-tos.pstatp.com/obj/rc-web-sdk/acrawler.js line 1 > Function line 3 > eval, line 1: WebGL warning: <Create>: Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://sf1-ttcdn-tos.pstatp.com/obj/rc-web-sdk/acrawler.js line 1 > Function line 3 > eval, line 1: Failed to create WebGL context: WebGL creation failed: 
+* Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript error: resource://gre/actors/PictureInPictureChild.jsm, line 114: InvalidStateError: An attempt was made to use an object that is not, or is no longer, usable
+JavaScript warning: https://sf1-ttcdn-tos.pstatp.com/obj/rc-web-sdk/acrawler.js line 1 > Function line 3 > eval, line 1: WebGL warning: <Create>: Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://sf1-ttcdn-tos.pstatp.com/obj/rc-web-sdk/acrawler.js line 1 > Function line 3 > eval, line 1: Failed to create WebGL context: WebGL creation failed: 
+* Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://sf1-ttcdn-tos.pstatp.com/obj/rc-web-sdk/acrawler.js line 1 > Function line 3 > eval, line 1: WebGL warning: <Create>: Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://sf1-ttcdn-tos.pstatp.com/obj/rc-web-sdk/acrawler.js line 1 > Function line 3 > eval, line 1: Failed to create WebGL context: WebGL creation failed: 
+* Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://sf1-ttcdn-tos.pstatp.com/obj/rc-web-sdk/acrawler.js line 1 > Function line 3 > eval, line 1: WebGL warning: <Create>: Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://sf1-ttcdn-tos.pstatp.com/obj/rc-web-sdk/acrawler.js line 1 > Function line 3 > eval, line 1: Failed to create WebGL context: WebGL creation failed: 
+* Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://sf1-ttcdn-tos.pstatp.com/obj/rc-web-sdk/acrawler.js line 1 > Function line 3 > eval, line 1: WebGL warning: <Create>: Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://sf1-ttcdn-tos.pstatp.com/obj/rc-web-sdk/acrawler.js line 1 > Function line 3 > eval, line 1: Failed to create WebGL context: WebGL creation failed: 
+* Can't use WebGL in headless mode (https://bugzil.la/1375585).
+1595932904690	Marionette	INFO	Stopped listening on port 61287
+1595933015424	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "-marionette" "-headless" "-foreground" "-no-remote" "-profile" "/var/folders/8v/1t_sjgm13f9g1y7f2rgz315m0000gn/T/rust_mozprofileq4Y7Td"
+*** You are running in headless mode.
+1595933016809	Marionette	INFO	Listening on port 61478
+1595933016859	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: https://sf1-ttcdn-tos.pstatp.com/obj/rc-web-sdk/acrawler.js line 1 > Function line 3 > eval, line 1: WebGL warning: <Create>: Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://sf1-ttcdn-tos.pstatp.com/obj/rc-web-sdk/acrawler.js line 1 > Function line 3 > eval, line 1: Failed to create WebGL context: WebGL creation failed: 
+* Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://sf1-ttcdn-tos.pstatp.com/obj/rc-web-sdk/acrawler.js line 1 > Function line 3 > eval, line 1: WebGL warning: <Create>: Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://sf1-ttcdn-tos.pstatp.com/obj/rc-web-sdk/acrawler.js line 1 > Function line 3 > eval, line 1: Failed to create WebGL context: WebGL creation failed: 
+* Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://sf1-ttcdn-tos.pstatp.com/obj/rc-web-sdk/acrawler.js line 1 > Function line 3 > eval, line 1: WebGL warning: <Create>: Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://sf1-ttcdn-tos.pstatp.com/obj/rc-web-sdk/acrawler.js line 1 > Function line 3 > eval, line 1: Failed to create WebGL context: WebGL creation failed: 
+* Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://sf1-ttcdn-tos.pstatp.com/obj/rc-web-sdk/acrawler.js line 1 > Function line 3 > eval, line 1: WebGL warning: <Create>: Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://sf1-ttcdn-tos.pstatp.com/obj/rc-web-sdk/acrawler.js line 1 > Function line 3 > eval, line 1: Failed to create WebGL context: WebGL creation failed: 
+* Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript error: resource://gre/actors/PictureInPictureChild.jsm, line 114: InvalidStateError: An attempt was made to use an object that is not, or is no longer, usable
+JavaScript warning: https://sf1-ttcdn-tos.pstatp.com/obj/rc-web-sdk/acrawler.js line 1 > Function line 3 > eval, line 1: WebGL warning: <Create>: Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://sf1-ttcdn-tos.pstatp.com/obj/rc-web-sdk/acrawler.js line 1 > Function line 3 > eval, line 1: Failed to create WebGL context: WebGL creation failed: 
+* Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript error: resource://gre/actors/PictureInPictureChild.jsm, line 114: InvalidStateError: An attempt was made to use an object that is not, or is no longer, usable
+JavaScript warning: https://sf1-ttcdn-tos.pstatp.com/obj/rc-web-sdk/acrawler.js line 1 > Function line 3 > eval, line 1: WebGL warning: <Create>: Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://sf1-ttcdn-tos.pstatp.com/obj/rc-web-sdk/acrawler.js line 1 > Function line 3 > eval, line 1: Failed to create WebGL context: WebGL creation failed: 
+* Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://sf1-ttcdn-tos.pstatp.com/obj/rc-web-sdk/acrawler.js line 1 > Function line 3 > eval, line 1: WebGL warning: <Create>: Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://sf1-ttcdn-tos.pstatp.com/obj/rc-web-sdk/acrawler.js line 1 > Function line 3 > eval, line 1: Failed to create WebGL context: WebGL creation failed: 
+* Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://sf1-ttcdn-tos.pstatp.com/obj/rc-web-sdk/acrawler.js line 1 > Function line 3 > eval, line 1: WebGL warning: <Create>: Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://sf1-ttcdn-tos.pstatp.com/obj/rc-web-sdk/acrawler.js line 1 > Function line 3 > eval, line 1: Failed to create WebGL context: WebGL creation failed: 
+* Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://sf1-ttcdn-tos.pstatp.com/obj/rc-web-sdk/acrawler.js line 1 > Function line 3 > eval, line 1: WebGL warning: <Create>: Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://sf1-ttcdn-tos.pstatp.com/obj/rc-web-sdk/acrawler.js line 1 > Function line 3 > eval, line 1: Failed to create WebGL context: WebGL creation failed: 
+* Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://sf1-ttcdn-tos.pstatp.com/obj/rc-web-sdk/acrawler.js line 1 > Function line 3 > eval, line 1: WebGL warning: <Create>: Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://sf1-ttcdn-tos.pstatp.com/obj/rc-web-sdk/acrawler.js line 1 > Function line 3 > eval, line 1: Failed to create WebGL context: WebGL creation failed: 
+* Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://sf1-ttcdn-tos.pstatp.com/obj/rc-web-sdk/acrawler.js line 1 > Function line 3 > eval, line 1: WebGL warning: <Create>: Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://sf1-ttcdn-tos.pstatp.com/obj/rc-web-sdk/acrawler.js line 1 > Function line 3 > eval, line 1: Failed to create WebGL context: WebGL creation failed: 
+* Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://sf1-ttcdn-tos.pstatp.com/obj/rc-web-sdk/acrawler.js line 1 > Function line 3 > eval, line 1: WebGL warning: <Create>: Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://sf1-ttcdn-tos.pstatp.com/obj/rc-web-sdk/acrawler.js line 1 > Function line 3 > eval, line 1: Failed to create WebGL context: WebGL creation failed: 
+* Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript error: resource://gre/actors/PictureInPictureChild.jsm, line 114: InvalidStateError: An attempt was made to use an object that is not, or is no longer, usable
+JavaScript error: , line 0: NotAllowedError: The play method is not allowed by the user agent or the platform in the current context, possibly because the user denied permission.
+JavaScript error: resource://gre/actors/PictureInPictureChild.jsm, line 114: InvalidStateError: An attempt was made to use an object that is not, or is no longer, usable
+JavaScript warning: https://sf1-ttcdn-tos.pstatp.com/obj/rc-web-sdk/acrawler.js line 1 > Function line 3 > eval, line 1: WebGL warning: <Create>: Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://sf1-ttcdn-tos.pstatp.com/obj/rc-web-sdk/acrawler.js line 1 > Function line 3 > eval, line 1: Failed to create WebGL context: WebGL creation failed: 
+* Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://sf1-ttcdn-tos.pstatp.com/obj/rc-web-sdk/acrawler.js line 1 > Function line 3 > eval, line 1: WebGL warning: <Create>: Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://sf1-ttcdn-tos.pstatp.com/obj/rc-web-sdk/acrawler.js line 1 > Function line 3 > eval, line 1: Failed to create WebGL context: WebGL creation failed: 
+* Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://sf1-ttcdn-tos.pstatp.com/obj/rc-web-sdk/acrawler.js line 1 > Function line 3 > eval, line 1: WebGL warning: <Create>: Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://sf1-ttcdn-tos.pstatp.com/obj/rc-web-sdk/acrawler.js line 1 > Function line 3 > eval, line 1: Failed to create WebGL context: WebGL creation failed: 
+* Can't use WebGL in headless mode (https://bugzil.la/1375585).
+1595933097293	Marionette	INFO	Stopped listening on port 61478
