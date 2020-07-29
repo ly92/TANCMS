@@ -4,6 +4,8 @@ from selenium.webdriver import Firefox
 from selenium.webdriver.firefox.options import Options
 from urllib.parse import quote
 import re
+import html
+import json
 
 
 
@@ -162,17 +164,56 @@ def request_detail(url):
     except requests.ConnectionError:
         print('Get image fail.')
 
+def get_page_detail(url):
+    headers = {
+        'cookie': 'tt_webid=6791640396613223949; WEATHER_CITY=%E5%8C%97%E4%BA%AC; tt_webid=6791640396613223949; csrftoken=4a29b1b1d9ecf8b5168f1955d2110f16; s_v_web_id=k6g11cxe_fWBnSuA7_RBx3_4Mo4_9a9z_XNI0WS8B9Fja; ttcid=3fdf0861117e48ac8b18940a5704991216; tt_scid=8Z.7-06X5KIZrlZF0PA9kgiudolF2L5j9bu9g6Pdm.4zcvNjlzQ1enH8qMQkYW8w9feb; __tasessionId=yix51k4j41581315307695',
+        'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.87 Safari/537.36',
+        # ':scheme': 'https',
+        'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+        # 'accept-encoding': 'gzip, deflate, br',
+        'accept-language': 'zh-CN,zh;q=0.9,en;q=0.8,en-US;q=0.7'
+    }
+    try:
+        response = requests.get(url, headers=headers)
+        response.encoding = 'utf-8'
+        # print(response.text)
+        print('--------------')
+        if response.status_code == 200:
+            articleInfos = re.findall('articleInfo: {(.*?)groupId', response.text, re.S)
+            if len(articleInfos) > 0:
+                contents = re.findall('content: (.*?)slice', articleInfos[0], re.S)
+                if len(contents) > 0:
+                    content = contents[0]
+                    content = content.replace('&nbsp;', ' ').replace('\\u003C', '<').replace('\\u003E', '>').replace('&amp;', '&').replace('&quot;', '').replace('\\u002F', '/')
+                    ps = re.findall('<p>(.*?)</p>', content, re.S)
+                    print("\n".join(ps))
+                    # print(content)
+                else:
+                    print(1)
+            else:
+                print(response.text)
+                print(2)
+    except Exception as e:
+        print("请求详情页出错!")
 
+def get_signature():
+    firefox = Firefox()
+    firefox.get('https://www.toutiao.com/ch/news_fashion/')
+    ascp = firefox.execute_script('return ascp.getHoney()')
+    sinature = firefox.execute_script('return TAC.sign(' + '' + str(time.time()) + ')')
+    print(ascp)
+    print(sinature)
 
 if __name__ == '__main__':
-    # for url in article_url_list:
-    #     request_detail(url)
-    #     time.sleep(5)
-    try:
-        request_AND_storage('武汉疫情')
-        article_url_list = []
-        time.sleep(10)
-    except Exception as e:
-        print(e)
-        article_url_list = []
-        time.sleep(1)
+    # get_signature()
+    for url in article_url_list:
+        get_page_detail(url)
+        time.sleep(5)
+    # try:
+    #     request_AND_storage('武汉疫情')
+    #     article_url_list = []
+    #     time.sleep(10)
+    # except Exception as e:
+    #     print(e)
+    #     article_url_list = []
+    #     time.sleep(1)

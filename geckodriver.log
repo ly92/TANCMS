@@ -2366,3 +2366,11 @@ JavaScript warning: https://sf1-ttcdn-tos.pstatp.com/obj/rc-web-sdk/acrawler.js 
 *** You are running in headless mode.
 1595936181169	Marionette	INFO	Listening on port 59812
 1595936181221	Marionette	WARN	TLS certificate errors will be ignored for this session
+[GFX1-]: Receive IPC close with reason=AbnormalShutdown
+Exiting due to channel error.
+[GFX1-]: Receive IPC close with reason=AbnormalShutdown
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
