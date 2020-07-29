@@ -99,7 +99,7 @@ class ToutiaoSpider(scrapy.Spider):
             if len(contents) > 0:
                 content = contents[0]
                 content = content.replace('&nbsp;', ' ').replace('\\u003C', '<').replace('\\u003E', '>').replace(
-                    '&amp;', '&').replace('&quot;', '').replace('\\u002F', '/').replace('<br>', '')
+                    '&amp;', '&').replace('&quot;', '').replace('\\u002F', '/').replace('<br>', '').replace('收藏 举报', '')
                 ps = re.findall('<p>(.*?)</p>', content, re.S)
                 content = "\n".join(ps)
                 return content
