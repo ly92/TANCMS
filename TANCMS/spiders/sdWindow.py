@@ -9,7 +9,7 @@ from urllib.parse import urlparse
 class SdWindowSpider(scrapy.Spider):
     name = 'sd_window'
     word = '核酸检测'
-    page = 25
+    page = 1
     max_page = 1
 
     num1 = 0
@@ -30,8 +30,6 @@ class SdWindowSpider(scrapy.Spider):
         resultList = response['resultList']
 
         self.max_page = totalHits // 20 + 1
-
-
 
         for result in resultList:
             url = result['url']
