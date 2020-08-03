@@ -1,6 +1,6 @@
 from elasticsearch import Elasticsearch
 
-es = Elasticsearch([{'host': '47.95.145.227', 'port': '9200'}])
+es = Elasticsearch([{'host': '39.108.218.207', 'port': '9200'}])
 
 
 def es_index(index, body):

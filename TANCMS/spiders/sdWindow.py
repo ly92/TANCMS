@@ -2,7 +2,6 @@ import scrapy
 import json
 from ..items import ArticleItem
 from ..libs.ES import isExitByUrl
-import time
 from urllib.parse import urlparse
 
 
