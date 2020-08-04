@@ -6,7 +6,7 @@ from urllib.parse import quote
 import re
 import html
 import json
-
+from TANCMS.libs.timeHelper import strToTimeStamp
 
 
 article_url_list = [
@@ -208,15 +208,9 @@ def get_signature():
 
 def test():
 
-    sss = 'baidu.com/94o3dSag_xI4khGko9WTAnF6hhy","b.hiphotos.baidu.com":"ss1.baidu.com/9vo3dSag_xI4khGko9WTAnF6hhy","c.hiphotos.baidu.com":"ss3.baidu.com/9fo3dSag_xI4khGko9WTAnF6hhy","d.hiphotos.baidu.com":"ss0.baidu.com/-Po3dSag_xI4khGko9WTAnF6hhy","e.hiphotos.baidu.com":"ss1.baidu.com/-4o3dSag_xI4khGko9WTAnF6hhy","f.hiphotos.baidu.com":"ss2.baidu.com/-vo3dSag_xI4khGko9WTAnF6hhy","g.hiphotos.baidu.com":"ss3.baidu.com/-fo3dSag_xI4khGko9WTAnF6hhy","h.hiphotos.baidu.com":"ss0.baidu.com/7Po3dSag_xI4khGko9WTAnF6hhy","1.su.bdimg.com":"ss0.bdstatic.com/k4oZeXSm1A5BphGlnYG","t10.baidu.com":"ss0.baidu.com/6ONWsjip0QIZ8tyhnq","t11.baidu.com":"ss1.baidu.com/6ONXsjip0QIZ8tyhnq","t12.baidu.com":"ss2.baidu.com/6ONYsjip0QIZ8tyhnq","himg.bdimg.com":"ss1.bdstatic.com/7Ls0a8Sm1A5BphGlnYG","cdn00.baidu-img.cn":"ss0.bdstatic.com/9bA1vGba2gU2pMbfm9GUKT-w","cdn01.baidu-img.cn":"ss0.bdstatic.com/9bA1vGfa2gU2pMbfm9GUKT-w"}};var s_session = {"ssid":"0","logid":"","sid":"32293_1441_31671_32362_31660_32352_32045_32395_32429_32117_26350_32430_32261_22159","nid":"9512414268954331663","qid":""};var s_advert = {"isBjh":"1","contentUrl":"http://baijiahao.baidu.com/s?id=1673349251118104538","contentPlatformId":"3","contentType":"1","pvid":"a31e702c93020c32","time":"2020-08-03 11:09:30","contentAccType":"1","ctk":"b1268f01e3182ea8","contentAccId":"EjLtJGJckKFDRLESZLLGwQ","ctk_b":"082bace3616d86eb","logid":"0570281598","dtime":"1596424170","grade":"2","createTimeAccLevel":"2"};</script><script>/* eslint-disable */var bds={se:{},su:{urdata:[],urSendClick:function(){},urStatic:"https://ss.bdimg.com"},util:{},use:{},comm:{domain:"",ubsurl:"",tn:"",queryEnc:"",queryId:"",inter:"",sugHost:"",query:"",qid:"",cid:"",sid:"",stoken:"",serverTime:"",user:"",username:"",loginAction:[],useFavo:"",pinyin:"",favoOn:"",curResultNum:"0",rightResultExist:false,protectNum:0,zxlNum:0,pageNum:1,pageSize:10,ishome:1,newindex:1}};var name,navigate,al_arr=[];var selfOpen=window.open;eval("var open = selfOpen;");var isIE=navigator.userAgent.indexOf("MSIE")!=-1&&!window.opera;var '
-
-    print('var s_advert = ' in sss)
-
-    s_advert = re.findall('var s_advert = (.*?);', sss, re.S)[0]
-
-    s_advert = json.loads(s_advert)
-
-    print(s_advert['contentUrl'])
+    ss = '3天前'
+    t = strToTimeStamp(ss)
+    print(t)
 
 
 if __name__ == '__main__':
