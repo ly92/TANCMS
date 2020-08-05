@@ -208,8 +208,8 @@ def get_signature():
 
 def test():
 
-    ss = '3天前'
-    t = strToTimeStamp(ss)
+    ss = '''<div class="s_post"><span class="p_title"><a data-tid="6792193701" data-fid="8675206" class="bluelink" href="/p/6792193701?pid=133584103476&amp;cid=133879231537#133879231537" target="_blank">回复:想问问各位大哥,有人知道华西现在做<em>核酸检测</em>多久能拿到结果嘛?</a></span>    <div class="p_content">手机上就可以预约,关注华西app,在自助开单申请那里。别问我是怎么知道的,今天才自费去做了<em>核酸检测</em></div>                贴吧：<a data-fid="8675206" class="p_forum" href="/f?kw=%BB%AA%CE%F7%D2%BD%D4%BA" target="_blank"><font class="p_violet">华西医院</font></a>作者：<a href="/home/main?un=%BF%B7%CA%AF%CC%D8%B6%F9" target="_blank"><font class="p_violet">糠石特儿</font></a>            <font class="p_green p_date">2020-08-05 13:57</font>        </div>'''
+    t = ss.xpath('./span/a/text()').extract()
     print(t)
 
 

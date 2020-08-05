@@ -7,6 +7,8 @@ import urllib.request
 import re
 import json
 
+from TANCMS.spiders.weibo2 import Weibo2Spider
+from TANCMS.spiders.tieba import TiebaSpider
 
 
 
@@ -67,9 +69,21 @@ def toutiao():
     print(content)
 
 
+def weibo2():
+    weibo = Weibo2Spider()
+
+    r = weibo.account_requests('00000')
+    print(r)
+
+
+def tieba():
+    tieba = TiebaSpider('核酸检测', '庄河')
+    # tieba = TiebaSpider()
+
+    print(tieba.ba_requests())
 
 
 if __name__ == '__main__':
-    toutiao()
+    tieba()
 
 
