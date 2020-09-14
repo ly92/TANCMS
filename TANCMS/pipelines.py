@@ -8,7 +8,8 @@
 from itemadapter import ItemAdapter
 from TANCMS.libs.ES import *
 import time
-
+import scrapy
+from scrapy.pipelines.images import ImagesPipeline
 
 class TancmsPipeline:
     def process_item(self, item, spider):
@@ -40,4 +41,15 @@ class TancmsPipeline:
 
         return item
 
-
+# // 下载图片
+# class TancmsPipeline(ImagesPipeline):
+#
+#     def get_media_requests(self, item, info):
+#         yield scrapy.Request(url=item['url'], meta={'name': item['title']})
+#
+#     def file_path(self, request, response=None, info=None):
+#         name = request.meta['name'] + '.jpg'
+#         return name  # 返回文件名
+#
+#     def item_completed(self, results, item, info):
+#         return item  # 返回给下一个即将被执行的管道类

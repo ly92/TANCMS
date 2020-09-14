@@ -150,6 +150,7 @@ PROXY_POOL_ENABLED = True
 ITEM_PIPELINES = {
    'TANCMS.pipelines.TancmsPipeline': 300,
 }
+IMAGES_STORE = './images'
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://docs.scrapy.org/en/latest/topics/autothrottle.html

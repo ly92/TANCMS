@@ -84,6 +84,6 @@ def tieba():
 
 
 if __name__ == '__main__':
-    tieba()
+    es()
 
 

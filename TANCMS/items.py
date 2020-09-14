@@ -14,3 +14,6 @@ class ArticleItem(scrapy.Item):
     htmlContent = scrapy.Field()
     source = scrapy.Field()
 
+class ImageItem(scrapy.Item):
+    title = scrapy.Field()
+    url = scrapy.Field()
