@@ -1,6 +1,6 @@
 from elasticsearch import Elasticsearch
 
-es = Elasticsearch(['47.95.145.227:9200'], http_auth=('elastic', 'Super@123'))
+es = Elasticsearch(['47.95.145.227:9200'], http_auth=('tancms', 'Tan123456'))
 
 
 def es_index(index, body):

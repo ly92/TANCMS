@@ -72,6 +72,5 @@ class BjhSpider(scrapy.Spider):
             item['time'] = timeStamp
             item['author'] = author
             item['url'] = url
-
             yield item
 
