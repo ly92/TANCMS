@@ -3,14 +3,19 @@ from ..items import *
 import re
 import time
 from ..libs.ES import *
+import TANCMS.program.entity as entity
+
 
 class SinanewsSpider(scrapy.Spider):
     name = 'sinaNews'
     base_url = 'https://search.sina.com.cn/?q={}&c=news&from=&col=&range=all&source=&country=&size=10&stime=m-01-01+00%3A00%3A00&etime=m-12-31+23%3A59%3A59&time=m&dpc=0&a=&ps=0&pf=0&page=1'
 
     def start_requests(self):
-        word = '核酸检测'
-        yield scrapy.Request(self.base_url.format(word), callback=self.parse)
+        print(entity.keyWord)
+        print(entity.sinaNews)
+
+        # word = '核酸检测'
+        # yield scrapy.Request(self.base_url.format(word), callback=self.parse)
 
     def parse(self, response):
         result = response.xpath('//*[@id="result"]')

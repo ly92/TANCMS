@@ -3,7 +3,8 @@ import json
 from ..items import ArticleItem
 from ..libs.ES import isExitByUrl
 from urllib.parse import urlparse
-
+import time
+import TANCMS.program.entity as entity
 
 class SdWindowSpider(scrapy.Spider):
     name = 'sd_window'
@@ -18,10 +19,11 @@ class SdWindowSpider(scrapy.Spider):
     # json列表推荐
     base_url = 'http://www.beijing.gov.cn/so/interest?sort=dateDesc&timeOption=1&days=30&qt={}&tab=all&siteCode=1100000088&keyPlace=0&toolsStatus=1&mode=1&pageSize=20&page={}'
     def start_requests(self):
+        print(entity.keyWord)
+        print(entity.sdWindow)
 
-
-        url = self.base_url.format(self.word, self.page)
-        yield scrapy.Request(url=url, callback=self.parse)
+        # url = self.base_url.format(self.word, self.page)
+        # yield scrapy.Request(url=url, callback=self.parse)
 
     def parse(self, response):
         response = json.loads(response.text)
@@ -39,7 +41,7 @@ class SdWindowSpider(scrapy.Spider):
             if isExitByUrl(url):
                 self.num2 = self.num2 + 1
                 continue
-            # time.sleep(2)
+            time.sleep(2)
             self.num3 = self.num3 + 1
             item = ArticleItem()
             item['title'] = result['title']
@@ -53,15 +55,15 @@ class SdWindowSpider(scrapy.Spider):
         if self.page < self.max_page:
             self.page = self.page + 1
             url = self.base_url.format(self.word, self.page)
-            # time.sleep(3)
+            time.sleep(3)
             yield scrapy.Request(url=url, callback=self.parse)
-        print('-----------------')
-        print(self.num1)
-        print(self.num2)
-        print(self.num3)
-        print(self.max_page)
-        print(self.page)
-        print('-----------------')
+        # print('-----------------')
+        # print(self.num1)
+        # print(self.num2)
+        # print(self.num3)
+        # print(self.max_page)
+        # print(self.page)
+        # print('-----------------')
 
 
     def parse_content(self, response):

@@ -3,6 +3,7 @@ import re
 import time
 from ..items import ArticleItem
 from ..libs.ES import isExitByUrl
+import TANCMS.program.entity as entity
 
 class TianyaSpider(scrapy.Spider):
     name = 'tianya'
@@ -14,8 +15,11 @@ class TianyaSpider(scrapy.Spider):
 
 
     def start_requests(self):
-        url = self.base_url.format(self.word, self.page)
-        yield scrapy.Request(url=url, callback=self.parse)
+        print(entity.keyWord)
+        print(entity.tianya)
+
+        # url = self.base_url.format(self.word, self.page)
+        # yield scrapy.Request(url=url, callback=self.parse)
 
     def parse(self, response):
         ul = response.xpath('//*[@class="searchListOne"]/ul/li')
