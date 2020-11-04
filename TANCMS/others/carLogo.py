@@ -1,6 +1,6 @@
 import scrapy
 
-from ..items import ImageItem
+from TANCMS.items import ImageItem
 
 class CarLogoSpider(scrapy.Spider):
     name = 'carLogo'

@@ -50,16 +50,7 @@ class WeiboSpider(scrapy.Spider):
 
     def content_parse(self, response):
 
-        print('-------------------------')
-        print(response.text)
-        print('-------------------------')
-
-
         content = response.xpath('//*[@class="WB_text W_f14"]').get()
-
-        print('-------------------------')
-        print(content)
-        print('-------------------------')
 
         item = response.meta['item']
         item['htmlContent'] = content

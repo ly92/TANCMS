@@ -70,25 +70,6 @@ def prepareWork():
                         # 当前方案下一个
                         print(network['title'] + '  正在爬取方案: ' + detail['title'])
 
-                    # if type == 'gzh':
-                    #
-                    # elif type == 'sdWindow':
-                    #
-                    # elif type == 'tieba':
-                    #
-                    # elif type == 'weibo':
-                    #
-                    # elif type == 'toutiao':
-                    #
-                    # elif type == 'sinaNews':
-                    #
-                    # elif type == 'bjh':
-                    #
-                    # elif type == 'tianya':
-
-                    # print(type, key, url)
-
-                    # print(network)
             except():
                 continue
             finally:
@@ -115,3 +96,36 @@ def startSpider(type, word, url):
 
 if __name__ == '__main__':
     prepareWork()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# if type == 'gzh':
+#
+# elif type == 'sdWindow':
+#
+# elif type == 'tieba':
+#
+# elif type == 'weibo':
+#
+# elif type == 'toutiao':
+#
+# elif type == 'sinaNews':
+#
+# elif type == 'bjh':
+#
+# elif type == 'tianya':
+
+# print(type, key, url)
+
+# print(network)
