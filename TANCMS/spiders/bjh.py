@@ -2,21 +2,26 @@ import scrapy
 import time
 import re
 from ..libs.ES import isExitByUrl
-from ..items import ArticleItem
 import json
+
+from TANCMS.libs.redisHelper import cacheGet
 
 class BjhSpider(scrapy.Spider):
     name = 'bjh'
 
-    base_url = 'https://www.baidu.com/s?q1={}&q2=&q3=&q4=&gpc=stf={},{}|stftype=1&ft=&q5=&q6=baijiahao.baidu.com&tn=baiduadv&pn={}'
-    end = time.time()
+    # base_url = 'https://www.baidu.com/s?q1={}&q2=&q3=&q4=&gpc=stf={},{}|stftype=1&ft=&q5=&q6=baijiahao.baidu.com&tn=baiduadv&pn={}'
+    end = int(time.time())
     begin = int(time.time()) - 86400 * 1
-    word = '核酸检测'
+    base_url = cacheGet('bjh_url')
+    word = cacheGet('bjh_keyWord')
     pn = 0
 
     def start_requests(self):
+        print('-------------')
+        print(self.word, self.base_url, self.begin, self.end)
+        print('-------------23')
         url = self.base_url.format(self.word, self.begin, self.end, self.pn)
-        # print(url)
+        print(url)
         yield scrapy.Request(url=url, callback=self.parse)
 
     def parse(self, response):
@@ -36,7 +41,7 @@ class BjhSpider(scrapy.Spider):
         #     item['source'] = '百家号'
         #     yield scrapy.Request(url=url, callback=self.parse_content, meta={'item': item})
         page_inner = response.xpath('//*[@class="page-inner"]/a')
-        if len(page_inner) > 0:
+        if len(page_inner) > 0 & self.pn < 50:
             time.sleep(3)
             last_a = page_inner[-1]
             if last_a.xpath('./text()').extract_first() == '下一页 >':
@@ -77,4 +82,7 @@ class BjhSpider(scrapy.Spider):
             item['author'] = author
             item['url'] = url
             yield item
+
+
+
 

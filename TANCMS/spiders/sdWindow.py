@@ -4,10 +4,10 @@ from ..items import ArticleItem
 from ..libs.ES import isExitByUrl
 from urllib.parse import urlparse
 import time
-import TANCMS.program.entity as entity
+from TANCMS.libs.redisHelper import cacheGet
 
 class SdWindowSpider(scrapy.Spider):
-    name = 'sd_window'
+    name = 'sdWindow'
     word = '核酸检测'
     page = 1
     max_page = 1
@@ -17,13 +17,15 @@ class SdWindowSpider(scrapy.Spider):
     num3 = 0
 
     # json列表推荐
-    base_url = 'http://www.beijing.gov.cn/so/interest?sort=dateDesc&timeOption=1&days=30&qt={}&tab=all&siteCode=1100000088&keyPlace=0&toolsStatus=1&mode=1&pageSize=20&page={}'
-    def start_requests(self):
-        print(entity.keyWord)
-        print(entity.sdWindow)
+    # base_url = 'http://www.beijing.gov.cn/so/interest?sort=dateDesc&timeOption=1&days=30&qt={}&tab=all&siteCode=1100000088&keyPlace=0&toolsStatus=1&mode=1&pageSize=20&page={}'
 
-        # url = self.base_url.format(self.word, self.page)
-        # yield scrapy.Request(url=url, callback=self.parse)
+    base_url = cacheGet('sdWindow_url')
+    word = cacheGet('sdWindow_keyWord')
+
+    def start_requests(self):
+        url = self.base_url.format(self.word, self.page)
+        print(url)
+        yield scrapy.Request(url=url, callback=self.parse, dont_filter=True)
 
     def parse(self, response):
         response = json.loads(response.text)
@@ -51,12 +53,13 @@ class SdWindowSpider(scrapy.Spider):
             item['source'] = '首都之窗'
             item['author'] = ''
             item['time'] = result['myValues']['DREDATE']
-            yield scrapy.Request(url=url, callback=self.parse_content, meta={'item': item})
+            print(item)
+            # yield scrapy.Request(url=url, callback=self.parse_content, dont_filter=True, meta={'item': item})
         if self.page < self.max_page:
             self.page = self.page + 1
             url = self.base_url.format(self.word, self.page)
             time.sleep(3)
-            yield scrapy.Request(url=url, callback=self.parse)
+            yield scrapy.Request(url=url, callback=self.parse, dont_filter=True)
         # print('-----------------')
         # print(self.num1)
         # print(self.num2)

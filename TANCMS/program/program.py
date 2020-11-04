@@ -1,9 +1,10 @@
 import requests
 import json
 import time
-import entity
-
+from TANCMS.libs.redisHelper import cacheSet
 from scrapy import cmdline
+from TANCMS.libs.async_call import async_call
+
 
 # 监控列表
 def requestProgram():
@@ -37,11 +38,8 @@ def request(url, data):
     else:
         raise Exception(res['message'])
 
-# 开始爬虫
-def startSpider(type):
-    print(entity.keyWord)
-    # shell = 'scrapy crawl ' + type
-    # cmdline.execute(shell.split())
+
+
 
 # 准备爬虫
 def prepareWork():
@@ -52,49 +50,67 @@ def prepareWork():
             # print(detail)
             # 搜索关键词
             keyWords = detail['keywords']
-            key = ''
+            keys = []
             for word in keyWords:
-                key += ' ' + word['word']
+                keys.append(word['word'])
             # print(key)
-            entity.keyWord = key
+            key = ' '.join(keys)
 
             # 网站
             networks = detail['networks']
             try:
-                for item in networks:
-                    network = networkDetail(item['network_id'])
-                    # print(network)
+                for network in networks:
                     type = network['type']
                     url = network['url']
-                    if type == 'gzh':
-                        entity.gzh = url
-                    elif type == 'sdWindow':
-                        entity.sdWindow = url
-                    elif type == 'tieba':
-                        entity.tieba = url
-                    elif type == 'weibo':
-                        entity.weibo = url
-                    elif type == 'toutiao':
-                        entity.toutiao = url
-                    elif type == 'sinaNews':
-                        entity.sinaNews = url
-                    elif type == 'bjh':
-                        entity.bjh = url
-                    elif type == 'tianya':
-                        entity.tianya = url
-                    startSpider(type)
+                    try:
+                        startSpider(type, key, url)
+                    except(Exception):
+                        continue
+                    finally:
+                        # 当前方案下一个
+                        print(network['title'] + '  正在爬取方案: ' + detail['title'])
+
+                    # if type == 'gzh':
+                    #
+                    # elif type == 'sdWindow':
+                    #
+                    # elif type == 'tieba':
+                    #
+                    # elif type == 'weibo':
+                    #
+                    # elif type == 'toutiao':
+                    #
+                    # elif type == 'sinaNews':
+                    #
+                    # elif type == 'bjh':
+                    #
+                    # elif type == 'tianya':
+
+                    # print(type, key, url)
 
                     # print(network)
             except():
-                print('-----------')
                 continue
-
-            # 开始下一个监控方案前休息1分钟
-            # time.sleep(60)
+            finally:
+                print('正在爬取方案: ' + detail['title'] + ' 准备下一个方案')
+                # 开始下一个监控方案前休息1分钟
+                # time.sleep(60)
     except():
-        print('2222222')
+        print('except')
     finally:
-        print('123123131')
+        print('finally')
+
+
+
+# 开始爬虫
+# @async_call
+def startSpider(type, word, url):
+    cacheSet(type + '_keyWord', word)
+    cacheSet(type + '_url', url)
+    print(type, url, word)
+    shell = 'scrapy crawl ' + type
+    cmdline.execute(shell.split())
+
 
 
 if __name__ == '__main__':

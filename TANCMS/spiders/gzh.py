@@ -5,7 +5,6 @@ import random
 import json
 from TANCMS.settings import USER_AGENT
 from TANCMS.items import ArticleItem
-import TANCMS.program.entity as entity
 
 class GzhSpider(scrapy.Spider):
     name = 'gzh'
@@ -26,9 +25,6 @@ class GzhSpider(scrapy.Spider):
     template_url = 'https://weixin.sogou.com/weixin?query={}&_sug_type_=&s_from=input&_sug_=n&type=2&page={}&ie=utf8'
     word = '核酸检查'
 
-    def start_requests(self):
-        print(entity.keyWord)
-        print(entity.gzh)
 
     def parse(self, response):
 
@@ -38,7 +34,7 @@ class GzhSpider(scrapy.Spider):
         for li in ul:
             url = 'https://weixin.sogou.com' + li.xpath('./div[2]/h3/a/@href').extract_first()
             articleUrl = self.getArticleUrl(params, url, response.url)
-            yield scrapy.Request(url=articleUrl, callback=self.detailParse)
+            yield scrapy.Request(url=articleUrl, callback=self.detailParse, dont_filter=True)
 
         # for page in range(2, 11):
         #     print('12312313123123-----')

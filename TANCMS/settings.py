@@ -15,6 +15,7 @@ BOT_NAME = 'TANCMS'
 SPIDER_MODULES = ['TANCMS.spiders']
 NEWSPIDER_MODULE = 'TANCMS.spiders'
 
+COMMANDS_MODULE = 'TANCMS.commands'
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 USER_AGENT_LIST = [
@@ -101,6 +102,8 @@ USER_AGENT = random.choice(USER_AGENT_LIST)
 ROBOTSTXT_OBEY = False
 
 PROXY_POOL_ENABLED = True
+
+
 
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
 #CONCURRENT_REQUESTS = 32

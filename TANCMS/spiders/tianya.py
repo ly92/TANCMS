@@ -3,23 +3,23 @@ import re
 import time
 from ..items import ArticleItem
 from ..libs.ES import isExitByUrl
-import TANCMS.program.entity as entity
+from TANCMS.libs.redisHelper import cacheGet
+
 
 class TianyaSpider(scrapy.Spider):
     name = 'tianya'
-    base_url = 'https://search.tianya.cn/bbs?q={}&pn={}&s=4'
-    word = '核酸检测'
+    # base_url = 'https://search.tianya.cn/bbs?q={}&pn={}&s=4'
+    # word = '核酸检测'
     page = 1
     last_time = int(time.time())
     have_more = True
-
+    base_url = cacheGet('tianya_url')
+    word = cacheGet('tianya_keyWord')
 
     def start_requests(self):
-        print(entity.keyWord)
-        print(entity.tianya)
 
-        # url = self.base_url.format(self.word, self.page)
-        # yield scrapy.Request(url=url, callback=self.parse)
+        url = self.base_url.format(self.word, self.page)
+        yield scrapy.Request(url=url, callback=self.parse)
 
     def parse(self, response):
         ul = response.xpath('//*[@class="searchListOne"]/ul/li')
@@ -47,10 +47,12 @@ class TianyaSpider(scrapy.Spider):
                 yield scrapy.Request(url=url, callback=self.parse_content, meta={'item': item})
             except:
                 pass
+            time.sleep(2)
 
         if len(ul) > 0 and int(time.time()) - self.last_time < 86400 * 30:
             self.page = self.page + 1
             url = self.base_url.format(self.word, self.page)
+            time.sleep(3)
             yield scrapy.Request(url=url, callback=self.parse)
 
     def parse_content(self, response):
