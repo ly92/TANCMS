@@ -5,26 +5,34 @@ import random
 import json
 from TANCMS.settings import USER_AGENT
 from TANCMS.items import ArticleItem
+from TANCMS.libs.redisHelper import cacheGet
+import time
+
 
 class GzhSpider(scrapy.Spider):
     name = 'gzh'
-    allowed_domains = ['weixin.sogou.com', 'mp.weixin.qq.com']
-    start_urls = ['https://weixin.sogou.com/weixin?query=核酸检查&_sug_type_=&s_from=input&_sug_=n&type=2&page=1&ie=utf8',
-                  'https://weixin.sogou.com/weixin?query=核酸检查&_sug_type_=&s_from=input&_sug_=n&type=2&page=2&ie=utf8',
-                  'https://weixin.sogou.com/weixin?query=核酸检查&_sug_type_=&s_from=input&_sug_=n&type=2&page=3&ie=utf8',
-                  'https://weixin.sogou.com/weixin?query=核酸检查&_sug_type_=&s_from=input&_sug_=n&type=2&page=4&ie=utf8',
-                  'https://weixin.sogou.com/weixin?query=核酸检查&_sug_type_=&s_from=input&_sug_=n&type=2&page=5&ie=utf8',
-                  'https://weixin.sogou.com/weixin?query=核酸检查&_sug_type_=&s_from=input&_sug_=n&type=2&page=6&ie=utf8',
-                  'https://weixin.sogou.com/weixin?query=核酸检查&_sug_type_=&s_from=input&_sug_=n&type=2&page=7&ie=utf8',
-                  'https://weixin.sogou.com/weixin?query=核酸检查&_sug_type_=&s_from=input&_sug_=n&type=2&page=8&ie=utf8',
-                  'https://weixin.sogou.com/weixin?query=核酸检查&_sug_type_=&s_from=input&_sug_=n&type=2&page=9&ie=utf8',
-                  'https://weixin.sogou.com/weixin?query=核酸检查&_sug_type_=&s_from=input&_sug_=n&type=2&page=10&ie=utf8'
-                  ]
+    # allowed_domains = ['weixin.sogou.com', 'mp.weixin.qq.com']
+    # start_urls = ['https://weixin.sogou.com/weixin?query=核酸检查&_sug_type_=&s_from=input&_sug_=n&type=2&page=1&ie=utf8',
+    #               'https://weixin.sogou.com/weixin?query=核酸检查&_sug_type_=&s_from=input&_sug_=n&type=2&page=2&ie=utf8',
+    #               'https://weixin.sogou.com/weixin?query=核酸检查&_sug_type_=&s_from=input&_sug_=n&type=2&page=3&ie=utf8',
+    #               'https://weixin.sogou.com/weixin?query=核酸检查&_sug_type_=&s_from=input&_sug_=n&type=2&page=4&ie=utf8',
+    #               'https://weixin.sogou.com/weixin?query=核酸检查&_sug_type_=&s_from=input&_sug_=n&type=2&page=5&ie=utf8',
+    #               'https://weixin.sogou.com/weixin?query=核酸检查&_sug_type_=&s_from=input&_sug_=n&type=2&page=6&ie=utf8',
+    #               'https://weixin.sogou.com/weixin?query=核酸检查&_sug_type_=&s_from=input&_sug_=n&type=2&page=7&ie=utf8',
+    #               'https://weixin.sogou.com/weixin?query=核酸检查&_sug_type_=&s_from=input&_sug_=n&type=2&page=8&ie=utf8',
+    #               'https://weixin.sogou.com/weixin?query=核酸检查&_sug_type_=&s_from=input&_sug_=n&type=2&page=9&ie=utf8',
+    #               'https://weixin.sogou.com/weixin?query=核酸检查&_sug_type_=&s_from=input&_sug_=n&type=2&page=10&ie=utf8'
+    #               ]
 
 
-    template_url = 'https://weixin.sogou.com/weixin?query={}&_sug_type_=&s_from=input&_sug_=n&type=2&page={}&ie=utf8'
-    word = '核酸检查'
+    # 'https://weixin.sogou.com/weixin?query={}&_sug_type_=&s_from=input&_sug_=n&type=2&page={}&ie=utf8'
+    base_url = cacheGet('gzh_url')
+    word = cacheGet('gzh_keyWord')
+    pn = 1
 
+    def start_requests(self):
+        url = self.base_url.format(self.word, self.pn)
+        yield scrapy.Request(url=url, callback=self.parse)
 
     def parse(self, response):
 
@@ -34,12 +42,18 @@ class GzhSpider(scrapy.Spider):
         for li in ul:
             url = 'https://weixin.sogou.com' + li.xpath('./div[2]/h3/a/@href').extract_first()
             articleUrl = self.getArticleUrl(params, url, response.url)
+            time.sleep(3)  # 每获取一个文章都停留一会
             yield scrapy.Request(url=articleUrl, callback=self.detailParse, dont_filter=True)
 
-        # for page in range(2, 11):
-        #     print('12312313123123-----')
-        #     yield scrapy.Request(url=self.template_url.format(self.word, page), callback=self.parse)
-
+        page_inner = response.xpath('//*[@class="p-fy"]/a')
+        if len(page_inner) > 0 & self.pn < 20:
+            last_a = page_inner[-1]
+            if last_a.xpath('./text()').extract_first() == '下一页':
+                self.pn = self.pn + 1
+                url = self.base_url.format(self.word, self.pn)
+                print(url)
+                time.sleep(3)  # 获取下一页文章前停留一会
+                yield scrapy.Request(url=url, callback=self.parse)
 
     def detailParse(self, response):
         htmlContent = response.xpath('//div[@id="js_content"]')

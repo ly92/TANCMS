@@ -35,7 +35,6 @@ class SinanewsSpider(scrapy.Spider):
 
             title = re.findall('target="_blank">(.*?)</a>', title_a.get(), re.S)[0].replace('</font>', '').replace('<font color="red">', '')
 
-            print(url)
             author_time = item.xpath('./h2/span/text()').extract_first()
             if not author_time:
                 author_time = item.xpath('./div/h2/span/text()').extract_first()
@@ -51,6 +50,7 @@ class SinanewsSpider(scrapy.Spider):
             # item['content'] = ''
             item['author'] = author
             item['time'] = int(time.mktime(time_date))
+            time.sleep(3)  # 每获取一个文章都停留一会
             yield scrapy.Request(url=url, callback=self.parse_content, meta={'item': item})
 
         #翻页
@@ -60,7 +60,7 @@ class SinanewsSpider(scrapy.Spider):
         else:
             next_url = response.xpath('//*[@id="_function_code_page"]/a[12]/@href').extract_first()
         if next_url:
-            # time.sleep(10)
+            time.sleep(3)  # 获取下一页文章前停留一会
             yield scrapy.Request(url='https://search.sina.com.cn/' + next_url, callback=self.parse)
 
 

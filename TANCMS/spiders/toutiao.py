@@ -8,18 +8,20 @@ from selenium.webdriver import Firefox
 from selenium.webdriver.firefox.options import Options
 from ..libs.ES import isExitByUrl
 import requests
+from TANCMS.libs.redisHelper import cacheGet
 
 class ToutiaoSpider(scrapy.Spider):
     name = 'toutiao'
-    base_url = 'https://www.toutiao.com/api/search/content/?aid=24&app_name=web_search&offset={}&format=json&keyword={}&autoload=true&count=20&en_qc=1&cur_tab=1&from=search_tab&pd=synthesis&timestamp={}&_signature=oHuGVAAgEBC2A4AvKc6seKB6x0AAP9zO0qofiJ3FhiTBQ3gNCJ8.vSaBmrGj4SZdrsFpWFt51cjKW9XeH14ZmxRBirFuRvjBtWG3GI-FQqbTIZOgYbTf34u5fGNLTWPcPYU'
+    # base_url = 'https://www.toutiao.com/api/search/content/?aid=24&app_name=web_search&offset={}&format=json&keyword={}&autoload=true&count=20&en_qc=1&cur_tab=1&from=search_tab&pd=synthesis&timestamp={}&_signature=oHuGVAAgEBC2A4AvKc6seKB6x0AAP9zO0qofiJ3FhiTBQ3gNCJ8.vSaBmrGj4SZdrsFpWFt51cjKW9XeH14ZmxRBirFuRvjBtWG3GI-FQqbTIZOgYbTf34u5fGNLTWPcPYU'
     offset = 0
-    word = '核酸检测'
     session = requests.Session()
     nodejs_server = 'http://127.0.0.1:8000/toutiao'
 
+    base_url = cacheGet('sinaNews_url')
+    word = cacheGet('sinaNews_keyWord')
+
     def start_requests(self):
         ts = int(time.time() * 1000)
-
         url = self.base_url.format(self.offset, self.word, ts)
         # url = 'https://www.toutiao.com/a6820727747896148487/'
         yield scrapy.Request(url, callback=self.parse)
@@ -31,6 +33,7 @@ class ToutiaoSpider(scrapy.Spider):
         for item in data:
             # 舍弃悟空问答
             if 'abstract' in item and 'answer_count' not in item and 'app_info' in item and 'db_name' in item['app_info'] and item['app_info']['db_name'] == 'SITE':
+                time.sleep(3)  # 每获取一个文章都停留一会
                 article = ArticleItem()
                 article['title'] = item['title']
                 article['url'] = 'https://www.toutiao.com/a' + item['item_id']
@@ -47,8 +50,8 @@ class ToutiaoSpider(scrapy.Spider):
                 if len(content) > 0:
                     yield article
 
-                # yield scrapy.Request(url=article['url'], callback=self.parse_content, meta={'item': article})
         if has_more:
+            time.sleep(3)  # 获取下一页文章前停留一会
             self.offset = self.offset + 20
             ts = int(time.time() * 1000)
             url = self.base_url.format(self.offset, self.word, ts)

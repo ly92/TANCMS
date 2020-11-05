@@ -8,9 +8,7 @@ from TANCMS.libs.redisHelper import cacheGet
 
 class SdWindowSpider(scrapy.Spider):
     name = 'sdWindow'
-    word = '核酸检测'
-    page = 1
-    max_page = 1
+
 
     num1 = 0
     num2 = 0
@@ -21,10 +19,13 @@ class SdWindowSpider(scrapy.Spider):
 
     base_url = cacheGet('sdWindow_url')
     word = cacheGet('sdWindow_keyWord')
+    page = 1
+    max_page = 20
+
 
     def start_requests(self):
         url = self.base_url.format(self.word, self.page)
-        print(url)
+        # print(url)
         yield scrapy.Request(url=url, callback=self.parse, dont_filter=True)
 
     def parse(self, response):
@@ -43,7 +44,6 @@ class SdWindowSpider(scrapy.Spider):
             if isExitByUrl(url):
                 self.num2 = self.num2 + 1
                 continue
-            time.sleep(2)
             self.num3 = self.num3 + 1
             item = ArticleItem()
             item['title'] = result['title']
@@ -53,12 +53,12 @@ class SdWindowSpider(scrapy.Spider):
             item['source'] = '首都之窗'
             item['author'] = ''
             item['time'] = result['myValues']['DREDATE']
-            print(item)
-            # yield scrapy.Request(url=url, callback=self.parse_content, dont_filter=True, meta={'item': item})
+            time.sleep(3)  # 每获取一个文章都停留一会
+            yield scrapy.Request(url=url, callback=self.parse_content, dont_filter=True, meta={'item': item})
         if self.page < self.max_page:
             self.page = self.page + 1
             url = self.base_url.format(self.word, self.page)
-            time.sleep(3)
+            time.sleep(3) # 获取下一页文章前停留一会
             yield scrapy.Request(url=url, callback=self.parse, dont_filter=True)
         # print('-----------------')
         # print(self.num1)
