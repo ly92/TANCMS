@@ -212,9 +212,15 @@ def test():
     t = ss.xpath('./span/a/text()').extract()
     print(t)
 
+def test2():
+    s = 'Thu Nov 05 18:42:00 +0800 2020'
+    a = strToTimeStamp(s)
+    print(a)
+
+    print (time.strftime("%a %b %d %H:%M:%S %z %Y", time.localtime()))
 
 if __name__ == '__main__':
-    test()
+    test2()
 
     # get_signature()
     # for url in article_url_list:

@@ -1,16 +1,18 @@
 import scrapy
 import json
 from ..libs.ES import isExitByUrl
-from ..items import ArticleItem
+from ..libs.timeHelper import strToTimeStamp
+from ..items import BlogItem
 import time
-import re
-
+from TANCMS.libs.redisHelper import cacheGet
 
 class WeiboSpider(scrapy.Spider):
     name = 'weibo'
-    base_url = 'http://sinanews.sina.cn/interface/type_of_search.d.html?keyword={}&page={}&type=siftWb&size=20&newpage=0&chwm=&imei=&token=&did=&from=&oldchwm='
+
     page = 1
-    word = '核酸检测'
+    base_url = cacheGet('weibo_url')
+    word = cacheGet('weibo_keyWord')
+
 
     def start_requests(self):
         url = self.base_url.format(self.word, self.page)
@@ -23,43 +25,41 @@ class WeiboSpider(scrapy.Spider):
     def parse(self, response):
 
         res = json.loads(response.text)
-        data = res['data']['feed1']
+        data = res['data']['cards']
         for item in data:
-            url = item['url']
-            # if isExitByUrl(url):
-            #     continue
-            acticle = ArticleItem()
-            acticle['url'] = url
-            acticle['author'] = item['user']['name']
-            acticle['title'] = item['title'][0:30]
-            acticle['content'] = item['title']
-            acticle['htmlContent'] = ''
-            # time_str = '2020年' + item['time']
-            # timeArray = time.strptime(time_str, "%Y年%m月%d日 %H:%M")
-            # timeStamp = int(time.mktime(timeArray))
-            # acticle['creationTime'] = timeStamp
-            url2 = url + '?type=comment#_rnd' + str(int(time.time()))
-            yield scrapy.Request(url=url2, callback=self.content_parse, meta={'item': acticle})
+            url = 'https://m.weibo.cn/status/' + item['mblog']['id']
+            if isExitByUrl(url):
+                continue
+            blog = BlogItem()
+            blog['url'] = url
+            blog['blog_id'] = item['mblog']['id']
+            text = item['mblog']['text']
+            blog['title'] = text[0:30]
+            blog['content'] = text
+            blog['time'] = strToTimeStamp(item['mblog']['created_at'])
+            blog['source'] = '新浪微博'
 
-        if len(data) == 20:
-            time.sleep(3)
+            blog['author'] = item['mblog']['user']['screen_name']
+            blog['author_url'] = 'https://m.weibo.cn/u/' + item['mblog']['user']['id']
+            blog['auth_id'] = item['mblog']['user']['id']
+            if text.endswith('全文</a>') > 0:
+                url2 = 'https://m.weibo.cn/statuses/extend?id=' + item['mblog']['id']
+                yield scrapy.Request(url=url2, callback=self.content_parse, meta={'item': blog})
+            else:
+                yield blog
+
+        if len(data) == 10 & self.page < 20:
+            time.sleep(5)  # 获取下一页文章前停留一会
             self.page = self.page + 1
             url = self.base_url.format(self.word, self.page)
             yield scrapy.Request(url=url, callback=self.parse)
 
-
     def content_parse(self, response):
+        res = json.loads(response.text)
+        blog = response.meta['item']
+        if res['ok'] == 1 & res['data']['ok'] == 1:
+            htmlContent = res['data']['longTextContent']
+            blog['content'] = htmlContent
 
-        content = response.xpath('//*[@class="WB_text W_f14"]').get()
-
-        item = response.meta['item']
-        item['htmlContent'] = content
-
-        aaa = re.findall('<a(.*?)>', content, re.S)
-        for s in aaa:
-            content = content.replace(s, '')
-        content = content.replace('<a>', '').replace('</a>', '')
-        item['content'] = content
-
-        print(item)
+        yield blog
 

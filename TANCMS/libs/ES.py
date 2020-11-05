@@ -38,3 +38,7 @@ def isExitByUrl(url):
         return True
     else:
         return False
+
+
+def isOldComment(blog_id, time):
+    return False

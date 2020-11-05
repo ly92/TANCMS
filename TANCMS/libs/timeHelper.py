@@ -1,5 +1,11 @@
 import time
 
+def formatTime(time_str):
+    s = strToTimeStamp(time_str)
+    timeArray = time.localtime(s)
+    date = time.strftime("%a %b %d %H:%M:%S %z %Y", timeArray)
+    return date
+
 
 def strToTimeStamp(time_str):
     time_str = time_str.strip()
@@ -42,3 +48,15 @@ def strToTimeStamp(time_str):
                 format_str = '%Y-%m-%d'
         time_array = time.strptime(time_str, format_str)
         return int(time.mktime(time_array))
+
+    try:
+        format_str = '%a %b %d %H:%M:%S %z %Y'
+        time_array = time.strptime(time_str, format_str)
+        t = int(time.mktime(time_array))
+    except:
+        pass
+    finally:
+        if t > 0:
+            return t
+
+    return int(time.time())

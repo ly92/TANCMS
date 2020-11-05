@@ -3,9 +3,6 @@ import time
 import json
 from ..items import ArticleItem
 import re
-import urllib
-from selenium.webdriver import Firefox
-from selenium.webdriver.firefox.options import Options
 from ..libs.ES import isExitByUrl
 import requests
 from TANCMS.libs.redisHelper import cacheGet
@@ -17,8 +14,8 @@ class ToutiaoSpider(scrapy.Spider):
     session = requests.Session()
     nodejs_server = 'http://127.0.0.1:8000/toutiao'
 
-    base_url = cacheGet('sinaNews_url')
-    word = cacheGet('sinaNews_keyWord')
+    base_url = cacheGet('toutiao_url')
+    word = cacheGet('toutiao_keyWord')
 
     def start_requests(self):
         ts = int(time.time() * 1000)
@@ -33,7 +30,6 @@ class ToutiaoSpider(scrapy.Spider):
         for item in data:
             # 舍弃悟空问答
             if 'abstract' in item and 'answer_count' not in item and 'app_info' in item and 'db_name' in item['app_info'] and item['app_info']['db_name'] == 'SITE':
-                time.sleep(3)  # 每获取一个文章都停留一会
                 article = ArticleItem()
                 article['title'] = item['title']
                 article['url'] = 'https://www.toutiao.com/a' + item['item_id']
@@ -51,10 +47,11 @@ class ToutiaoSpider(scrapy.Spider):
                     yield article
 
         if has_more:
-            time.sleep(3)  # 获取下一页文章前停留一会
+
             self.offset = self.offset + 20
             ts = int(time.time() * 1000)
             url = self.base_url.format(self.offset, self.word, ts)
+            time.sleep(5)  # 获取下一页文章前停留一会
             yield scrapy.Request(url, callback=self.parse)
 
 

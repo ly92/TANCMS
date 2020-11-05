@@ -1,0 +1,60 @@
+
+新浪微博
+    blig-list
+    https://m.weibo.cn/api/container/getIndex?containerid=100103type=60&q={}&t=0&page_type=searchall&page={}
+
+    blogger
+    https://m.weibo.cn/u/5467852665
+    获取作者信息 和 containerid
+    https://m.weibo.cn/api/container/getIndex?type=uid&value=5467852665
+    获取文章列表以及containerid
+    https://m.weibo.cn/api/container/getIndex?type=uid&value=5467852665&containerid=1076035467852665&since_id=4567536097821308
+
+    detail
+    https://m.weibo.cn/status/4567882447716896
+    https://m.weibo.cn/statuses/extend?id=4567935177465858
+
+    comments
+    https://m.weibo.cn/comments/hotflow?id=4567646161349103&mid=4567646161349103&max_id_type=0
+    https://m.weibo.cn/comments/hotflow?id=4567882447716896&mid=4567882447716896&max_id=140496662684860&max_id_type=0
+    https://m.weibo.cn/comments/hotflow?id=4567882447716896&mid=4567882447716896&max_id=139259714114974&max_id_type=0
+
+    旧
+    http://sinanews.sina.cn/interface/type_of_search.d.html?keyword={}&page={}&type=siftWb&size=20&newpage=0&chwm=&imei=&token=&did=&from=&oldchwm=
+
+
+
+文章以及博客主体防重复
+    url or 标题（公众号）
+    网站ID（可选）
+
+
+
+
+
+
+轻松 爬虫
+    bjh
+
+需要登录
+    weibo（扩展）
+    gzh（扩展）
+    tieba（评论）
+
+文章 类型
+    gzh
+    sdWindow
+    sinaNews
+    toutiao
+    bjh
+
+博客+评论 类型
+    tieba
+    tianya
+    weibo
+
+可扩展
+    gzh
+    tieba
+    weibo
+

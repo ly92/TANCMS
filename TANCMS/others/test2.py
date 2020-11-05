@@ -1,13 +1,9 @@
 
 import requests
-from TANCMS.libs.ES import es_index, es_query
-import random
-import time
-import urllib.request
+from TANCMS.libs.ES import es_query
 import re
-import json
 
-from TANCMS.spiders.weibo2 import Weibo2Spider
+from TANCMS.others.weibo2 import Weibo2Spider
 from TANCMS.spiders.tieba import TiebaSpider
 
 

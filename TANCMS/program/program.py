@@ -95,8 +95,8 @@ def startSpider(type, word, url):
 
 
 if __name__ == '__main__':
-    prepareWork()
-
+    # prepareWork()
+    cacheSet('spider_list', '1,2,3,4,5,6')
 
 
 
