@@ -1,3 +1,8 @@
+文章以及博客主体统一爬虫
+
+博客的评论每天爬取两次，单独执行
+
+
 百家号
     https://www.baidu.com/s?q1={}&q2=&q3=&q4=&gpc=stf={},{}|stftype=1&ft=&q5=&q6=baijiahao.baidu.com&tn=baiduadv&pn={}
 
@@ -43,7 +48,7 @@
 
 指定博主
     blogger
-    https://m.weibo.cn/u/5467852665
+    https://m.weibo.cn/u/5467852665  //3266943013 央视网
     获取作者信息 和 containerid
     https://m.weibo.cn/api/container/getIndex?type=uid&value=5467852665
     获取文章列表以及containerid
@@ -98,3 +103,24 @@
     tieba
     weibo
 
+
+
+# if type == 'gzh':
+#
+# elif type == 'sdWindow':
+#
+# elif type == 'tieba':
+#
+# elif type == 'weibo':
+#
+# elif type == 'toutiao':
+#
+# elif type == 'sinaNews':
+#
+# elif type == 'bjh':
+#
+# elif type == 'tianya':
+
+# print(type, key, url)
+
+# print(network)

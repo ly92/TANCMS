@@ -1,7 +1,7 @@
 from scrapy.commands import ScrapyCommand
 from scrapy.utils.project import get_project_settings
 from TANCMS.libs.redisHelper import cacheGet
-
+import json
 
 class Command(ScrapyCommand):
     requires_project = True
@@ -13,9 +13,8 @@ class Command(ScrapyCommand):
         return 'run all spiders'
 
     def run(self, args, opts):
-        spider_list = cacheGet('spider_list')
-        print(spider_list)
-        spider_list = spider_list.split(',')
+        spider_list = cacheGet('spiders')
+        spider_list = json.loads(spider_list)
         for name in spider_list:
             print(name)
 

@@ -8,11 +8,8 @@ from TANCMS.libs.redisHelper import cacheGet
 
 class TianyaSpider(scrapy.Spider):
     name = 'tianya'
-    # base_url = 'https://search.tianya.cn/bbs?q={}&pn={}&s=4'
-    # word = '核酸检测'
+
     page = 1
-    last_time = int(time.time())
-    have_more = True
     base_url = cacheGet('tianya_url')
     word = cacheGet('tianya_keyWord')
 
@@ -43,7 +40,6 @@ class TianyaSpider(scrapy.Spider):
                 item['source'] = '天涯论坛'
                 item['author'] = author
                 item['time'] = timeStamp
-                self.last_time = timeStamp
                 time.sleep(2)
                 yield scrapy.Request(url=url, callback=self.parse_content, meta={'item': item})
             except:

@@ -1,7 +1,7 @@
 import requests
 import json
 import time
-from TANCMS.libs.redisHelper import cacheSet
+from TANCMS.libs.redisHelper import cacheSet, cacheGet
 from scrapy import cmdline
 from TANCMS.libs.async_call import async_call
 
@@ -14,6 +14,7 @@ def requestProgram():
     data = {"status": "1", "beginTime": beginTime, "endTime": endTime}
     res = request(url, data)
     return res['data']
+
 # 监控详情
 def programDetail(id):
     url = "http://iyanshan.com/spider/program/detail"
@@ -28,7 +29,6 @@ def networkDetail(id):
     res = request(url, data)
     return res['detail']
 
-
 # 处理请求
 def request(url, data):
     response = requests.post(url=url, json=data)
@@ -37,8 +37,6 @@ def request(url, data):
         return res['content']
     else:
         raise Exception(res['message'])
-
-
 
 
 # 准备爬虫
@@ -53,50 +51,62 @@ def prepareWork():
             keys = []
             for word in keyWords:
                 keys.append(word['word'])
-            # print(key)
             key = ' '.join(keys)
 
             # 网站
             networks = detail['networks']
+
+            spiders = [] # 需要开始的爬虫
+            bloggers = [] # 微博博主
+            bars = [] # 贴吧指定吧
             try:
                 for network in networks:
                     type = network['type']
                     url = network['url']
-                    try:
-                        startSpider(type, key, url)
-                    except(Exception):
-                        continue
-                    finally:
-                        # 当前方案下一个
-                        print(network['title'] + '  正在爬取方案: ' + detail['title'])
+                    if network['p_id'] == 0:
+                        spiders.append(type)
+                        cacheSet(type + '_keyWord', key)
+                        cacheSet(type + '_url', url)
+                    elif type == 'weibo':
+                        # 博主
+                        bloggers.append({
+                            'stepOne': network['stepOne'],
+                            'stepTwo': network['stepTwo']
+                        })
+                    elif type == 'tieba':
+                        bars.append({
+                            'bar': network['title'],
+                            'url': network['url'],
+                            'word': key
+                        })
+                if len(bloggers) > 0:
+                    spiders.append('weiboBlogger')
+                    cacheSet('bloggers', json.dumps(bloggers))
+                if len(bars) > 0:
+                    spiders.append('tiebaBlogger')
+                    cacheSet('bars', json.dumps(bars))
+
+                if len(spiders) > 0:
+                    # 开始爬虫
+                    print('正在爬取方案: ' + detail['title'] + ' 10分钟后下一个方案')
+                    cacheSet('spiders', json.dumps(spiders))
+                    cmdline.execute('scrapy crawlall'.split())
 
             except():
                 continue
             finally:
-                print('正在爬取方案: ' + detail['title'] + ' 准备下一个方案')
-                # 开始下一个监控方案前休息1分钟
-                # time.sleep(60)
+                # 开始下一个监控方案前休息10分钟
+                # time.sleep(600)
+                pass
     except():
         print('except')
     finally:
-        print('finally')
-
-
-
-# 开始爬虫
-# @async_call
-def startSpider(type, word, url):
-    cacheSet(type + '_keyWord', word)
-    cacheSet(type + '_url', url)
-    print(type, url, word)
-    shell = 'scrapy crawl ' + type
-    cmdline.execute(shell.split())
-
+        print('今日爬虫结束：finally')
 
 
 if __name__ == '__main__':
-    # prepareWork()
-    cacheSet('spider_list', '1,2,3,4,5,6')
+    prepareWork()
+    # cacheSet('spider_list', '1,2,3,4,5,6')
 
 
 
@@ -109,23 +119,3 @@ if __name__ == '__main__':
 
 
 
-
-# if type == 'gzh':
-#
-# elif type == 'sdWindow':
-#
-# elif type == 'tieba':
-#
-# elif type == 'weibo':
-#
-# elif type == 'toutiao':
-#
-# elif type == 'sinaNews':
-#
-# elif type == 'bjh':
-#
-# elif type == 'tianya':
-
-# print(type, key, url)
-
-# print(network)

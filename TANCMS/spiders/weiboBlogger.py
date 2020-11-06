@@ -10,22 +10,25 @@ from TANCMS.libs.redisHelper import cacheGet
 class WeibobloggerSpider(scrapy.Spider):
     name = 'weiboBlogger'
 
-    # https://m.weibo.cn/api/container/getIndex?type=uid&value={}
-    base_url = cacheGet('weiboBlogger_url')
-    bloggers = cacheGet('weiboBlogger_blogger')
+    bloggers = cacheGet('bloggers')
+    if bloggers:
+        bloggers = json.loads(bloggers)
 
-    list_url = 'https://m.weibo.cn/api/container/getIndex?type=uid&value=5467852665&containerid={}&since_id={}'
+    stepOne = ''
+    stepTwo = ''
     containerid = ''
     since_id = ''
 
     def start_requests(self):
         for blogger in self.bloggers:
-            url = self.base_url.format(blogger)
-        yield scrapy.Request(url=url, meta={
-            'dont_redirect': True,
-            'handle_httpstatus_list': [302]
-        }, callback=self.parse)
-        pass
+            self.stepOne = blogger['stepOne']
+            self.stepTwo = blogger['stepTwo']
+
+            yield scrapy.Request(url=self.stepOne, meta={
+                'dont_redirect': True,
+                'handle_httpstatus_list': [302]
+            }, callback=self.parse)
+            pass
 
     def parse(self, response):
         res = json.loads(response.text)
@@ -33,7 +36,7 @@ class WeibobloggerSpider(scrapy.Spider):
             for tab in res['data']['tabsInfo']['tabs']:
                 if tab['type'] == 'weibo':
                     self.containerid = tab['containerid']
-                    url = self.list_url.format(self.containerid, '')
+                    url = self.stepTwo.format(self.containerid, '')
                     time.sleep(5)  # 获取下一页文章前停留一会
                     yield scrapy.Request(url=url, meta={
                         'dont_redirect': True,
@@ -68,7 +71,7 @@ class WeibobloggerSpider(scrapy.Spider):
                     else:
                         yield blog
 
-                    url = self.list_url.format(self.containerid, self.since_id)
+                    url = self.stepTwo.format(self.containerid, self.since_id)
                     time.sleep(5)  # 获取下一页文章前停留一会
                     yield scrapy.Request(url=url, meta={
                         'dont_redirect': True,

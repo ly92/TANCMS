@@ -233,8 +233,24 @@ def test4():
     page = re.findall(r'pn=(\d+)', href, re.S)
     print(page)
 
+from TANCMS.libs.redisHelper import cacheSet, cacheGet
+
+def test5():
+    cacheSet('test', '2322')
+
+    for i in range(1, 20):
+        aa = cacheGet('test')
+        if aa:
+            print(aa)
+        else:
+            print('ee')
+        time.sleep(1)
+
+
+
+
 if __name__ == '__main__':
-    test4()
+    test5()
 
     # get_signature()
     # for url in article_url_list:

@@ -6,21 +6,25 @@ from TANCMS.libs.redisHelper import cacheGet
 from ..items import BlogItem
 from ..libs.ES import isExitByUrl
 from urllib import parse
+import json
 
 class TiebabloggerSpider(scrapy.Spider):
     name = 'tiebaBlogger'
 
+    bars = cacheGet('bars')
+    if bars:
+        bars = json.loads(bars)
+
+    base_url = ''
+    word = ''
     page = 1
-
-    base_url = cacheGet('tiebaBlogger_url')
-    bars = cacheGet('tiebaBlogger_bars')
-    word = cacheGet('tiebaBlogger_keyWord')
-
 
     def start_requests(self):
         for bar in self.bars:
             self.page = 1
-            url = self.base_url.format(bar, self.word, self.page)
+            self.base_url = bar['url']
+            self.word = bar['word']
+            url = self.base_url.format(self.word, self.page)
             yield scrapy.Request(url=url, callback=self.parse_tie)
 
 

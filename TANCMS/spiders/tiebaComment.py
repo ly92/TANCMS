@@ -13,9 +13,6 @@ class TiebacommentSpider(scrapy.Spider):
     # 第一步获取详情，得到回帖共多少页
     # 第二步从后向前取得每楼的评论，直到有重复楼
 
-    # 二级评论 tid 帖的ID  pid 评论的ID t 13位时间戳
-    comments_url = 'https://tieba.baidu.com/p/comment?tid={}&pid={}&pn=1&t={}'
-
     base_url = ''
     blogs = cacheGet('tiebaComment_blogs')
     blog_id = ''
@@ -91,7 +88,8 @@ class TiebacommentSpider(scrapy.Spider):
 
 
 
-
+    # 二级评论 tid 帖的ID  pid 评论的ID t 13位时间戳
+    comments_url = 'https://tieba.baidu.com/p/comment?tid={}&pid={}&pn=1&t={}'
     # 解析评论的回复, 二级评论
     def parse_comments(self, response):
 
