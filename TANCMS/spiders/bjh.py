@@ -35,7 +35,7 @@ class BjhSpider(scrapy.Spider):
             time.sleep(3)  # 每获取一个文章都停留一会
             yield scrapy.Request(url=url, callback=self.parse_content, meta={'item': item})
         page_inner = response.xpath('//*[@class="page-inner"]/a')
-        if len(page_inner) > 0 & self.pn < 20:
+        if len(page_inner) > 0 & self.pn < 400:
             last_a = page_inner[-1]
             if last_a.xpath('./text()').extract_first() == '下一页 >':
                 self.pn = self.pn + 10

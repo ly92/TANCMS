@@ -7,17 +7,21 @@ from ..items import BlogItem
 from ..libs.ES import isExitByUrl
 from urllib import parse
 
-class TiebaSpider(scrapy.Spider):
-    name = 'tieba'
+class TiebabloggerSpider(scrapy.Spider):
+    name = 'tiebaBlogger'
 
     page = 1
-    base_url = cacheGet('tieba_url')
-    word = cacheGet('tieba_keyWord')
+
+    base_url = cacheGet('tiebaBlogger_url')
+    bars = cacheGet('tiebaBlogger_bars')
+    word = cacheGet('tiebaBlogger_keyWord')
 
 
     def start_requests(self):
-        url = self.base_url.format('', self.word, self.page)
-        yield scrapy.Request(url=url, callback=self.parse_tie)
+        for bar in self.bars:
+            self.page = 1
+            url = self.base_url.format(bar, self.word, self.page)
+            yield scrapy.Request(url=url, callback=self.parse_tie)
 
 
     # 解析贴吧内容列表

@@ -11,7 +11,7 @@ class WeibocommentSpider(scrapy.Spider):
     name = 'weiboComment'
 
     list_url = 'https://m.weibo.cn/comments/hotflow?id={}&mid={}&max_id={}&max_id_type={}'
-    blogs = cacheGet('weiboBlogger_blogs')
+    blogs = cacheGet('weiboComment_blogs')
 
     blog_id = ''
     max_id = ''
@@ -39,6 +39,7 @@ class WeibocommentSpider(scrapy.Spider):
                 comment['time'] = item['created_at']
                 if not isOldComment(self.blog_id, comment['time']):
                     comment['blog_id'] = self.blog_id
+                    comment['id'] = item['id']
                     comment['content'] = item['text']
                     comment['author'] = item['user']['screen_name']
                     comment['author_url'] = 'https://m.weibo.cn/u/' + item['user']['id']

@@ -44,12 +44,12 @@ class TianyaSpider(scrapy.Spider):
                 item['author'] = author
                 item['time'] = timeStamp
                 self.last_time = timeStamp
+                time.sleep(2)
                 yield scrapy.Request(url=url, callback=self.parse_content, meta={'item': item})
             except:
                 pass
-            time.sleep(2)
 
-        if len(ul) > 0 and int(time.time()) - self.last_time < 86400 * 30:
+        if len(ul) > 0 and self.page < 40:
             self.page = self.page + 1
             url = self.base_url.format(self.word, self.page)
             time.sleep(3)

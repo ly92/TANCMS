@@ -13,22 +13,23 @@ class SinanewsSpider(scrapy.Spider):
 
     base_url = cacheGet('sinaNews_url')
     word = cacheGet('sinaNews_keyWord')
+    page = 0
 
     def start_requests(self):
-        yield scrapy.Request(self.base_url.format(self.word), callback=self.parse)
+        yield scrapy.Request(self.base_url.format(self.word, self.page), callback=self.parse)
 
     def parse(self, response):
-        result = response.xpath('//*[@id="result"]')
-        for i in range(4, 14):
-            item = result.xpath('./div[{}]'.format(i))
+        result = response.xpath('//*[@id="box-result clearfix"]/div')
+        for item in result:
             title_a = item.xpath('./h2/a')
             if not title_a:
                 title_a = item.xpath('./div/h2/a')
             url = title_a.xpath('./@href').extract_first()
             if 'html?from' in url:
-                url = url.replace('?', '')
+                url_arr = url.split('?')
+                if len(url_arr) > 0:
+                    url = url_arr[0]
                 url = re.findall('(.*?)from', url, re.S)[0]
-
             #判断是否已爬取
             if isExitByUrl(url):
                 continue
@@ -53,15 +54,14 @@ class SinanewsSpider(scrapy.Spider):
             time.sleep(3)  # 每获取一个文章都停留一会
             yield scrapy.Request(url=url, callback=self.parse_content, meta={'item': item})
 
-        #翻页
-        next_page = response.xpath('//*[@id="_function_code_page"]/a[10]/text()').extract_first()
-        if next_page == '下一页':
-            next_url = response.xpath('//*[@id="_function_code_page"]/a[10]/@href').extract_first()
-        else:
-            next_url = response.xpath('//*[@id="_function_code_page"]/a[12]/@href').extract_first()
-        if next_url:
-            time.sleep(3)  # 获取下一页文章前停留一会
-            yield scrapy.Request(url='https://search.sina.com.cn/' + next_url, callback=self.parse)
+        page_inner = response.xpath('//*[@class="pagebox"]/a')
+        if len(page_inner) > 0 & self.page < 40:
+            last_a = page_inner[-1]
+            if last_a.xpath('./text()').extract_first() == '下一页':
+                self.page = self.page + 1
+                url = self.base_url.format(self.word, self.page)
+                time.sleep(3)  # 获取下一页文章前停留一会
+                yield scrapy.Request(url=url, callback=self.parse)
 
 
     # 进入到详情页面 爬取新闻内容

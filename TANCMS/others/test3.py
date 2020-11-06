@@ -7,6 +7,7 @@ import re
 import html
 import json
 from TANCMS.libs.timeHelper import strToTimeStamp
+import urllib
 
 
 article_url_list = [
@@ -219,8 +220,21 @@ def test2():
 
     print (time.strftime("%a %b %d %H:%M:%S %z %Y", time.localtime()))
 
+def test3():
+    url = 'https://tieba.baidu.com/home/main?un=%D3%E3%CF%EF%C3%A8%B9%E9mo'
+    # url = '%D3%E3%CF%EF%C3%A8%B9%E9mo'
+    # url2 = parse.unquote(url)
+    ss = '鱼巷猫归mo'
+    print(urllib.parse.unquote(url, encoding='GBK'))
+    print(urllib.parse.quote(ss, encoding='GBK'))
+
+def test4():
+    href = '/p/7068420920?pn=12'
+    page = re.findall(r'pn=(\d+)', href, re.S)
+    print(page)
+
 if __name__ == '__main__':
-    test2()
+    test4()
 
     # get_signature()
     # for url in article_url_list:
