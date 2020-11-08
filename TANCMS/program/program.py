@@ -45,6 +45,10 @@ def prepareWork():
         list = requestProgram()
         for program in list:
             detail = programDetail(program['id'])
+
+            cacheSet('program_id', $program['id'])
+            cacheSet('program_title', $program['title'])
+
             # print(detail)
             # 搜索关键词
             keyWords = detail['keywords']

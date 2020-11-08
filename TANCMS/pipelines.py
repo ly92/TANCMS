@@ -13,6 +13,8 @@ from scrapy.pipelines.images import ImagesPipeline
 
 class TancmsPipeline:
     def process_item(self, item, spider):
+
+
         should_add = True
         if item['source'] == '微信公众号':
             if isExitByTitle(item['title']):

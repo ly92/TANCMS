@@ -50,7 +50,7 @@ class TiebacommentSpider(scrapy.Spider):
             if not isOldComment(self.blog_id, comment['time']):
                 comment['blog_id'] = self.blog_id
                 comment['content'] = content
-                comment['id'] = floor
+                comment['comment_id'] = floor
                 comment['author'] = author
                 comment['author_url'] = author_url
                 yield comment

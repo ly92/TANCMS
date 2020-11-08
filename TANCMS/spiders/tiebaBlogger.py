@@ -55,8 +55,8 @@ class TiebabloggerSpider(scrapy.Spider):
                 blog['time'] = time_str
                 blog['source'] = '百度贴吧'
 
-                blog['ba'] = ba
-                blog['ba_url'] = 'https://tieba.baidu.com/f?kw=' + ba
+                blog['bar'] = ba
+                blog['bar_url'] = 'https://tieba.baidu.com/f?kw=' + ba
 
                 blog['author'] = author
                 author_url = div.xpath('./a[2]/@href').extract_first()

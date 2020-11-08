@@ -63,7 +63,7 @@ class WeibobloggerSpider(scrapy.Spider):
 
                     blog['author'] = item['mblog']['user']['screen_name']
                     blog['author_url'] = 'https://m.weibo.cn/u/' + item['mblog']['user']['id']
-                    blog['auth_id'] = item['mblog']['user']['id']
+                    blog['author_id'] = item['mblog']['user']['id']
                     if text.endswith('全文</a>') > 0:
                         url2 = 'https://m.weibo.cn/statuses/extend?id=' + item['mblog']['id']
                         time.sleep(2)  # 获取下一页文章前停留一会

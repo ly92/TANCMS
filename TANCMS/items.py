@@ -19,14 +19,25 @@ class ImageItem(scrapy.Item):
     url = scrapy.Field()
 
 class BlogItem(scrapy.Item):
+    blog_id = scrapy.Field()
     title = scrapy.Field()
     author = scrapy.Field()
+    author_id = scrapy.Field()
+    author_url = scrapy.Field()
     time = scrapy.Field()
     url = scrapy.Field()
     content = scrapy.Field()
     source = scrapy.Field()
 
+    bar = scrapy.Field()
+    bar_url = scrapy.Field()
+
 class CommentItem(scrapy.Item):
+    comment_id = scrapy.Field()
+    blog_id = scrapy.Field()
     time = scrapy.Field()
     content = scrapy.Field()
     author = scrapy.Field()
+    author_id = scrapy.Field()
+    author_url = scrapy.Field()
+    author_url = scrapy.Field()
