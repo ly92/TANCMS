@@ -1,10 +1,10 @@
 import scrapy
 import re
 import time
-from ..items import ArticleItem
+from ..items import BlogItem
 from ..libs.ES import isExitByUrl
 from TANCMS.libs.redisHelper import cacheGet
-
+from ..libs.timeHelper import strToTimeStamp
 
 class TianyaSpider(scrapy.Spider):
     name = 'tianya'
@@ -30,18 +30,19 @@ class TianyaSpider(scrapy.Spider):
                 title = re.findall('target="_blank">(.*?)</a>', title, re.S)[0]
                 author = li.xpath('./p/a[2]/text()').extract_first()
                 time_str = li.xpath('./p/span[1]/text()').extract_first()
-                timeArray = time.strptime(time_str, "%Y-%m-%d %H:%M:%S")
-                timeStamp = int(time.mktime(timeArray))
-                item = ArticleItem()
-                item['title'] = title
-                item['url'] = url
-                item['htmlContent'] = ''
-                item['content'] = ''
-                item['source'] = '天涯论坛'
-                item['author'] = author
-                item['time'] = timeStamp
+
+                blog = BlogItem()
+                blog['title'] = title
+                blog['url'] = url
+                blog['blog_id'] = ''
+                blog['content'] = ''
+                blog['source'] = '天涯论坛'
+                blog['author'] = author
+                blog['author_url'] = 'https://m.weibo.cn/u/' + item['mblog']['user']['id']
+                blog['author_id'] = item['mblog']['user']['id']
+                blog['time'] = strToTimeStamp(time_str)
                 time.sleep(2)
-                yield scrapy.Request(url=url, callback=self.parse_content, meta={'item': item})
+                yield scrapy.Request(url=url, callback=self.parse_content, meta={'item': blog})
             except:
                 pass
 

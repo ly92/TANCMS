@@ -10,36 +10,42 @@ from TANCMS.libs.ES import *
 import time
 import scrapy
 from scrapy.pipelines.images import ImagesPipeline
+import json
 
 class TancmsPipeline:
     def process_item(self, item, spider):
+        print('-------------------------------------------11111111111-------')
+        print(item, item.__dict__['_values'])
+        print(json.dumps(item.__dict__['_values']))
+        print('----2---------------------------------------11111111111-------')
 
 
-        should_add = True
-        if item['source'] == '微信公众号':
-            if isExitByTitle(item['title']):
-                should_add = False
-        if item['source'] == '新浪新闻' or item['source'] == '微博' or item['source'] == '今日头条':
-            if isExitByUrl(item['url']):
-                should_add = False
-        if should_add:
-            body = {
-                'programId': 1,
-                'url': item['url'],
-                'author': item['author'],
-                'source': item['source'],
-                'title': item['title'],
-                'content': item['content'],
-                'htmlContent': item['htmlContent'],
-                'creationTime': int(item['time']),
-                'addTime': int(time.time())
-            }
-            result = es_index('temp_document', body)
-            print('---------result-----------')
-            print(result)
-            # {'_index': 'temp_document', '_type': '_doc', '_id': 'CCrHdXMBiOj1K8cb4WpR', '_version': 1, 'result': 'created',
-            #  '_shards': {'total': 2, 'successful': 2, 'failed': 0}, '_seq_no': 0, '_primary_term': 1}
-            print('--------result------------')
+        #
+        # should_add = True
+        # if item['source'] == '微信公众号':
+        #     if isExitByTitle(item['title']):
+        #         should_add = False
+        # if item['source'] == '新浪新闻' or item['source'] == '微博' or item['source'] == '今日头条':
+        #     if isExitByUrl(item['url']):
+        #         should_add = False
+        # if should_add:
+        #     body = {
+        #         'programId': 1,
+        #         'url': item['url'],
+        #         'author': item['author'],
+        #         'source': item['source'],
+        #         'title': item['title'],
+        #         'content': item['content'],
+        #         'htmlContent': item['htmlContent'],
+        #         'creationTime': int(item['time']),
+        #         'addTime': int(time.time())
+        #     }
+        #     result = es_index('temp_document', body)
+        #     print('---------result-----------')
+        #     print(result)
+        #     # {'_index': 'temp_document', '_type': '_doc', '_id': 'CCrHdXMBiOj1K8cb4WpR', '_version': 1, 'result': 'created',
+        #     #  '_shards': {'total': 2, 'successful': 2, 'failed': 0}, '_seq_no': 0, '_primary_term': 1}
+        #     print('--------result------------')
 
         return item
 

@@ -246,11 +246,15 @@ def test5():
             print('ee')
         time.sleep(1)
 
+def test6():
+    ss = 'http://bbs.tianya.cn/post-stocks-213-1.shtml'
+    ids = re.findall('stocks-(.d)-', ss, re.S)
 
+    print(ids[0])
 
 
 if __name__ == '__main__':
-    test5()
+    test6()
 
     # get_signature()
     # for url in article_url_list:

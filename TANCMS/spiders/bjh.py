@@ -3,8 +3,9 @@ import time
 import re
 from ..libs.ES import isExitByUrl
 import json
-from TANCMS.items import ArticleItem
+# from TANCMS.items import ArticleItem
 from TANCMS.libs.redisHelper import cacheGet
+from TANCMS.items import BlogItem, ArticleItem, CommentItem
 
 class BjhSpider(scrapy.Spider):
     name = 'bjh'
@@ -15,34 +16,42 @@ class BjhSpider(scrapy.Spider):
     word = cacheGet('bjh_keyWord')
 
     def start_requests(self):
-        url = self.base_url.format(self.word, self.begin, self.end, self.pn)
+        # url = self.base_url.format(self.word, self.begin, self.end, self.pn)
         # url = 'https://www.baidu.com/s?wd=site%3A(baijiahao.baidu.com)%20%E6%A0%B8%E9%85%B8%E6%A3%80%E6%B5%8B%20%22%E6%A0%B8%E9%85%B8%E6%A3%80%E6%B5%8B%22&pn=590&oq=site%3A(baijiahao.baidu.com)%20%E6%A0%B8%E9%85%B8%E6%A3%80%E6%B5%8B%20%22%E6%A0%B8%E9%85%B8%E6%A3%80%E6%B5%8B%22&tn=baiduadv&ie=utf-8&rsv_pq=8376447d00012935&rsv_t=f417SpYSfphz919Y8r5JmFgQurFxLYlFJFoeRnjLBVKkfWTYzBiYkw1xmnUfe14&gpc=stf%3D1604459975.888%2C1604546375.888%7Cstftype%3D1'
+        url = 'https://www.baidu.com'
         yield scrapy.Request(url=url, callback=self.parse)
 
     def parse(self, response):
-        divs = response.xpath('//*[@class="result c-container "]')
-        for div in divs:
-            url = div.xpath('./h3/a/@href').extract_first()
-            title_str = div.xpath('./h3/a').get()
-            title_str = title_str.replace('<em>', '').replace('</em>', '')
-            title = re.findall('target="_blank">(.*?)</a>', title_str, re.S)[0]
-            item = ArticleItem()
-            item['title'] = title
-            item['url'] = url
-            item['htmlContent'] = ''
-            item['content'] = ''
-            item['source'] = '百家号'
-            time.sleep(3)  # 每获取一个文章都停留一会
-            yield scrapy.Request(url=url, callback=self.parse_content, meta={'item': item})
-        page_inner = response.xpath('//*[@class="page-inner"]/a')
-        if len(page_inner) > 0 & self.pn < 400:
-            last_a = page_inner[-1]
-            if last_a.xpath('./text()').extract_first() == '下一页 >':
-                self.pn = self.pn + 10
-                url = self.base_url.format(self.word, self.begin, self.end, self.pn)
-                print(url)
-                time.sleep(3)  # 获取下一页文章前停留一会
-                yield scrapy.Request(url=url, callback=self.parse)
+
+        item = BlogItem()
+        item['title'] = '1231231'
+        item['url'] = 'url'
+        yield item
+
+        #
+        # divs = response.xpath('//*[@class="result c-container "]')
+        # for div in divs:
+        #     url = div.xpath('./h3/a/@href').extract_first()
+        #     title_str = div.xpath('./h3/a').get()
+        #     title_str = title_str.replace('<em>', '').replace('</em>', '')
+        #     title = re.findall('target="_blank">(.*?)</a>', title_str, re.S)[0]
+        #     item = ArticleItem()
+        #     item['title'] = title
+        #     item['url'] = url
+        #     item['htmlContent'] = ''
+        #     item['content'] = ''
+        #     item['source'] = '百家号'
+        #     time.sleep(3)  # 每获取一个文章都停留一会
+        #     yield scrapy.Request(url=url, callback=self.parse_content, meta={'item': item})
+        # page_inner = response.xpath('//*[@class="page-inner"]/a')
+        # if len(page_inner) > 0 & self.pn < 400:
+        #     last_a = page_inner[-1]
+        #     if last_a.xpath('./text()').extract_first() == '下一页 >':
+        #         self.pn = self.pn + 10
+        #         url = self.base_url.format(self.word, self.begin, self.end, self.pn)
+        #         print(url)
+        #         time.sleep(3)  # 获取下一页文章前停留一会
+        #         yield scrapy.Request(url=url, callback=self.parse)
 
     def parse_content(self, response):
         s_advert = re.findall('var s_advert = (.*?);', response.text, re.S)[0]
