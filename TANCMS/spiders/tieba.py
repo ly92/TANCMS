@@ -41,7 +41,9 @@ class TiebaSpider(scrapy.Spider):
             if not isExitByUrl(url):
                 blog = BlogItem()
                 blog['url'] = url
-                blog['blog_id'] = div.xpath('./span/a/@data-tid').extract_first()
+                ids = re.findall('stocks-(.d)-', url, re.S)
+                if len(ids) > 0:
+                    blog['blog_id'] = ids[0]
                 blog['title'] = title
                 blog['content'] = ''
                 blog['time'] = time_str
