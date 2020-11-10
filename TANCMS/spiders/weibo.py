@@ -1,7 +1,7 @@
 import scrapy
 import json
-from ..libs.ES import isExitByUrl
-from ..libs.timeHelper import strToTimeStamp
+from ..libs.ES import isExitBlogByUrl
+from ..libs.timeHelper import formatTime
 from ..items import BlogItem
 import time
 from TANCMS.libs.redisHelper import cacheGet
@@ -25,10 +25,15 @@ class WeiboSpider(scrapy.Spider):
     def parse(self, response):
 
         res = json.loads(response.text)
-        data = res['data']['cards']
-        for item in data:
+
+        data = res['data']
+        if 'cards' in data.keys():
+            cards = data['cards']
+        else:
+            cards = []
+        for item in cards:
             url = 'https://m.weibo.cn/status/' + item['mblog']['id']
-            if isExitByUrl(url):
+            if isExitBlogByUrl(url):
                 continue
             blog = BlogItem()
             blog['url'] = url
@@ -36,7 +41,7 @@ class WeiboSpider(scrapy.Spider):
             text = item['mblog']['text']
             blog['title'] = text[0:30]
             blog['content'] = text
-            blog['time'] = strToTimeStamp(item['mblog']['created_at'])
+            blog['time'] = formatTime(item['mblog']['created_at'])
             blog['source'] = '新浪微博'
 
             blog['author'] = item['mblog']['user']['screen_name']

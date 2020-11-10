@@ -1,10 +1,12 @@
 import scrapy
 import json
 from ..items import ArticleItem
-from ..libs.ES import isExitByUrl
+from ..libs.ES import isExitArticleByUrl
 from urllib.parse import urlparse
 import time
 from TANCMS.libs.redisHelper import cacheGet
+from TANCMS.libs.timeHelper import formatTime
+
 
 class SdWindowSpider(scrapy.Spider):
     name = 'sdWindow'
@@ -20,7 +22,6 @@ class SdWindowSpider(scrapy.Spider):
     base_url = cacheGet('sdWindow_url')
     word = cacheGet('sdWindow_keyWord')
     page = 1
-    max_page = 20
 
 
     def start_requests(self):
@@ -41,7 +42,7 @@ class SdWindowSpider(scrapy.Spider):
             if parse.path.startswith('/shipin/'):
                 self.num1 = self.num1 + 1
                 continue
-            if isExitByUrl(url):
+            if isExitArticleByUrl(url):
                 self.num2 = self.num2 + 1
                 continue
             self.num3 = self.num3 + 1
@@ -52,14 +53,16 @@ class SdWindowSpider(scrapy.Spider):
             item['content'] = ''
             item['source'] = '首都之窗'
             item['author'] = ''
-            item['time'] = result['myValues']['DREDATE']
+            item['time'] = formatTime(result['myValues']['DREDATE'])
             time.sleep(3)  # 每获取一个文章都停留一会
             yield scrapy.Request(url=url, callback=self.parse_content, dont_filter=True, meta={'item': item})
-        if self.page < self.max_page:
+        if len(resultList) > 0 & self.page < 20:
             self.page = self.page + 1
             url = self.base_url.format(self.word, self.page)
             time.sleep(3) # 获取下一页文章前停留一会
             yield scrapy.Request(url=url, callback=self.parse, dont_filter=True)
+
+
         # print('-----------------')
         # print(self.num1)
         # print(self.num2)
@@ -72,8 +75,15 @@ class SdWindowSpider(scrapy.Spider):
     def parse_content(self, response):
         item = response.meta['item']
         author = response.xpath('//*[@id="othermessage"]/p/span[2]/text()').extract_first()
-        item['author'] = author.replace('来源：', '')
+        if not author:
+            author = response.xpath('//*[@class="resource"]/text()').extract_first()
+        if author:
+            item['author'] = author.replace('来源：', '')
+        else:
+            item['author'] = ''
         content_html = response.xpath('//*[@class="view TRS_UEDITOR trs_paper_default trs_web"]//p')
+        if not content_html:
+            content_html = response.xpath('//*[@class="txtDetail"]//p')
         content = ''
         htmlContent = ''
         for p in content_html:

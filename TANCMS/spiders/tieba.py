@@ -1,10 +1,10 @@
 import scrapy
 import re
-from ..libs.timeHelper import strToTimeStamp
+from ..libs.timeHelper import formatTime
 import time
 from TANCMS.libs.redisHelper import cacheGet
 from ..items import BlogItem
-from ..libs.ES import isExitByUrl
+from ..libs.ES import isExitBlogByUrl
 from urllib import parse
 
 class TiebaSpider(scrapy.Spider):
@@ -16,7 +16,7 @@ class TiebaSpider(scrapy.Spider):
 
 
     def start_requests(self):
-        url = self.base_url.format('', self.word, self.page)
+        url = self.base_url.format(self.word, self.page)
         yield scrapy.Request(url=url, callback=self.parse_tie)
 
 
@@ -32,18 +32,15 @@ class TiebaSpider(scrapy.Spider):
             ba = div.xpath('./a[1]/font/text()').extract_first()
             author = div.xpath('./a[2]/font/text()').extract_first()
             time = div.xpath('./font/text()').extract_first()
-            time_str = strToTimeStamp(time)
+            time_str = formatTime(time)
             url = div.xpath('./span/a/@href').extract_first()
-            url = 'https://tieba.baidu.com' + re.findall('(.*?)\?', url, re.S)[0]
-            url_arr = url.split('?')
+            url_arr = re.findall('(.*?)\?', url, re.S)
             if len(url_arr) > 0:
                 url = url_arr[0]
-            if not isExitByUrl(url):
+            if not isExitBlogByUrl(url):
                 blog = BlogItem()
                 blog['url'] = url
-                ids = re.findall('stocks-(.d)-', url, re.S)
-                if len(ids) > 0:
-                    blog['blog_id'] = ids[0]
+                blog['blog_id'] = url.replace('https://tieba.baidu.com/p/', '')
                 blog['title'] = title
                 blog['content'] = ''
                 blog['time'] = time_str
@@ -66,7 +63,6 @@ class TiebaSpider(scrapy.Spider):
                     print(url)
                     time.sleep(3)  # 获取下一页文章前停留一会
                     yield scrapy.Request(url=url, callback=self.parse)
-                yield scrapy.Request(url=url, callback=self.parse_content)
 
 
 

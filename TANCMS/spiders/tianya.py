@@ -2,9 +2,9 @@ import scrapy
 import re
 import time
 from ..items import BlogItem
-from ..libs.ES import isExitByUrl
+from ..libs.ES import isExitBlogByUrl
 from TANCMS.libs.redisHelper import cacheGet
-from ..libs.timeHelper import strToTimeStamp
+from ..libs.timeHelper import formatTime
 
 class TianyaSpider(scrapy.Spider):
     name = 'tianya'
@@ -12,6 +12,8 @@ class TianyaSpider(scrapy.Spider):
     page = 1
     base_url = cacheGet('tianya_url')
     word = cacheGet('tianya_keyWord')
+
+
 
     def start_requests(self):
 
@@ -23,24 +25,29 @@ class TianyaSpider(scrapy.Spider):
         for li in ul:
             try:
                 url = li.xpath('./div/h3/a/@href').extract_first()
-                if isExitByUrl(url):
+                if isExitBlogByUrl(url):
                     continue
                 title = li.xpath('./div/h3/a').get()
                 title = title.replace('<span class="kwcolor">', '').replace('</span>', '')
                 title = re.findall('target="_blank">(.*?)</a>', title, re.S)[0]
                 author = li.xpath('./p/a[2]/text()').extract_first()
+                author_url = li.xpath('./p/a[2]/@href').extract_first()
                 time_str = li.xpath('./p/span[1]/text()').extract_first()
 
                 blog = BlogItem()
                 blog['title'] = title
                 blog['url'] = url
-                blog['blog_id'] = ''
+                ids = re.findall(r'-(\d+)-1\.', url, re.S)
+                if len(ids) > 0:
+                    blog['blog_id'] = ids[0]
+                else:
+                    blog['blog_id'] = ''
                 blog['content'] = ''
                 blog['source'] = '天涯论坛'
                 blog['author'] = author
-                blog['author_url'] = 'https://m.weibo.cn/u/' + item['mblog']['user']['id']
-                blog['author_id'] = item['mblog']['user']['id']
-                blog['time'] = strToTimeStamp(time_str)
+                blog['author_url'] = author_url
+                blog['author_id'] = author_url.replace('http://www.tianya.cn/', '')
+                blog['time'] = formatTime(time_str)
                 time.sleep(2)
                 yield scrapy.Request(url=url, callback=self.parse_content, meta={'item': blog})
             except:

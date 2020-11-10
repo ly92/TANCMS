@@ -1,6 +1,6 @@
 import scrapy
 import re
-from ..libs.timeHelper import strToTimeStamp
+from ..libs.timeHelper import formatTime
 import time
 from TANCMS.libs.redisHelper import cacheGet
 from ..items import CommentItem
@@ -46,7 +46,7 @@ class TiebacommentSpider(scrapy.Spider):
                 time_str = div.xpath('.//*[@class="post-tail-wrap"]/span[3]/text()').extract_first()
 
             comment = CommentItem()
-            comment['time'] = strToTimeStamp(time_str)
+            comment['time'] = formatTime(time_str)
             if not isOldComment(self.blog_id, comment['time']):
                 comment['blog_id'] = self.blog_id
                 comment['content'] = content

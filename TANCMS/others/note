@@ -5,15 +5,18 @@
 
 百家号
     https://www.baidu.com/s?q1={}&q2=&q3=&q4=&gpc=stf={},{}|stftype=1&ft=&q5=&q6=baijiahao.baidu.com&tn=baiduadv&pn={}
+    https://www.baidu.com/s?q1=核酸检测&q2=&q3=&q4=|stftype=1&ft=&q5=&q6=baijiahao.baidu.com&tn=baiduadv&pn=1
 
 公众号
     https://weixin.sogou.com/weixin?query={}&_sug_type_=&s_from=input&_sug_=n&type=2&page={}&ie=utf8
+    https://weixin.sogou.com/weixin?query=核酸检测&_sug_type_=&s_from=input&_sug_=n&type=2&page=1&ie=utf8
 
 首都之窗
     http://www.beijing.gov.cn/so/interest?sort=dateDesc&timeOption=1&days=30&qt={}&tab=all&siteCode=1100000088&keyPlace=0&toolsStatus=1&mode=1&pageSize=20&page={}
 
 新浪新闻
     https://search.sina.com.cn/?q={}&c=news&from=&col=&range=all&source=&country=&size=10&stime=m-01-01+00%3A00%3A00&etime=m-12-31+23%3A59%3A59&time=m&dpc=0&a=&ps=0&pf=0&page={}
+    https://search.sina.com.cn/?q=核酸检测&c=news&from=&col=&range=all&source=&country=&size=10&stime=m-01-01+00%3A00%3A00&etime=m-12-31+23%3A59%3A59&time=m&dpc=0&a=&ps=0&pf=0&page=1
 
 天涯论坛
     https://search.tianya.cn/bbs?q={}&pn={}&s=4

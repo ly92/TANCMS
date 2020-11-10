@@ -1,7 +1,7 @@
 import scrapy
 import json
 from ..libs.ES import isOldComment
-from ..libs.timeHelper import strToTimeStamp
+from ..libs.timeHelper import formatTime
 from ..items import CommentItem
 import time
 from TANCMS.libs.redisHelper import cacheGet
@@ -36,7 +36,7 @@ class WeibocommentSpider(scrapy.Spider):
             data = res['data']['data']
             for item in data:
                 comment = CommentItem()
-                comment['time'] = item['created_at']
+                comment['time'] = formatTime(item['created_at'])
                 if not isOldComment(self.blog_id, comment['time']):
                     comment['blog_id'] = self.blog_id
                     comment['id'] = item['id']

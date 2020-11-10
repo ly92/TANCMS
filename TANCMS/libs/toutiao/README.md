@@ -46,11 +46,9 @@ userAgent	# 请求头
 
 1.  使用 `Nodejs` 运行 `web_server.js`，启动 `web`服务；
 
-    `node web_server.js`
-2.  执行 `toubiao_news.py`开始爬取。
+    `node TANCMS/libs/toutiao/web_server.js`
+2.  执行 `toubiao.py`开始爬取。
 
 
 
-## 执行结果
 
-![](img/result.png)

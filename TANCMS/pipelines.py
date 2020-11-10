@@ -11,13 +11,22 @@ import time
 import scrapy
 from scrapy.pipelines.images import ImagesPipeline
 import json
+from TANCMS.libs.kafkaHelper import productMessage
 
 class TancmsPipeline:
     def process_item(self, item, spider):
-        print('-------------------------------------------11111111111-------')
-        print(item, item.__dict__['_values'])
-        print(json.dumps(item.__dict__['_values']))
-        print('----2---------------------------------------11111111111-------')
+
+        type_name = type(item).__name__
+        item['type_name'] = type_name
+        item_json = json.dumps(item.__dict__['_values'])
+        productMessage(item_json)
+        return item
+
+        # print('-------------------------------------------11111111111-------')
+        # print(type(item).__name__)
+        # print(item, item.__dict__['_values'])
+        # print(json.dumps(item.__dict__['_values']))
+        # print('----2---------------------------------------11111111111-------')
 
 
         #
@@ -47,7 +56,7 @@ class TancmsPipeline:
         #     #  '_shards': {'total': 2, 'successful': 2, 'failed': 0}, '_seq_no': 0, '_primary_term': 1}
         #     print('--------result------------')
 
-        return item
+
 
 # // 下载图片
 # class TancmsPipeline(ImagesPipeline):

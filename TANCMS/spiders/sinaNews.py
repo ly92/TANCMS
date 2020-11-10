@@ -2,8 +2,8 @@ import scrapy
 from ..items import *
 import re
 import time
-from ..libs.ES import *
-
+from ..libs.ES import isExitArticleByUrl
+from TANCMS.libs.timeHelper import formatTime
 from TANCMS.libs.redisHelper import cacheGet
 
 
@@ -19,7 +19,7 @@ class SinanewsSpider(scrapy.Spider):
         yield scrapy.Request(self.base_url.format(self.word, self.page), callback=self.parse)
 
     def parse(self, response):
-        result = response.xpath('//*[@id="box-result clearfix"]/div')
+        result = response.xpath('//*[@class="box-result clearfix"]')
         for item in result:
             title_a = item.xpath('./h2/a')
             if not title_a:
@@ -29,9 +29,9 @@ class SinanewsSpider(scrapy.Spider):
                 url_arr = url.split('?')
                 if len(url_arr) > 0:
                     url = url_arr[0]
-                url = re.findall('(.*?)from', url, re.S)[0]
+                # url = re.findall('(.*?)from', url, re.S)[0]
             #判断是否已爬取
-            if isExitByUrl(url):
+            if isExitArticleByUrl(url):
                 continue
 
             title = re.findall('target="_blank">(.*?)</a>', title_a.get(), re.S)[0].replace('</font>', '').replace('<font color="red">', '')
@@ -42,7 +42,7 @@ class SinanewsSpider(scrapy.Spider):
             author_time = author_time.split(' ')
             author = author_time[0].strip()
             time_str = author_time[1] + ' ' + author_time[2]
-            time_date = time.strptime(time_str, '%Y-%m-%d %H:%M:%S')
+            time_date = formatTime(time_str)
 
             item = ArticleItem()
             item['title'] = title
@@ -50,8 +50,9 @@ class SinanewsSpider(scrapy.Spider):
             # item['htmlContent'] = ''
             # item['content'] = ''
             item['author'] = author
-            item['time'] = int(time.mktime(time_date))
+            item['time'] = time_date
             time.sleep(3)  # 每获取一个文章都停留一会
+            print(url)
             yield scrapy.Request(url=url, callback=self.parse_content, meta={'item': item})
 
         page_inner = response.xpath('//*[@class="pagebox"]/a')

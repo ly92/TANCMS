@@ -1,10 +1,10 @@
 import scrapy
 import re
-from ..libs.timeHelper import strToTimeStamp
+from ..libs.timeHelper import formatTime
 import time
 from TANCMS.libs.redisHelper import cacheGet
 from ..items import BlogItem
-from ..libs.ES import isExitByUrl
+from ..libs.ES import isExitBlogByUrl
 from urllib import parse
 import json
 
@@ -40,13 +40,13 @@ class TiebabloggerSpider(scrapy.Spider):
             ba = div.xpath('./a[1]/font/text()').extract_first()
             author = div.xpath('./a[2]/font/text()').extract_first()
             time = div.xpath('./font/text()').extract_first()
-            time_str = strToTimeStamp(time)
+            time_str = formatTime(time)
             url = div.xpath('./span/a/@href').extract_first()
             url = 'https://tieba.baidu.com' + re.findall('(.*?)\?', url, re.S)[0]
             url_arr = url.split('?')
             if len(url_arr) > 0:
                 url = url_arr[0]
-            if not isExitByUrl(url):
+            if not isExitBlogByUrl(url):
                 blog = BlogItem()
                 blog['url'] = url
                 blog['blog_id'] = div.xpath('./span/a/@data-tid').extract_first()

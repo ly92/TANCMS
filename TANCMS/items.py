@@ -6,6 +6,7 @@
 import scrapy
 
 class ArticleItem(scrapy.Item):
+    type_name = scrapy.Field()
     title = scrapy.Field()
     author = scrapy.Field()
     time = scrapy.Field()
@@ -15,10 +16,12 @@ class ArticleItem(scrapy.Item):
     source = scrapy.Field()
 
 class ImageItem(scrapy.Item):
+    type_name = scrapy.Field()
     title = scrapy.Field()
     url = scrapy.Field()
 
 class BlogItem(scrapy.Item):
+    type_name = scrapy.Field()
     blog_id = scrapy.Field()
     title = scrapy.Field()
     author = scrapy.Field()
@@ -33,6 +36,7 @@ class BlogItem(scrapy.Item):
     bar_url = scrapy.Field()
 
 class CommentItem(scrapy.Item):
+    type_name = scrapy.Field()
     comment_id = scrapy.Field()
     blog_id = scrapy.Field()
     time = scrapy.Field()

@@ -1,4 +1,5 @@
 import time
+import re
 
 def formatTime(time_str):
     s = strToTimeStamp(time_str)
@@ -8,7 +9,21 @@ def formatTime(time_str):
 
 
 def strToTimeStamp(time_str):
-    time_str = time_str.strip()
+    if type(time_str) == str:
+        time_str = time_str.strip()
+    elif type(time_str) == int:
+        if int(time_str) > 1000000000:
+            return int(time_str)
+        else:
+            return int(time.time())
+
+    time_int = re.findall('\d+', time_str, re.S)
+    if len(time_int) == 1:
+        if int(time_str) > 1000000000:
+            return int(time_str)
+        else:
+            return int(time.time())
+
     if time_str == '刚刚':
         return int(time.time())
     if time_str.endswith('分钟前'):
@@ -60,3 +75,11 @@ def strToTimeStamp(time_str):
             return t
 
     return int(time.time())
+
+
+if __name__ == '__main__':
+    s = '2020-11-02'
+    # s = '123123123'
+    # s = 1231231231
+    date = formatTime(s)
+    print(date)

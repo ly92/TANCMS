@@ -3,9 +3,10 @@ import time
 import json
 from ..items import ArticleItem
 import re
-from ..libs.ES import isExitByUrl
+from ..libs.ES import isExitArticleByUrl
 import requests
 from TANCMS.libs.redisHelper import cacheGet
+from TANCMS.libs.timeHelper import formatTime
 
 class ToutiaoSpider(scrapy.Spider):
     name = 'toutiao'
@@ -34,12 +35,12 @@ class ToutiaoSpider(scrapy.Spider):
                 article['title'] = item['title']
                 article['url'] = 'https://www.toutiao.com/a' + item['item_id']
 
-                if isExitByUrl(article['url']):
+                if isExitArticleByUrl(article['url']):
                     continue
                 # article['url'] = item['article_url']
                 article['author'] = item['media_name']
                 article['source'] = '今日头条'
-                article['time'] = item['create_time']
+                article['time'] = formatTime(item['create_time'])
                 content = self.parse_content(article['url'])
                 article['content'] = content
                 article['htmlContent'] = ''
@@ -51,11 +52,11 @@ class ToutiaoSpider(scrapy.Spider):
             ts = int(time.time() * 1000)
             url = self.base_url.format(self.offset, self.word, ts)
             time.sleep(5)  # 获取下一页文章前停留一会
-            yield scrapy.Request(url, callback=self.parse)
+            # yield scrapy.Request(url, callback=self.parse)
 
 
     def parse_content(self, url):
-        print(url)
+        print('parse_content', url)
         headers = {
             'authority': 'www.toutiao.com',
             'pragma': 'no-cache',

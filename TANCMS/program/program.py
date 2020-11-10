@@ -46,8 +46,8 @@ def prepareWork():
         for program in list:
             detail = programDetail(program['id'])
 
-            cacheSet('program_id', $program['id'])
-            cacheSet('program_title', $program['title'])
+            cacheSet('program_id', program['id'])
+            cacheSet('program_title', program['title'])
 
             # print(detail)
             # 搜索关键词
@@ -71,6 +71,7 @@ def prepareWork():
                         spiders.append(type)
                         cacheSet(type + '_keyWord', key)
                         cacheSet(type + '_url', url)
+                        print(url, key)
                     elif type == 'weibo':
                         # 博主
                         bloggers.append({
@@ -86,19 +87,22 @@ def prepareWork():
                 if len(bloggers) > 0:
                     spiders.append('weiboBlogger')
                     cacheSet('bloggers', json.dumps(bloggers))
+                    print(bloggers)
                 if len(bars) > 0:
                     spiders.append('tiebaBlogger')
                     cacheSet('bars', json.dumps(bars))
+                    print(bars)
 
-                if len(spiders) > 0:
-                    # 开始爬虫
-                    print('正在爬取方案: ' + detail['title'] + ' 10分钟后下一个方案')
-                    cacheSet('spiders', json.dumps(spiders))
-                    cmdline.execute('scrapy crawlall'.split())
+                # if len(spiders) > 0:
+                #     # 开始爬虫
+                #     print('正在爬取方案: ' + detail['title'] + ' 10分钟后下一个方案')
+                #     cacheSet('spiders', json.dumps(spiders))
+                #     cmdline.execute('scrapy crawlall'.split())
 
             except():
                 continue
             finally:
+                print('next')
                 # 开始下一个监控方案前休息10分钟
                 # time.sleep(600)
                 pass

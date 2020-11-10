@@ -7,42 +7,32 @@ from TANCMS.settings import USER_AGENT
 from TANCMS.items import ArticleItem
 from TANCMS.libs.redisHelper import cacheGet
 import time
+from TANCMS.libs.ES import isExitArticleByTitle
+from TANCMS.libs.timeHelper import formatTime
 
 
 class GzhSpider(scrapy.Spider):
     name = 'gzh'
-    # allowed_domains = ['weixin.sogou.com', 'mp.weixin.qq.com']
-    # start_urls = ['https://weixin.sogou.com/weixin?query=核酸检查&_sug_type_=&s_from=input&_sug_=n&type=2&page=1&ie=utf8',
-    #               'https://weixin.sogou.com/weixin?query=核酸检查&_sug_type_=&s_from=input&_sug_=n&type=2&page=2&ie=utf8',
-    #               'https://weixin.sogou.com/weixin?query=核酸检查&_sug_type_=&s_from=input&_sug_=n&type=2&page=3&ie=utf8',
-    #               'https://weixin.sogou.com/weixin?query=核酸检查&_sug_type_=&s_from=input&_sug_=n&type=2&page=4&ie=utf8',
-    #               'https://weixin.sogou.com/weixin?query=核酸检查&_sug_type_=&s_from=input&_sug_=n&type=2&page=5&ie=utf8',
-    #               'https://weixin.sogou.com/weixin?query=核酸检查&_sug_type_=&s_from=input&_sug_=n&type=2&page=6&ie=utf8',
-    #               'https://weixin.sogou.com/weixin?query=核酸检查&_sug_type_=&s_from=input&_sug_=n&type=2&page=7&ie=utf8',
-    #               'https://weixin.sogou.com/weixin?query=核酸检查&_sug_type_=&s_from=input&_sug_=n&type=2&page=8&ie=utf8',
-    #               'https://weixin.sogou.com/weixin?query=核酸检查&_sug_type_=&s_from=input&_sug_=n&type=2&page=9&ie=utf8',
-    #               'https://weixin.sogou.com/weixin?query=核酸检查&_sug_type_=&s_from=input&_sug_=n&type=2&page=10&ie=utf8'
-    #               ]
 
-
-    # 'https://weixin.sogou.com/weixin?query={}&_sug_type_=&s_from=input&_sug_=n&type=2&page={}&ie=utf8'
     base_url = cacheGet('gzh_url')
     word = cacheGet('gzh_keyWord')
     pn = 1
 
     def start_requests(self):
         url = self.base_url.format(self.word, self.pn)
+        print(url)
         yield scrapy.Request(url=url, callback=self.parse)
 
     def parse(self, response):
 
         params = self.getCookisParams(response)
 
-        ul = response.xpath('/html/body/div[2]/div[1]/div[3]/ul/li')
-        for li in ul:
+        lis = response.xpath('//*[@class="news-list"]/li')
+        for li in lis:
             url = 'https://weixin.sogou.com' + li.xpath('./div[2]/h3/a/@href').extract_first()
             articleUrl = self.getArticleUrl(params, url, response.url)
             time.sleep(3)  # 每获取一个文章都停留一会
+            print(articleUrl)
             yield scrapy.Request(url=articleUrl, callback=self.detailParse, dont_filter=True)
 
         page_inner = response.xpath('//*[@class="p-fy"]/a')
@@ -56,24 +46,26 @@ class GzhSpider(scrapy.Spider):
                 yield scrapy.Request(url=url, callback=self.parse)
 
     def detailParse(self, response):
-        htmlContent = response.xpath('//div[@id="js_content"]')
-        text_lines = htmlContent.xpath('.//span')
-        content = ''
-        for i, text_line in enumerate(text_lines):
-            if text_line:
-                span_text = text_line.xpath('.//text()').extract_first()
-                if span_text:
-                    content = content + span_text.strip()
-        item = ArticleItem()
-        item['title'] = response.xpath('//h2[@id="activity-name"]/text()').extract_first().strip()
-        item['url'] = response.url
-        item['htmlContent'] = htmlContent.extract_first()
-        item['content'] = content
-        item['author'] = response.xpath('//*[@id="js_name"]/text()').extract_first().strip()
-        item['time'] = self.getTime(response)
-        item['source'] = '微信公众号'
-        yield item
-        pass
+        title = response.xpath('//h2[@id="activity-name"]/text()').extract_first().strip()
+        if not isExitArticleByTitle(title):
+            htmlContent = response.xpath('//div[@id="js_content"]')
+            text_lines = htmlContent.xpath('.//span')
+            content = ''
+            for i, text_line in enumerate(text_lines):
+                if text_line:
+                    span_text = text_line.xpath('.//text()').extract_first()
+                    if span_text:
+                        content = content + span_text.strip()
+            item = ArticleItem()
+            item['title'] = title
+            item['url'] = response.url
+            item['htmlContent'] = htmlContent.extract_first()
+            item['content'] = content
+            item['author'] = response.xpath('//*[@id="js_name"]/text()').extract_first().strip()
+            item['time'] = self.getTime(response)
+            item['source'] = '微信公众号'
+            yield item
+            pass
 
 
 
@@ -200,6 +192,6 @@ class GzhSpider(scrapy.Spider):
     def getTime(self, response):
         ct = re.findall('var ct = (.*?);', response.text, re.S)[0]
         ct = ct.replace('"', '')
-        return ct
+        return formatTime(ct)
 
 
