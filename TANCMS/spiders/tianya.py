@@ -48,6 +48,9 @@ class TianyaSpider(scrapy.Spider):
                 blog['author_url'] = author_url
                 blog['author_id'] = author_url.replace('http://www.tianya.cn/', '')
                 blog['time'] = formatTime(time_str)
+
+                blog['bar'] = ''
+                blog['bar_url'] = ''
                 time.sleep(2)
                 yield scrapy.Request(url=url, callback=self.parse_content, meta={'item': blog})
             except:

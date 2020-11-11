@@ -4,19 +4,18 @@ import re
 def formatTime(time_str):
     s = strToTimeStamp(time_str)
     timeArray = time.localtime(s)
-    date = time.strftime("%a %b %d %H:%M:%S %z %Y", timeArray)
+    date = time.strftime("%Y-%m-%dT%H:%M:%S.%j%z", timeArray)
     return date
 
 
 def strToTimeStamp(time_str):
     if type(time_str) == str:
         time_str = time_str.strip()
-    elif type(time_str) == int:
+    elif type(time_str) == int or type(time_str) == float:
         if int(time_str) > 1000000000:
             return int(time_str)
         else:
             return int(time.time())
-
     time_int = re.findall('\d+', time_str, re.S)
     if len(time_int) == 1:
         if int(time_str) > 1000000000:
@@ -78,8 +77,10 @@ def strToTimeStamp(time_str):
 
 
 if __name__ == '__main__':
-    s = '2020-11-02'
+    # s = '2020-11-02'
     # s = '123123123'
     # s = 1231231231
+    s = 1605062386.83242
+    print(type(s))
     date = formatTime(s)
     print(date)

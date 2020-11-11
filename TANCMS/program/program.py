@@ -93,11 +93,11 @@ def prepareWork():
                     cacheSet('bars', json.dumps(bars))
                     print(bars)
 
-                # if len(spiders) > 0:
-                #     # 开始爬虫
-                #     print('正在爬取方案: ' + detail['title'] + ' 10分钟后下一个方案')
-                #     cacheSet('spiders', json.dumps(spiders))
-                #     cmdline.execute('scrapy crawlall'.split())
+                if len(spiders) > 0:
+                    # 开始爬虫
+                    print('正在爬取方案: ' + detail['title'] + ' 10分钟后下一个方案')
+                    cacheSet('spiders', json.dumps(spiders))
+                    cmdline.execute('scrapy crawlall'.split())
 
             except():
                 continue

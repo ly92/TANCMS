@@ -7,6 +7,7 @@ from ..libs.ES import isExitArticleByUrl
 import requests
 from TANCMS.libs.redisHelper import cacheGet
 from TANCMS.libs.timeHelper import formatTime
+from TANCMS.settings import USER_AGENT
 
 class ToutiaoSpider(scrapy.Spider):
     name = 'toutiao'
@@ -42,6 +43,7 @@ class ToutiaoSpider(scrapy.Spider):
                 article['source'] = '今日头条'
                 article['time'] = formatTime(item['create_time'])
                 content = self.parse_content(article['url'])
+
                 article['content'] = content
                 article['htmlContent'] = ''
                 if len(content) > 0:
@@ -51,18 +53,18 @@ class ToutiaoSpider(scrapy.Spider):
             self.offset = self.offset + 20
             ts = int(time.time() * 1000)
             url = self.base_url.format(self.offset, self.word, ts)
-            time.sleep(5)  # 获取下一页文章前停留一会
+            # time.sleep(5)  # 获取下一页文章前停留一会
             # yield scrapy.Request(url, callback=self.parse)
 
-
     def parse_content(self, url):
-        print('parse_content', url)
+        print('parse_content', url, USER_AGENT)
         headers = {
             'authority': 'www.toutiao.com',
             'pragma': 'no-cache',
             'cache-control': 'no-cache',
             'upgrade-insecure-requests': '1',
-            'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.138 Safari/537.36',
+            # 'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.138 Safari/537.36',
+            'user-agent': USER_AGENT,
             'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
             'sec-fetch-site': 'same-origin',
             'sec-fetch-mode': 'navigate',
@@ -72,17 +74,19 @@ class ToutiaoSpider(scrapy.Spider):
         try:
             res = self.session.get(url=url, headers=headers, verify=False)
             content = self.get_content(res.text)
+            print(content)
             if content:
                 return content
             else:
                 # 在 response 中获取 key为：__ac_nonce 的值，用来生成 __ac_signature
                 res = self.session.get(url=url, headers=headers, verify=False)
                 nonce = res.cookies['__ac_nonce']
-                userAgent = headers['user-agent']
+                # userAgent = headers['user-agent']
                 params = {
                     'nonce': nonce,
                     'url': url,
-                    'userAgent': userAgent
+                    'userAgent': USER_AGENT
+                    # 'userAgent': userAgent
                 }
                 signature = requests.get(self.nodejs_server, params=params).text
 

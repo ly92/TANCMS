@@ -47,6 +47,8 @@ class WeiboSpider(scrapy.Spider):
             blog['author'] = item['mblog']['user']['screen_name']
             blog['author_url'] = 'https://m.weibo.cn/u/' + item['mblog']['user']['id']
             blog['author_id'] = item['mblog']['user']['id']
+            blog['bar'] = ''
+            blog['bar_url'] = ''
             if text.endswith('全文</a>') > 0:
                 url2 = 'https://m.weibo.cn/statuses/extend?id=' + item['mblog']['id']
                 yield scrapy.Request(url=url2, callback=self.content_parse, meta={'item': blog})
