@@ -21,7 +21,6 @@ def es_multi_index(body):
 
 def isExitArticleByTitle(title):
     body = {
-        "_source": "title",
         "query": {
             "match_phrase": {
                 "title": title
@@ -37,7 +36,6 @@ def isExitArticleByTitle(title):
 
 def isExitArticleByUrl(url):
     body = {
-        "_source": "title",
         "query": {
             "match_phrase": {
                 "url": url
@@ -53,7 +51,6 @@ def isExitArticleByUrl(url):
 
 def isExitBlogByUrl(url):
     body = {
-        "_source": "title",
         "query": {
             "match_phrase": {
                 "url": url

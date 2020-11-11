@@ -5,17 +5,25 @@ from ..libs.timeHelper import formatTime
 from ..items import BlogItem
 import time
 from TANCMS.libs.redisHelper import cacheGet
+import urllib
 
 class WeiboSpider(scrapy.Spider):
     name = 'weibo'
 
     page = 1
-    base_url = cacheGet('weibo_url')
+    # base_url = cacheGet('weibo_url')
+    base_url = ''
     word = cacheGet('weibo_keyWord')
 
 
     def start_requests(self):
-        url = self.base_url.format(self.word, self.page)
+        # url中的一段需要编码
+        s1 = 'https://m.weibo.cn/api/container/getIndex?containerid=100103'
+        s2 = 'type=60&q=' + self.word + '&t=0'
+        s3 = '&page_type=searchall&page={}'
+        self.base_url = s1 + urllib.parse.quote(s2, 'utf-8') + s3
+
+        url = self.base_url.format(self.page)
         yield scrapy.Request(url=url, meta={
                  'dont_redirect': True,
                  'handle_httpstatus_list': [302]
@@ -29,8 +37,6 @@ class WeiboSpider(scrapy.Spider):
         data = res['data']
         if 'cards' in data.keys():
             cards = data['cards']
-        # elif 'feed1' in data.keys():
-        #     cards = data['feed1']
         else:
             cards = []
         for item in cards:
@@ -47,8 +53,8 @@ class WeiboSpider(scrapy.Spider):
             blog['source'] = '新浪微博'
 
             blog['author'] = item['mblog']['user']['screen_name']
-            blog['author_url'] = 'https://m.weibo.cn/u/' + item['mblog']['user']['id']
-            blog['author_id'] = item['mblog']['user']['id']
+            blog['author_id'] = str(item['mblog']['user']['id'])
+            blog['author_url'] = 'https://m.weibo.cn/u/' + blog['author_id']
             blog['bar'] = ''
             blog['bar_url'] = ''
             if text.endswith('全文</a>') > 0:
@@ -57,10 +63,10 @@ class WeiboSpider(scrapy.Spider):
             else:
                 yield blog
 
-        if len(data) > 0 & self.page < 20:
+        if len(data) > 0 and self.page < 20:
             time.sleep(5)  # 获取下一页文章前停留一会
             self.page = self.page + 1
-            url = self.base_url.format(self.word, self.page)
+            url = self.base_url.format(self.page)
             yield scrapy.Request(url=url, callback=self.parse)
 
     def content_parse(self, response):

@@ -16,12 +16,12 @@ def strToTimeStamp(time_str):
             return int(time_str)
         else:
             return int(time.time())
-    time_int = re.findall('\d+', time_str, re.S)
+
+    time_int = re.findall('\d\d\d+\d\d', time_str, re.S)
+    print(time_int)
     if len(time_int) == 1:
         if int(time_str) > 1000000000:
             return int(time_str)
-        else:
-            return int(time.time())
 
     if time_str == '刚刚':
         return int(time.time())
@@ -62,25 +62,32 @@ def strToTimeStamp(time_str):
                 format_str = '%Y-%m-%d'
         time_array = time.strptime(time_str, format_str)
         return int(time.mktime(time_array))
+    if '昨天' in time_str:
+        t = int(time.time()) - 86400
+        return t
+
 
     try:
         format_str = '%a %b %d %H:%M:%S %z %Y'
         time_array = time.strptime(time_str, format_str)
         t = int(time.mktime(time_array))
+        if t > 0:
+            return t
     except:
         pass
     finally:
-        if t > 0:
-            return t
+        pass
 
     return int(time.time())
 
 
 if __name__ == '__main__':
     # s = '2020-11-02'
-    # s = '123123123'
+    # s = '1000000202'
     # s = 1231231231
-    s = 1605062386.83242
+    # s = 1605062386.83242
+    # s = '5分钟前'
+    s = '昨天 13:39'
     print(type(s))
     date = formatTime(s)
     print(date)

@@ -56,7 +56,7 @@ class SdWindowSpider(scrapy.Spider):
             item['time'] = formatTime(result['myValues']['DREDATE'])
             time.sleep(3)  # 每获取一个文章都停留一会
             yield scrapy.Request(url=url, callback=self.parse_content, dont_filter=True, meta={'item': item})
-        if len(resultList) > 0 & self.page < 20:
+        if len(resultList) > 0 and self.page < 20:
             self.page = self.page + 1
             url = self.base_url.format(self.word, self.page)
             time.sleep(3) # 获取下一页文章前停留一会

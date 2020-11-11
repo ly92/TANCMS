@@ -23,7 +23,7 @@ class BjhSpider(scrapy.Spider):
         yield scrapy.Request(url=url, callback=self.parse)
 
     def parse(self, response):
-        divs = response.xpath('//*[@class="result c-container "]')
+        divs = response.xpath('//*[@class="result c-container new-pmd"]')
         for div in divs:
             url = div.xpath('./h3/a/@href').extract_first()
             title_str = div.xpath('./h3/a').get()
@@ -39,10 +39,10 @@ class BjhSpider(scrapy.Spider):
             print(url)
             yield scrapy.Request(url=url, callback=self.parse_content, meta={'item': item})
         page_inner = response.xpath('//*[@class="page-inner"]/a')
-        if len(page_inner) > 0 & self.pn < 400:
+        if len(page_inner) > 0 and self.pn < 400:
             last_a = page_inner[-1]
             if last_a.xpath('./text()').extract_first() == '下一页 >':
-                self.pn = self.pn + 10
+                self.pn += 10
                 url = self.base_url.format(self.word, self.begin, self.end, self.pn)
                 print(url)
                 time.sleep(3)  # 获取下一页文章前停留一会
@@ -71,9 +71,9 @@ class BjhSpider(scrapy.Spider):
                         s = span.xpath('./text()').extract_first()
                         if s:
                             p_str = p_str + s
-                    content = content + p_str + "\n"
+                    content += p_str + "\n"
             except:
-                content = ''
+                pass
             item = response.meta['item']
             item['content'] = content
             item['htmlContent'] = response.xpath('//*[@class="article-content"]').get()

@@ -43,9 +43,10 @@
     https://www.toutiao.com/api/search/content/?aid=24&app_name=web_search&offset={}&format=json&keyword={}&autoload=true&count=20&en_qc=1&cur_tab=1&from=search_tab&pd=synthesis&timestamp={}&_signature=oHuGVAAgEBC2A4AvKc6seKB6x0AAP9zO0qofiJ3FhiTBQ3gNCJ8.vSaBm
 
 新浪微博
-    blig-list
-    https://m.weibo.cn/api/container/getIndex?containerid=100103&type=60&q={}&t=0&page_type=searchall&page={}
-    https://m.weibo.cn/api/container/getIndex?containerid=100103&type=60&q=核酸检测&t=0&page_type=searchall&page=1
+    blig-list 'type=60&q={}&t=0&' 需要编码
+    https://m.weibo.cn/api/container/getIndex?containerid=100103type=60&q={}&t=0&page_type=searchall&page={}
+    https://m.weibo.cn/api/container/getIndex?containerid=100103type=60&q=核酸检测&t=0&page_type=searchall&page=1
+    https://m.weibo.cn/api/container/getIndex?containerid=100103type%3D61%26q%3D%E6%A0%B8%E9%85%B8%E6%A3%80%E6%B5%8B%26t%3D0&page_type=searchall&page=1
     detail
     https://m.weibo.cn/status/4567882447716896
     https://m.weibo.cn/statuses/extend?id=4567935177465858

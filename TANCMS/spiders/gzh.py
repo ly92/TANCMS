@@ -36,7 +36,7 @@ class GzhSpider(scrapy.Spider):
             yield scrapy.Request(url=articleUrl, callback=self.detailParse, dont_filter=True)
 
         page_inner = response.xpath('//*[@class="p-fy"]/a')
-        if len(page_inner) > 0 & self.pn < 20:
+        if len(page_inner) > 0 and self.pn < 20:
             last_a = page_inner[-1]
             if last_a.xpath('./text()').extract_first() == '下一页':
                 self.pn = self.pn + 1

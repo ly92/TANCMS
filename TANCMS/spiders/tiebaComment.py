@@ -73,7 +73,7 @@ class TiebacommentSpider(scrapy.Spider):
                         self.page = pages[0]
                     url = 'https://tieba.baidu.com' + href
                     yield scrapy.Request(url=url, callback=self.parse_content)
-        elif not shouldEnd & self.page > 1:
+        elif not shouldEnd and self.page > 1:
             self.page -= 1
             url = self.base_url.format(self.page)
             yield scrapy.Request(url=url, callback=self.parse_content)

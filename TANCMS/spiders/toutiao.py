@@ -49,7 +49,7 @@ class ToutiaoSpider(scrapy.Spider):
                 if len(content) > 0:
                     yield article
 
-        if has_more & self.offset < 400:
+        if has_more and self.offset < 400:
             self.offset = self.offset + 20
             ts = int(time.time() * 1000)
             url = self.base_url.format(self.offset, self.word, ts)

@@ -255,9 +255,27 @@ from TANCMS.libs.kafkaHelper import productMessage
 def test6():
     productMessage('123123123')
 
+def test7():
+    url = 'https://m.weibo.cn/api/container/getIndex?containerid=100103type=60&q=核酸检测&t=0&page_type=searchall&page=1'
+    s1 = 'https://m.weibo.cn/api/container/getIndex?containerid=100103'
+    s2 = 'type=60&q=核酸检测&t=0'
+    s3 = '&page_type=searchall&page=1'
+    url = s1 + urllib.parse.quote(s2, 'utf-8') + s3
+    print(url)
+
+def test8():
+    u = 2
+    h = 0
+    for i in range(100):
+        if u > 1 and h < 50:
+            h += 10
+            print(h)
+        else:
+            print(2)
+            break
 
 if __name__ == '__main__':
-    test6()
+    test8()
 
     # get_signature()
     # for url in article_url_list:

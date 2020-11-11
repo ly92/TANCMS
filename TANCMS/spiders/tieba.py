@@ -55,7 +55,7 @@ class TiebaSpider(scrapy.Spider):
                 yield blog
 
             page_inner = response.xpath('//*[@class="pager pager-search"]/a')
-            if len(page_inner) > 0 & self.page < 40:
+            if len(page_inner) > 0 and self.page < 40:
                 last_a = page_inner[-2]
                 if last_a.xpath('./text()').extract_first() == '下一页>':
                     self.page = self.page + 1
