@@ -31,8 +31,8 @@ class TiebaSpider(scrapy.Spider):
             title = title.replace('<em>', '').replace('</em>', '').replace('</a>', '')
             ba = div.xpath('./a[1]/font/text()').extract_first()
             author = div.xpath('./a[2]/font/text()').extract_first()
-            time = div.xpath('./font/text()').extract_first()
-            time_str = formatTime(time)
+            time_str = div.xpath('./font/text()').extract_first()
+            time_str = formatTime(time_str)
             url = div.xpath('./span/a/@href').extract_first()
             url_arr = re.findall('(.*?)\?', url, re.S)
             if len(url_arr) > 0:
@@ -59,10 +59,10 @@ class TiebaSpider(scrapy.Spider):
                 last_a = page_inner[-2]
                 if last_a.xpath('./text()').extract_first() == '下一页>':
                     self.page = self.page + 1
-                    url = self.base_url.format(self.word, self.begin, self.end, self.pn)
+                    url = self.base_url.format(self.word, self.page)
                     print(url)
                     time.sleep(3)  # 获取下一页文章前停留一会
-                    yield scrapy.Request(url=url, callback=self.parse)
+                    yield scrapy.Request(url=url, callback=self.parse_tie)
 
 
 

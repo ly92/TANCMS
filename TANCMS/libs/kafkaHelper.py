@@ -129,6 +129,6 @@ def allDataConsumer():
 
 if __name__ == '__main__':
     # productMessage()
-    # consumerMessage()
-    allDataConsumer()
+    consumerMessage()
+    # allDataConsumer()
     # indexData('23')

@@ -29,6 +29,8 @@ class WeiboSpider(scrapy.Spider):
         data = res['data']
         if 'cards' in data.keys():
             cards = data['cards']
+        # elif 'feed1' in data.keys():
+        #     cards = data['feed1']
         else:
             cards = []
         for item in cards:
@@ -55,7 +57,7 @@ class WeiboSpider(scrapy.Spider):
             else:
                 yield blog
 
-        if len(data) == 10 & self.page < 20:
+        if len(data) > 0 & self.page < 20:
             time.sleep(5)  # 获取下一页文章前停留一会
             self.page = self.page + 1
             url = self.base_url.format(self.word, self.page)

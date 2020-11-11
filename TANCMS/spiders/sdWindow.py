@@ -87,8 +87,11 @@ class SdWindowSpider(scrapy.Spider):
         content = ''
         htmlContent = ''
         for p in content_html:
-            htmlContent = htmlContent + p.get()
-            content = content + p.xpath('text()').extract_first() + "\n"
+            try:
+                htmlContent = htmlContent + p.get()
+                content = content + p.xpath('text()').extract_first() + "\n"
+            except:
+                pass
         item['content'] = content.replace('\\u3000', ' ')
         item['htmlContent'] = htmlContent.replace('\\u3000', ' ')
         yield item

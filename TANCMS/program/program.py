@@ -68,7 +68,8 @@ def prepareWork():
                     type = network['type']
                     url = network['url']
                     if network['p_id'] == 0:
-                        spiders.append(type)
+                        if type != 'toutiao':
+                            spiders.append(type)
                         cacheSet(type + '_keyWord', key)
                         cacheSet(type + '_url', url)
                         print(url, key)

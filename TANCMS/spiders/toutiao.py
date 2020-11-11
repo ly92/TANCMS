@@ -74,7 +74,6 @@ class ToutiaoSpider(scrapy.Spider):
         try:
             res = self.session.get(url=url, headers=headers, verify=False)
             content = self.get_content(res.text)
-            print(content)
             if content:
                 return content
             else:
@@ -92,6 +91,7 @@ class ToutiaoSpider(scrapy.Spider):
 
                 self.session.cookies['__ac_signature'] = signature
                 res = self.session.get(url=url, headers=headers, verify=False)
+                print(res)
                 return self.get_content(res.text)
         except:
             return ''
