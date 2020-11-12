@@ -63,7 +63,7 @@ class WeiboSpider(scrapy.Spider):
             else:
                 yield blog
 
-        if len(data) > 0 and self.page < 20:
+        if len(data) > 0 and self.page < 40:
             time.sleep(5)  # 获取下一页文章前停留一会
             self.page = self.page + 1
             url = self.base_url.format(self.page)

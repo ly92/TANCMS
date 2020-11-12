@@ -102,10 +102,12 @@ def indexData(item):
     elif item['type_name'] == 'CommentItem':
         pass
 
-    if len(actions) == 100:
+    if len(actions) == 10:
         result = es_multi_index(actions)
         print(result)
         actions.clear()
+    else:
+        print(len(actions))
 
 
 

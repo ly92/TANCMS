@@ -18,7 +18,6 @@ def strToTimeStamp(time_str):
             return int(time.time())
 
     time_int = re.findall('\d\d\d+\d\d', time_str, re.S)
-    print(time_int)
     if len(time_int) == 1:
         if int(time_str) > 1000000000:
             return int(time_str)
@@ -58,8 +57,15 @@ def strToTimeStamp(time_str):
         elif len(time_s) == 1:
             if len(time_str.split(' ')) == 2:
                 format_str = '%Y-%m-%d %H'
-            else:
+            elif len(time_str.split('-')) == 3:
                 format_str = '%Y-%m-%d'
+            elif len(time_str.split('-')) == 2:
+                year_a = time.localtime(time.time())
+                year = time.strftime("%Y-", year_a)
+                time_str = year + time_str
+                format_str = '%Y-%m-%d'
+            else:
+                return int(time.time())
         time_array = time.strptime(time_str, format_str)
         return int(time.mktime(time_array))
     if '昨天' in time_str:
@@ -87,7 +93,8 @@ if __name__ == '__main__':
     # s = 1231231231
     # s = 1605062386.83242
     # s = '5分钟前'
-    s = '昨天 13:39'
+    # s = '昨天 13:39'
+    s = '11-8'
     print(type(s))
     date = formatTime(s)
     print(date)
