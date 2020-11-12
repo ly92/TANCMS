@@ -33,8 +33,24 @@ def allDataConsumer():
             finally:
                 print(count)
 
+def allDataConsumer2():
+    consumer = KafkaConsumer(topic, bootstrap_servers=[host])
+    count = 0
+    for msg in consumer:
+        item_dict = msg.value.decode('utf-8')
+        print(item_dict)
+        if len(item_dict) > 100:
+            try:
+                item = json.loads(item_dict)
+                print(item)
+                count += 1
+                # indexData(item)
+            except:
+                pass
+            finally:
+                print(count)
 
 if __name__ == '__main__':
-    allDataConsumer()
+    allDataConsumer2()
     # print(cacheSet('test', '哈哈hell——123'))
     # print(cacheGet('test'))

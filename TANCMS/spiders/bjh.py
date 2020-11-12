@@ -53,14 +53,16 @@ class BjhSpider(scrapy.Spider):
         s_advert = json.loads(s_advert)
         url = s_advert['contentUrl']
         if not isExitArticleByUrl(url):
-            time_source = response.xpath('//*[@class="author-txt"]')
-            t1 = time_source.xpath('./div/span[1]/text()').extract_first()
-            t2 = time_source.xpath('./div/span[2]/text()').extract_first()
+            author_a = response.xpath('//*[@class="author-name"]/a')
+            time_div = response.xpath('//*[@class="article-source article-source-bjh"]')
+            t1 = time_div.xpath('./span[1]/text()').extract_first()
+            t2 = time_div.xpath('./span[2]/text()').extract_first()
             year_a = time.localtime(time.time())
             year = time.strftime("%Y-", year_a)
             time_str = year + t1.replace('发布时间：', '') + ' ' + t2
             createTime = formatTime(time_str)
-            author = time_source.xpath('./p/text()').extract_first()
+            author = author_a.xpath('./text()').extract_first()
+            author_url = author_a.xpath('./@href').extract_first()
             content_p = response.xpath('//*[@class="article-content"]/p')
             content = ''
             try:
@@ -79,6 +81,7 @@ class BjhSpider(scrapy.Spider):
             item['htmlContent'] = response.xpath('//*[@class="article-content"]').get()
             item['time'] = createTime
             item['author'] = author
+            item['author_url'] = author_url
             item['url'] = url
             yield item
 

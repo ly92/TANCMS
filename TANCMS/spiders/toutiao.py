@@ -46,6 +46,7 @@ class ToutiaoSpider(scrapy.Spider):
 
                 article['content'] = content
                 article['htmlContent'] = ''
+                item['author_url'] = ''
                 if len(content) > 0:
                     yield article
 

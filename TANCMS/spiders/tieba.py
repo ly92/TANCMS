@@ -37,6 +37,8 @@ class TiebaSpider(scrapy.Spider):
             url_arr = re.findall('(.*?)\?', url, re.S)
             if len(url_arr) > 0:
                 url = url_arr[0]
+            if not url.startswith('http'):
+                url = 'https://tieba.baidu.com' + url
             if not isExitBlogByUrl(url):
                 blog = BlogItem()
                 blog['url'] = url
@@ -51,7 +53,10 @@ class TiebaSpider(scrapy.Spider):
 
                 blog['author'] = author
                 author_url = div.xpath('./a[2]/@href').extract_first()
-                blog['author_url'] = parse.unquote(author_url, encoding='GBK')
+                author_url = parse.unquote(author_url, encoding='GBK')
+                if not author_url.startswith('http'):
+                    author_url = 'https://tieba.baidu.com' + author_url
+                blog['author_url'] = author_url
                 yield blog
 
             page_inner = response.xpath('//*[@class="pager pager-search"]/a')

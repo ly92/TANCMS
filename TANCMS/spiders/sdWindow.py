@@ -94,6 +94,7 @@ class SdWindowSpider(scrapy.Spider):
                 pass
         item['content'] = content.replace('\\u3000', ' ')
         item['htmlContent'] = htmlContent.replace('\\u3000', ' ')
+        item['author_url'] = ''
         yield item
 
 

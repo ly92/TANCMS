@@ -50,6 +50,7 @@ class SinanewsSpider(scrapy.Spider):
             # item['htmlContent'] = ''
             # item['content'] = ''
             item['author'] = author
+
             item['time'] = time_date
             time.sleep(3)  # 每获取一个文章都停留一会
             print(url)
@@ -75,10 +76,14 @@ class SinanewsSpider(scrapy.Spider):
         content = re.sub(r'\s*(\s)', r'\1', content)
         content = ''.join([x.strip() for x in content])
 
+        author_a = response.xpath('//*[class="author"]/a')
+
         item = response.meta['item']
         item['htmlContent'] = response.xpath('//*[@id="artibody" or @id="article"]').extract_first()
         item['content'] = content
         item['source'] = '新浪新闻'
+        item['author_url'] = author_a.xpath('./@href').extract_first()
+
 
         # content_list = response.xpath('//*[@id="artibody" or @id="article"]//p/text()').extract()
         # content = r""

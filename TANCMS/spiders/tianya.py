@@ -16,7 +16,6 @@ class TianyaSpider(scrapy.Spider):
 
 
     def start_requests(self):
-
         url = self.base_url.format(self.word, self.page)
         yield scrapy.Request(url=url, callback=self.parse)
 
@@ -64,7 +63,9 @@ class TianyaSpider(scrapy.Spider):
 
     def parse_content(self, response):
         contents = response.xpath('//*[@class="bbs-content clearfix"]/text()').extract()
+        content_ps = response.xpath('//*[@class="bbs-content clearfix"]/p/text()').extract()
         content = "\\n".join(contents)
+        content += "\\n".join(content_ps)
         content = content.replace('\\u3000', ' ').replace('\\n', '').replace('\\t', '')
         item = response.meta['item']
         item['content'] = content

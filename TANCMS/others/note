@@ -13,6 +13,7 @@
 
 首都之窗
     http://www.beijing.gov.cn/so/interest?sort=dateDesc&timeOption=1&days=30&qt={}&tab=all&siteCode=1100000088&keyPlace=0&toolsStatus=1&mode=1&pageSize=20&page={}
+    http://www.beijing.gov.cn/so/interest?sort=dateDesc&timeOption=1&days=30&qt=核酸检测&tab=all&siteCode=1100000088&keyPlace=0&toolsStatus=1&mode=1&pageSize=20&page=1
 
 新浪新闻
     https://search.sina.com.cn/?q={}&c=news&from=&col=&range=all&source=&country=&size=10&stime=m-01-01+00%3A00%3A00&etime=m-12-31+23%3A59%3A59&time=m&dpc=0&a=&ps=0&pf=0&page={}
@@ -24,6 +25,7 @@
 百度贴吧
     # qw = 关键字
     tie_url = 'https://tieba.baidu.com/f/search/res?ie=UTF-8&isnew=1&qw={}&un=&rn=10&sd=&ed=&sm=1&only_thread=1&pn={}'
+    https://tieba.baidu.com/f/search/res?ie=UTF-8&isnew=1&qw=核酸检测&un=&rn=10&sd=&ed=&sm=1&only_thread=1&pn=1
 
     搜吧 qw = 关键字
     ba_url = 'https://tieba.baidu.com/f/search/fm?ie=UTF-8&qw={}&pn={}'

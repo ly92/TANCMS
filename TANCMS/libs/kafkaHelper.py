@@ -82,6 +82,7 @@ def indexData(item):
             "_index": "temp_document",
             "_source": {
                 "author": item['author'],
+                "author_url": item['author_url'],
                 "content": item['content'],
                 "programs": [
                     {

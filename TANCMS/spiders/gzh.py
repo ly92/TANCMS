@@ -64,6 +64,7 @@ class GzhSpider(scrapy.Spider):
             item['author'] = response.xpath('//*[@id="js_name"]/text()').extract_first().strip()
             item['time'] = self.getTime(response)
             item['source'] = '微信公众号'
+            item['author_url'] = ''
             yield item
             pass
 
