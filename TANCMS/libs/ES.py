@@ -140,6 +140,37 @@ def test_bulk():
 
     es_multi_index(actions)
 
+
+import re
+def testWeibo():
+    body = {
+        "query": {
+            "match": {
+                "source": '新浪微博'
+            }
+        },
+        "size": 185
+    }
+    weibos_hits = es_query('temp_blog', body)
+    weibos = weibos_hits['hits']['hits']
+    for weibo in weibos:
+        content = weibo['_source']['content']
+        # print(content)
+        a_s = re.findall('<a(.*?)>', content, re.S)
+        for a in a_s:
+            content = content.replace(a, '')
+        span_s = re.findall('<span(.*?)>', content, re.S)
+        for span in span_s:
+            content = content.replace(span, '')
+        img_s = re.findall('<img(.*?)>', content, re.S)
+        for img in img_s:
+            content = content.replace(img, '')
+        content = content.replace('<a>', '').replace('<span>', '').replace('</a>', '').replace('</span>', '').replace('<img>', '').replace('<br />', '')
+        print(content)
+
+
+
 if __name__ == '__main__':
     # test_bulk()
-    print(datetime.date)
+    # print(datetime.date)
+    testWeibo()

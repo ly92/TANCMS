@@ -6,6 +6,7 @@ from ..items import BlogItem
 import time
 from TANCMS.libs.redisHelper import cacheGet
 import urllib
+import re
 
 class WeiboSpider(scrapy.Spider):
     name = 'weibo'
@@ -47,6 +48,7 @@ class WeiboSpider(scrapy.Spider):
             blog['url'] = url
             blog['blog_id'] = item['mblog']['id']
             text = item['mblog']['text']
+            text = self.getContent(text)
             blog['title'] = text[0:30]
             blog['content'] = text
             blog['time'] = formatTime(item['mblog']['created_at'])
@@ -57,7 +59,7 @@ class WeiboSpider(scrapy.Spider):
             blog['author_url'] = 'https://m.weibo.cn/u/' + blog['author_id']
             blog['bar'] = ''
             blog['bar_url'] = ''
-            if text.endswith('全文</a>') > 0:
+            if text.endswith('全文') > 0:
                 url2 = 'https://m.weibo.cn/statuses/extend?id=' + item['mblog']['id']
                 yield scrapy.Request(url=url2, callback=self.content_parse, meta={'item': blog})
             else:
@@ -74,7 +76,21 @@ class WeiboSpider(scrapy.Spider):
         blog = response.meta['item']
         if res['ok'] == 1 & res['data']['ok'] == 1:
             htmlContent = res['data']['longTextContent']
-            blog['content'] = htmlContent
+            blog['content'] = self.getContent(htmlContent)
 
         yield blog
 
+
+    def getContent(self, content):
+        a_s = re.findall('<a(.*?)>', content, re.S)
+        for a in a_s:
+            content = content.replace(a, '')
+        span_s = re.findall('<span(.*?)>', content, re.S)
+        for span in span_s:
+            content = content.replace(span, '')
+        img_s = re.findall('<img(.*?)>', content, re.S)
+        for img in img_s:
+            content = content.replace(img, '')
+        content = content.replace('<a>', '').replace('<span>', '').replace('</a>', '').replace('</span>', '').replace(
+            '<img>', '').replace('<br />', '')
+        return content
