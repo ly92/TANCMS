@@ -22,6 +22,7 @@ def consumerMessage():
     consumer = KafkaConsumer(topic, bootstrap_servers=[host])
     actions = []
     for msg in consumer:
+        # print(msg)
         item_dict = msg.value.decode('utf-8')
 
         item = json.loads(item_dict)
@@ -70,9 +71,9 @@ def indexData(item):
                 "source": item['source'],
                 "title": item['title'],
                 "url": item['url'],
-                # "creationTime": item['time'],
-                "creationTime": '2020-11-11T10:39:46.316+0800',
-                "addTime": formatTime(time.time())
+                "creationTime": item['time'],
+                "addTime": formatTime(time.time()),
+                "processed": 0
             }
         }
         actions.append(obj)
@@ -94,9 +95,9 @@ def indexData(item):
                 "source": item['source'],
                 "title": item['title'],
                 "url": item['url'],
-                # "creationTime": item['time'],
-                "creationTime": '2020-11-11T10:39:46.316+0800',
-                "addTime": formatTime(time.time())
+                "creationTime": item['time'],
+                "addTime": formatTime(time.time()),
+                "processed": 0
             }
         }
         actions.append(obj)

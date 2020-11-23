@@ -21,11 +21,13 @@ class TianyaSpider(scrapy.Spider):
 
     def parse(self, response):
         ul = response.xpath('//*[@class="searchListOne"]/ul/li')
+        shouldGoOn = False
         for li in ul:
             try:
                 url = li.xpath('./div/h3/a/@href').extract_first()
-                if isExitBlogByUrl(url):
+                if not url or isExitBlogByUrl(url):
                     continue
+                shouldGoOn = True
                 title = li.xpath('./div/h3/a').get()
                 title = title.replace('<span class="kwcolor">', '').replace('</span>', '')
                 title = re.findall('target="_blank">(.*?)</a>', title, re.S)[0]
@@ -55,7 +57,7 @@ class TianyaSpider(scrapy.Spider):
             except:
                 pass
 
-        if len(ul) > 0 and self.page < 40:
+        if shouldGoOn and self.page < 40:
             self.page = self.page + 1
             url = self.base_url.format(self.word, self.page)
             time.sleep(3)
