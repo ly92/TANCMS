@@ -1,20 +1,23 @@
 from kafka import KafkaConsumer, KafkaProducer
-from TANCMS.libs.redisHelper import cacheGet
+from redisHelper import cacheGet
+# from TANCMS.libs.redisHelper import cacheGet
 import json
 import time
-from TANCMS.libs.timeHelper import formatTime
-from TANCMS.libs.ES import es_multi_index
-from TANCMS.libs.async_call import async_call
+from timeHelper import formatTime
+from ES import es_multi_index
 
 
 topic = 'tancms_iyanshan'
-host = '127.0.0.1:9092'
+host = 'tancms_kafka_1'
+# host = '127.0.0.1:9092'
 
 
 def productMessage(msg):
     producer = KafkaProducer(bootstrap_servers=host)
     msg = msg.encode('utf-8')
-    producer.send(topic, msg)
+    future = producer.send(topic, msg)
+    result = future.get(timeout=10)
+    print(result)
     producer.close()
 
 
@@ -117,22 +120,23 @@ def indexData(item):
 def allDataConsumer():
     consumer = KafkaConsumer(topic, auto_offset_reset='earliest', bootstrap_servers=[host])
     for msg in consumer:
+
         item_dict = msg.value.decode('utf-8')
         print(item_dict)
-        if len(item_dict) > 100:
-            try:
-                item = json.loads(item_dict)
-                # print(item)
-                # indexData(item)
-            except:
-                pass
-            finally:
-                pass
+        # if len(item_dict) > 100:
+        #     try:
+        #         item = json.loads(item_dict)
+        #         print(item)
+        #         # indexData(item)
+        #     except:
+        #         pass
+        #     finally:
+        #         pass
 
 
 
 if __name__ == '__main__':
-    # productMessage()
-    consumerMessage()
-    # allDataConsumer()
+    # productMessage('哈哈哈哈哈哈123213123123agagagagagGGAGAGAG------asdhjasd')
+    # consumerMessage()
+    allDataConsumer()
     # indexData('23')

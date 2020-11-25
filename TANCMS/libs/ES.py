@@ -1,6 +1,6 @@
 from elasticsearch import Elasticsearch, helpers
-from TANCMS.libs.redisHelper import cacheGet
-from TANCMS.libs.async_call import async_call
+from  redisHelper import cacheGet
+from  async_call import async_call
 import datetime
 
 es = Elasticsearch(['47.95.145.227:9200'], http_auth=('tancms', 'Tan123456'))

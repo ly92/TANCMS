@@ -86,15 +86,32 @@ def strToTimeStamp(time_str):
 
     return int(time.time())
 
+from kafka import KafkaConsumer, KafkaProducer
+
+
+
+topic = 'tancms_iyanshan'
+# host = 'tancms_kafka_1'
+host = '127.0.0.1:9092'
+
+
+def productMessage(msg):
+    producer = KafkaProducer(bootstrap_servers=host)
+    msg = msg.encode('utf-8')
+    producer.send(topic, msg)
+    producer.close()
+
+
 
 if __name__ == '__main__':
+    productMessage('qeqeq')
     # s = '2020-11-02'
     # s = '1000000202'
     # s = 1231231231
     # s = 1605062386.83242
     # s = '5分钟前'
     # s = '昨天 13:39'
-    s = '11-8'
-    print(type(s))
-    date = formatTime(s)
-    print(date)
+    # s = '11-8'
+    # print(type(s))
+    # date = formatTime(s)
+    # print(date)
